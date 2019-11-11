@@ -6,14 +6,14 @@
 /*   By: jnovotny <jnovotny@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/09 17:29:51 by jnovotny          #+#    #+#             */
-/*   Updated: 2019/11/11 15:12:08 by jnovotny         ###   ########.fr       */
+/*   Updated: 2019/11/11 18:47:33 by jnovotny         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef FT_PRINTF_H
 # define FT_PRINTF_H
 
-# include "../../Libft/includes/libft.h"
+# include "libft.h"
 # include <stdio.h>
 # include <stdarg.h>
 
@@ -69,6 +69,7 @@ typedef struct	s_format
 */
 
 int		ft_printf(const char *format, ...);
+void	ft_parse(t_format *f, const char *format);
 void	ft_getinfo(t_format *f, const char *format);
 
 /*
@@ -84,6 +85,8 @@ void	ft_getlmod(t_format *f, const char *format);
 /*
 **	Output generators
 */
+
+void	ft_create_out(t_format *f, const char *format);
 
 /*
 **	Printers

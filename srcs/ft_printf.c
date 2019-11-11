@@ -6,7 +6,7 @@
 /*   By: jnovotny <jnovotny@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/09 17:33:10 by jnovotny          #+#    #+#             */
-/*   Updated: 2019/11/11 15:40:18 by jnovotny         ###   ########.fr       */
+/*   Updated: 2019/11/11 19:09:13 by jnovotny         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,9 +20,9 @@ int		ft_printf(const char *format, ...)
 	va_start(f.list, format);
 	while(format[f.i] != '\0')
 	{
-		if(format[f.i] == '%' && format[f.i] != '%')
-			{}/*do smth, how much increased i? (ft return value or insert i in struct?)*/
-		else if (format[f.i] == '%' && format[f.i] == '%')
+		if(format[f.i] == '%' && format[f.i + 1] != '%')
+			ft_parse(&f, format);
+		else if (format[f.i] == '%' && format[f.i + 1] == '%')
 		{
 			f.out_len = f.out_len + write(1, "%", 1);
 			f.i = f.i + 2;

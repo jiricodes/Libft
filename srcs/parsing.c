@@ -6,7 +6,7 @@
 /*   By: jnovotny <jnovotny@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/11 10:44:15 by jnovotny          #+#    #+#             */
-/*   Updated: 2019/11/11 18:04:41 by jnovotny         ###   ########.fr       */
+/*   Updated: 2019/11/11 19:20:37 by jnovotny         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,8 @@ void	ft_parse(t_format *f, const char *format)
 	/* get values */
 	ft_getinfo(f, format);
 	/* create string */
-	// ft_create_out(f, format);
+	ft_create_out(f, format);
 	/* output string */
+	f->out_len = write(1, f->out_str, ft_strlen(f->out_str));
 	/* free string? */
 }
