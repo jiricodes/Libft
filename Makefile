@@ -6,7 +6,7 @@
 #    By: jnovotny <jnovotny@student.hive.fi>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/11/11 15:44:22 by jnovotny          #+#    #+#              #
-#    Updated: 2019/11/11 18:14:58 by jnovotny         ###   ########.fr        #
+#    Updated: 2019/11/12 20:55:28 by jnovotny         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -22,10 +22,13 @@ NAME = libftprintf.a
 
 LIB = /Users/jnovotny/Documents/Hive_Phase_1/Libft/
 
-FTS =	creator_hub.c \
-		datafeed.c \
+FTS =	datafeed.c \
 		ft_printf.c \
-		parsing.c
+		parsing.c \
+		error.c \
+		creator_hub.c \
+		process_di.c \
+		flags_basic.c
 
 LIB_FTS = ft_atoi.c \
 		ft_bzero.c \

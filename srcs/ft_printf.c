@@ -6,7 +6,7 @@
 /*   By: jnovotny <jnovotny@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/09 17:33:10 by jnovotny          #+#    #+#             */
-/*   Updated: 2019/11/11 19:09:13 by jnovotny         ###   ########.fr       */
+/*   Updated: 2019/11/12 21:02:14 by jnovotny         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,5 +35,5 @@ int		ft_printf(const char *format, ...)
 	}
 	va_end(f.list);
 	/* assign ret value to smth and clear struct? */
-	return(f.out_len + 1);
+	return(f.out_len);
 }

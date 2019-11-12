@@ -6,7 +6,7 @@
 /*   By: jnovotny <jnovotny@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/09 17:29:51 by jnovotny          #+#    #+#             */
-/*   Updated: 2019/11/11 18:47:33 by jnovotny         ###   ########.fr       */
+/*   Updated: 2019/11/12 20:54:03 by jnovotny         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,8 @@
 # include <stdarg.h>
 
 # define FLAG_STR "0#+- "
+# define F_HASH_ERR "diucsCSpnm"
+# define F_ZERO_ERR "csCSpnm"
 
 /*
 ** Flag management struct
@@ -30,6 +32,7 @@ typedef struct	s_flag
 	char	plus;
 	char	minus;
 	char	space;
+	char	sign;
 }				t_flag;
 
 /*
@@ -71,6 +74,7 @@ typedef struct	s_format
 int		ft_printf(const char *format, ...);
 void	ft_parse(t_format *f, const char *format);
 void	ft_getinfo(t_format *f, const char *format);
+void	ft_error(t_format *f);
 
 /*
 **	Information fetching
@@ -89,7 +93,34 @@ void	ft_getlmod(t_format *f, const char *format);
 void	ft_create_out(t_format *f, const char *format);
 
 /*
+** Flags
+*/
+
+void	ft_runflags(t_format *f, const char *format);
+void	flag_hash(t_format *f, const char *format);
+void	flag_zero(t_format *f, const char *format);
+void	flag_plus(t_format *f);
+void	flag_minus(t_format *f, const char *format);
+void	flag_space(t_format *f, const char *format);
+
+/*
+** Conversions
+*/
+
+void	ft_process_di(t_format *f);
+
+/*
 **	Printers
 */
+
+void	ft_print_di(t_format *f);
+
+/*
+**	di - tools
+*/
+
+void	ft_prec_di(t_format *f);
+void	ft_sign(t_format *f);
+void	ft_add_sign(t_format *f);
 
 #endif
