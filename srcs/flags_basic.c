@@ -6,7 +6,7 @@
 /*   By: jnovotny <jnovotny@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/12 12:22:33 by jnovotny          #+#    #+#             */
-/*   Updated: 2019/11/12 21:01:42 by jnovotny         ###   ########.fr       */
+/*   Updated: 2019/11/13 12:30:37 by jnovotny         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ void	flag_hash(t_format *f, const char *format)
 	if (!f->flag.hash)
 		return ;
 	if (ft_strchr(F_HASH_ERR, format[f->i]))
-		ft_error(f);
+		f->flag.hash = 0;
 	else if (format[f->i] == 'o')
 		{}/*later*/
 	else if (format[f->i] == 'x')

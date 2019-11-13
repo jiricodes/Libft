@@ -6,7 +6,7 @@
 #    By: jnovotny <jnovotny@student.hive.fi>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/11/11 15:44:22 by jnovotny          #+#    #+#              #
-#    Updated: 2019/11/12 20:55:28 by jnovotny         ###   ########.fr        #
+#    Updated: 2019/11/13 12:25:32 by jnovotny         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -31,6 +31,7 @@ FTS =	datafeed.c \
 		flags_basic.c
 
 LIB_FTS = ft_atoi.c \
+		ft_base_len.c \
 		ft_bzero.c \
 		ft_isalnum.c \
 		ft_isalpha.c \
@@ -39,12 +40,15 @@ LIB_FTS = ft_atoi.c \
 		ft_isprint.c \
 		ft_isspace.c \
 		ft_itoa.c \
+		ft_itoa_base.c \
 		ft_lstadd.c \
 		ft_lstdel.c \
 		ft_lstdelone.c \
 		ft_lstiter.c \
 		ft_lstmap.c \
 		ft_lstnew.c \
+		ft_ltoa.c \
+		ft_ltoa_base.c \
 		ft_memalloc.c \
 		ft_memccpy.c \
 		ft_memchr.c \
@@ -53,6 +57,9 @@ LIB_FTS = ft_atoi.c \
 		ft_memdel.c \
 		ft_memmove.c \
 		ft_memset.c \
+		ft_min_sqrt.c \
+		ft_power.c \
+		ft_power_l.c \
 		ft_putchar.c \
 		ft_putchar_fd.c \
 		ft_putendl.c \
@@ -61,6 +68,7 @@ LIB_FTS = ft_atoi.c \
 		ft_putnbr_fd.c \
 		ft_putstr.c \
 		ft_putstr_fd.c \
+		ft_realloc.c \
 		ft_strcat.c \
 		ft_strchr.c \
 		ft_strclr.c \
@@ -83,17 +91,19 @@ LIB_FTS = ft_atoi.c \
 		ft_strnew.c \
 		ft_strnstr.c \
 		ft_strrchr.c \
+		ft_strset.c \
 		ft_strsplit.c \
 		ft_strstr.c \
 		ft_strsub.c \
 		ft_strtrim.c \
 		ft_tolower.c \
 		ft_toupper.c \
-		ft_realloc.c \
-		ft_base_len.c \
-		ft_power_l.c \
-		ft_power.c \
-		ft_itoa_base.c
+		ft_uitoa.c \
+		ft_uitoa_base.c \
+		ft_ultoa.c \
+		ft_ultoa_base.c \
+		get_next_line.c
+
 
 FTO = $(FTS:.c=.o)
 LIB_FTO = $(LIB_FTS:.c=.o)
