@@ -6,7 +6,7 @@
 /*   By: jnovotny <jnovotny@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/09 17:29:51 by jnovotny          #+#    #+#             */
-/*   Updated: 2019/11/13 16:20:56 by jnovotny         ###   ########.fr       */
+/*   Updated: 2019/11/13 19:50:27 by jnovotny         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -113,6 +113,7 @@ void	ft_process_xx(t_format *f, const char *format);
 void	ft_process_o(t_format *f);
 void	ft_process_b(t_format *f);
 void	ft_process_u(t_format *f);
+void	ft_process_f(t_format *f);
 
 /*
 **	Printers
@@ -123,6 +124,7 @@ void	ft_print_xx(t_format *f, const char *format);
 void	ft_print_o(t_format *f);
 void	ft_print_b(t_format *f);
 void	ft_print_u(t_format *f);
+void	ft_print_f(t_format *f);
 
 /*
 **	di - tools

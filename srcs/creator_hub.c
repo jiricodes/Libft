@@ -6,7 +6,7 @@
 /*   By: jnovotny <jnovotny@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/11 15:41:58 by jnovotny          #+#    #+#             */
-/*   Updated: 2019/11/13 16:25:58 by jnovotny         ###   ########.fr       */
+/*   Updated: 2019/11/13 19:50:50 by jnovotny         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,8 +30,8 @@ void	ft_create_out(t_format *f, const char *format)
 		ft_process_b(f);
 	else if (format[f->i] == 'u')
 		ft_process_u(f);
-	// else if (format[f->i] == 'f')
-	// 	ft_process_f(f, format);
+	else if (format[f->i] == 'f')
+		ft_process_f(f);
 	// else if (format[f->i] == 'c')
 	// 	ft_process_c(f, format);
 	// else if (format[f->i] == 's')
