@@ -6,7 +6,7 @@
 /*   By: jnovotny <jnovotny@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/12 12:09:48 by jnovotny          #+#    #+#             */
-/*   Updated: 2019/11/13 12:22:14 by jnovotny         ###   ########.fr       */
+/*   Updated: 2019/11/13 13:05:34 by jnovotny         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,9 +43,7 @@ void	ft_process_di(t_format *f)
 void	ft_print_di(t_format *f)
 {
 	char c;
-	f->flag.minus ? f->flag.zero = 0 : 0;
-	f->precision >= 0 ? f->flag.zero = 0 : 0;
-	/* check precision and width */
+
 	ft_prec_di(f);
 	ft_add_sign(f);
 	if (f->width > (int)ft_strlen(f->out_str))

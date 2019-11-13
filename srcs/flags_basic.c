@@ -6,7 +6,7 @@
 /*   By: jnovotny <jnovotny@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/12 12:22:33 by jnovotny          #+#    #+#             */
-/*   Updated: 2019/11/13 12:30:37 by jnovotny         ###   ########.fr       */
+/*   Updated: 2019/11/13 13:03:48 by jnovotny         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,10 +50,10 @@ void	flag_hash(t_format *f, const char *format)
 ** For other conversions, the behavior is undefined.
 */
 
-// void	flag_zero(t_format *f, const char *format)
-// {
-
-// }
+void	flag_zero(t_format *f, const char *format)
+{
+	(f->precision >= 0 && ft_strchr(F_ZERO_NUM, format[f->i])) ? f->flag.zero = 0 : 0;
+}
 
 /*
 ** + Plus
@@ -74,10 +74,10 @@ void	flag_plus(t_format *f)
 ** A - overrides a 0 if both are given.
 */
 
-// void	flag_minus(t_format *f, const char *format)
-// {
-	
-// }
+void	flag_minus(t_format *f)
+{
+	f->flag.minus ? f->flag.zero = 0 : 0;
+}
 
 /*
 ** ' ' Space

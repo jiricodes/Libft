@@ -6,7 +6,7 @@
 /*   By: jnovotny <jnovotny@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/09 17:29:51 by jnovotny          #+#    #+#             */
-/*   Updated: 2019/11/12 20:54:03 by jnovotny         ###   ########.fr       */
+/*   Updated: 2019/11/13 16:20:56 by jnovotny         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,8 +18,9 @@
 # include <stdarg.h>
 
 # define FLAG_STR "0#+- "
-# define F_HASH_ERR "diucsCSpnm"
+# define F_HASH_ERR "bdiucsCSpnm"
 # define F_ZERO_ERR "csCSpnm"
+# define F_ZERO_NUM "bdiouxX"
 
 /*
 ** Flag management struct
@@ -100,7 +101,7 @@ void	ft_runflags(t_format *f, const char *format);
 void	flag_hash(t_format *f, const char *format);
 void	flag_zero(t_format *f, const char *format);
 void	flag_plus(t_format *f);
-void	flag_minus(t_format *f, const char *format);
+void	flag_minus(t_format *f);
 void	flag_space(t_format *f, const char *format);
 
 /*
@@ -108,12 +109,20 @@ void	flag_space(t_format *f, const char *format);
 */
 
 void	ft_process_di(t_format *f);
+void	ft_process_xx(t_format *f, const char *format);
+void	ft_process_o(t_format *f);
+void	ft_process_b(t_format *f);
+void	ft_process_u(t_format *f);
 
 /*
 **	Printers
 */
 
 void	ft_print_di(t_format *f);
+void	ft_print_xx(t_format *f, const char *format);
+void	ft_print_o(t_format *f);
+void	ft_print_b(t_format *f);
+void	ft_print_u(t_format *f);
 
 /*
 **	di - tools
@@ -122,5 +131,32 @@ void	ft_print_di(t_format *f);
 void	ft_prec_di(t_format *f);
 void	ft_sign(t_format *f);
 void	ft_add_sign(t_format *f);
+
+/*
+** xX - tools
+*/
+
+void	ft_prec_xx(t_format *f);
+void	ft_hash_xx(t_format *f, const char *format);
+
+/*
+** o - tools
+*/
+
+void	ft_prec_o(t_format *f);
+void	ft_hash_o(t_format *f);
+
+/*
+** b - tools
+*/
+
+void	ft_prec_b(t_format *f);
+
+/*
+** u - tools
+*/
+
+void	ft_prec_u(t_format *f);
+
 
 #endif

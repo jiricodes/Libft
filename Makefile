@@ -6,7 +6,7 @@
 #    By: jnovotny <jnovotny@student.hive.fi>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/11/11 15:44:22 by jnovotny          #+#    #+#              #
-#    Updated: 2019/11/13 12:25:32 by jnovotny         ###   ########.fr        #
+#    Updated: 2019/11/13 16:19:38 by jnovotny         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -28,6 +28,10 @@ FTS =	datafeed.c \
 		error.c \
 		creator_hub.c \
 		process_di.c \
+		process_xx.c \
+		process_o.c \
+		process_b.c \
+		process_u.c \
 		flags_basic.c
 
 LIB_FTS = ft_atoi.c \
