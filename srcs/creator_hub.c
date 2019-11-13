@@ -6,7 +6,7 @@
 /*   By: jnovotny <jnovotny@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/11 15:41:58 by jnovotny          #+#    #+#             */
-/*   Updated: 2019/11/13 16:21:22 by jnovotny         ###   ########.fr       */
+/*   Updated: 2019/11/13 16:25:58 by jnovotny         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,8 @@
 
 /*
 ** Functions Hub
-** Mandatory conversions : c s p d i o u x X f
+** Mandatory conversions: c s p d i o u x X f
+** Bonus conversions: b
 */
 
 void	ft_create_out(t_format *f, const char *format)
