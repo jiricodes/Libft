@@ -6,7 +6,7 @@
 /*   By: jnovotny <jnovotny@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/09 17:29:51 by jnovotny          #+#    #+#             */
-/*   Updated: 2019/11/15 16:27:11 by jnovotny         ###   ########.fr       */
+/*   Updated: 2019/11/15 18:17:52 by jnovotny         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,9 +23,9 @@
 # define F_ZERO_ERR "csCSpnm"
 # define F_ZERO_NUM "bdiouxX"
 # define C_STR "bcdifopsuxX"
-# define PF_STR "0123456789.#+- hlLqjzZt"
-# define PF_LEN "hlL"
-# define PF_SKIP "qjzZt"
+# define PF_STR "0123456789.#+- hlLqjzt"
+# define PF_LEN "hlLjz"
+# define PF_SKIP "qt"
 /*
 ** Flag management struct
 */
@@ -49,9 +49,11 @@ typedef enum	e_lmod
 	nomod = 0,
 	hh,
 	h,
+	L,
 	l,
 	ll,
-	L
+	z,
+	j
 }				t_lmod;
 
 /*
@@ -68,7 +70,6 @@ typedef struct	s_format
 	int		width;
 	int		precision;
 	t_lmod	len_mod;
-	int		conversion;
 	int		caps;
 }				t_format;
 
@@ -79,6 +80,7 @@ typedef struct	s_format
 int		ft_printf(const char *format, ...);
 void	ft_parse(t_format *f, const char *format);
 void	ft_getinfo(t_format *f, const char *format);
+void	ft_reset_pf(t_format *f);
 void	ft_error(t_format *f);
 
 /*
@@ -116,7 +118,7 @@ void	ft_process_di(t_format *f);
 void	ft_process_xx(t_format *f, const char *format);
 void	ft_process_o(t_format *f);
 void	ft_process_b(t_format *f);
-void	ft_process_u(t_format *f);
+void	ft_process_u(t_format *f, const char *format);
 void	ft_process_f(t_format *f);
 void	ft_process_c(t_format *f);
 void	ft_process_s(t_format *f);

@@ -6,7 +6,7 @@
 /*   By: jnovotny <jnovotny@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/11 14:06:03 by jnovotny          #+#    #+#             */
-/*   Updated: 2019/11/15 16:27:55 by jnovotny         ###   ########.fr       */
+/*   Updated: 2019/11/15 18:12:08 by jnovotny         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,6 @@
 
 void	ft_getflag(t_format *f, const char *format)
 {
-	bzero(&(f->flag), sizeof(t_flag));
 	while (ft_strchr(FLAG_STR, format[f->i]) && format[f->i] != '\0')
 	{
 		if (format[f->i] == '0')
@@ -47,30 +46,31 @@ void	ft_getprecision(t_format *f, const char *format)
 		f->precision = ft_atoi(&format[f->i]);
 		while (ft_isdigit(format[f->i]))
 			f->i++;
-	}
-	else
-		f->precision = -1;
+	}	
 }
 
 void	ft_getlmod(t_format *f, const char *format)
 {
-	f->len_mod = nomod;
 	if (format[f->i] == 'h' && format[f->i + 1] == 'h')
 	{
-		f->len_mod = hh;
+		f->len_mod < hh ? f->len_mod = hh : 0;
 		f->i++;
 	}
 	else if (format[f->i] == 'l' && format[f->i + 1] == 'l')
 	{
-		f->len_mod = ll;
+		f->len_mod < ll ? f->len_mod = ll : 0;
 		f->i++;
 	}
 	else if (format[f->i] == 'l' && format[f->i + 1] != 'l')
-		f->len_mod = l;
+		f->len_mod < l ? f->len_mod = l : 0;
 	else if (format[f->i] == 'h' && format[f->i + 1] != 'h')
-		f->len_mod = h;
+		f->len_mod < h ? f->len_mod = h : 0;
 	else if (format[f->i] == 'L')
-		f->len_mod = L;
+		f->len_mod < L ? f->len_mod = L : 0;
+	else if (format[f->i] == 'j')
+		f->len_mod < j ? f->len_mod = j : 0;
+	else if (format[f->i] == 'z')
+		f->len_mod < z ? f->len_mod = z : 0;
 	if (ft_strchr(PF_LEN, format[f->i]))
 		format[f->i] != '\0' ? f->i++ : ft_error(f);
 }

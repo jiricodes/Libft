@@ -6,7 +6,7 @@
 /*   By: jnovotny <jnovotny@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/12 12:09:48 by jnovotny          #+#    #+#             */
-/*   Updated: 2019/11/15 14:50:09 by jnovotny         ###   ########.fr       */
+/*   Updated: 2019/11/15 18:19:47 by jnovotny         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,14 +27,16 @@ void	ft_process_di(t_format *f)
 
 	nb = va_arg(f->list, long);
 	f->i++;
-	if (f->len_mod == L || f->len_mod == nomod)
-		f->out_str = ft_itoa((int)nb);
-	else if (f->len_mod == hh)
-		f->out_str = ft_itoa((char)nb);
-	else if (f->len_mod == h)
-		f->out_str = ft_itoa((short)nb);
-	else if (f->len_mod == l || f->len_mod == ll)
+	if (f->len_mod == j)
+		f->out_str = nb == LONG_MIN ? ft_strdup("-9223372036854775808") : ft_ultoa(nb);
+	else if (f->len_mod == l || f->len_mod == ll || f->len_mod == z)
 		f->out_str = ft_ltoa(nb);
+	else if (f->len_mod == L || f->len_mod == nomod)
+		f->out_str = ft_ltoa((int)nb);
+	else if (f->len_mod == h)
+		f->out_str = ft_ltoa((short)nb);
+	else if (f->len_mod == hh)
+		f->out_str = ft_ltoa((char)nb);
 	else
 		ft_error(f);
 	ft_print_di(f);

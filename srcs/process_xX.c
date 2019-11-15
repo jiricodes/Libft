@@ -6,7 +6,7 @@
 /*   By: jnovotny <jnovotny@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/13 12:36:44 by jnovotny          #+#    #+#             */
-/*   Updated: 2019/11/15 16:34:55 by jnovotny         ###   ########.fr       */
+/*   Updated: 2019/11/15 17:32:01 by jnovotny         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,14 +28,14 @@ void	ft_process_xx(t_format *f, const char *format)
 
 	f->caps = format[f->i] == 'X' ? 1 : 0;
 	nb = va_arg(f->list, long);
-	if (f->len_mod == L || f->len_mod == nomod)
+	if (f->len_mod == l || f->len_mod == ll || f->len_mod == j || f->len_mod == z)
+		f->out_str = ft_ultoa_base((unsigned long)nb, 16, f->caps);
+	else if (f->len_mod == L || f->len_mod == nomod)
 		f->out_str = ft_ultoa_base((unsigned int)nb, 16, f->caps);
-	else if (f->len_mod == hh)
-		f->out_str = ft_ultoa_base((unsigned char)nb, 16, f->caps);
 	else if (f->len_mod == h)
 		f->out_str = ft_ultoa_base((unsigned short)nb, 16, f->caps);
-	else if (f->len_mod == l || f->len_mod == ll)
-		f->out_str = ft_ultoa_base((unsigned long)nb, 16, f->caps);
+	else if (f->len_mod == hh)
+		f->out_str = ft_ultoa_base((unsigned char)nb, 16, f->caps);
 	else
 		ft_error(f);
 	ft_print_xx(f, format);
@@ -45,7 +45,6 @@ void	ft_process_xx(t_format *f, const char *format)
 void	ft_print_xx(t_format *f, const char *format)
 {
 	char c;
-	/* check precision and width */
 	ft_prec_xx(f);
 	ft_hash_xx(f, format);
 	if (f->width > (int)ft_strlen(f->out_str))

@@ -6,7 +6,7 @@
 /*   By: jnovotny <jnovotny@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/13 16:10:04 by jnovotny          #+#    #+#             */
-/*   Updated: 2019/11/13 16:20:10 by jnovotny         ###   ########.fr       */
+/*   Updated: 2019/11/15 18:23:39 by jnovotny         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,20 +21,20 @@
 ** When 0 is printed with an explicit precision 0, the output is empty.
 */
 
-void	ft_process_u(t_format *f)
+void	ft_process_u(t_format *f, const char *format)
 {
 	long nb;
 
 	nb = va_arg(f->list, long);
 	f->i++;
-	if (f->len_mod == L || f->len_mod == nomod)
-		f->out_str = ft_uitoa((int)nb);
-	else if (f->len_mod == hh)
-		f->out_str = ft_uitoa((char)nb);
-	else if (f->len_mod == h)
-		f->out_str = ft_uitoa((short)nb);
-	else if (f->len_mod == l || f->len_mod == ll)
+	if (f->len_mod == l || f->len_mod == ll || f->len_mod == j || f->len_mod == z || format[f->i - 1] == 'U')
 		f->out_str = ft_ultoa(nb);
+	else if (f->len_mod == L || f->len_mod == nomod)
+		f->out_str = ft_uitoa((unsigned int)nb);
+	else if (f->len_mod == h)
+		f->out_str = ft_uitoa((unsigned short)nb);
+	else if (f->len_mod == hh)
+		f->out_str = ft_uitoa((unsigned char)nb);
 	else
 		ft_error(f);
 	ft_print_u(f);
