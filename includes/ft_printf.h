@@ -6,7 +6,7 @@
 /*   By: jnovotny <jnovotny@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/09 17:29:51 by jnovotny          #+#    #+#             */
-/*   Updated: 2019/11/13 19:50:27 by jnovotny         ###   ########.fr       */
+/*   Updated: 2019/11/15 16:27:11 by jnovotny         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,12 +16,16 @@
 # include "libft.h"
 # include <stdio.h>
 # include <stdarg.h>
+# include <wchar.h>
 
 # define FLAG_STR "0#+- "
 # define F_HASH_ERR "bdiucsCSpnm"
 # define F_ZERO_ERR "csCSpnm"
 # define F_ZERO_NUM "bdiouxX"
-
+# define C_STR "bcdifopsuxX"
+# define PF_STR "0123456789.#+- hlLqjzZt"
+# define PF_LEN "hlL"
+# define PF_SKIP "qjzZt"
 /*
 ** Flag management struct
 */
@@ -114,6 +118,10 @@ void	ft_process_o(t_format *f);
 void	ft_process_b(t_format *f);
 void	ft_process_u(t_format *f);
 void	ft_process_f(t_format *f);
+void	ft_process_c(t_format *f);
+void	ft_process_s(t_format *f);
+void	ft_process_p(t_format *f);
+void	ft_process_no_convers(t_format *f, const char *format);
 
 /*
 **	Printers
@@ -125,6 +133,10 @@ void	ft_print_o(t_format *f);
 void	ft_print_b(t_format *f);
 void	ft_print_u(t_format *f);
 void	ft_print_f(t_format *f);
+void	ft_print_c(t_format *f);
+void	ft_print_s(t_format *f);
+void	ft_print_p(t_format *f);
+void	ft_print_no_convers(t_format *f);
 
 /*
 **	di - tools
@@ -160,5 +172,11 @@ void	ft_prec_b(t_format *f);
 
 void	ft_prec_u(t_format *f);
 
+
+/*
+** p - tools
+*/
+
+void	ft_hash_p(t_format *f);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: jnovotny <jnovotny@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/13 15:58:52 by jnovotny          #+#    #+#             */
-/*   Updated: 2019/11/13 16:04:38 by jnovotny         ###   ########.fr       */
+/*   Updated: 2019/11/15 14:44:41 by jnovotny         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,16 +48,16 @@ void	ft_print_b(t_format *f)
 	if (f->width > (int)ft_strlen(f->out_str))
 	{
 		c = f->flag.zero ? '0' : ' '; 
-		if(f->flag.minus)
+		if (f->flag.minus)
 		{
 			f->out_len += write(1, f->out_str, ft_strlen(f->out_str));
-			while((f->width--) - ft_strlen(f->out_str) > 0)
-				 f->out_len += write(1, &c, 1);
+			while ((f->width--) - ft_strlen(f->out_str) > 0)
+				f->out_len += write(1, &c, 1);
 		}
 		else
 		{
-			while((f->width--) - ft_strlen(f->out_str) > 0)
-				 f->out_len += write(1, &c, 1);
+			while ((f->width--) - ft_strlen(f->out_str) > 0)
+				f->out_len += write(1, &c, 1);
 			f->out_len += write(1, f->out_str, ft_strlen(f->out_str));
 		}
 	}

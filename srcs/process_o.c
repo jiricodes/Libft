@@ -6,7 +6,7 @@
 /*   By: jnovotny <jnovotny@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/13 14:33:56 by jnovotny          #+#    #+#             */
-/*   Updated: 2019/11/13 14:45:12 by jnovotny         ###   ########.fr       */
+/*   Updated: 2019/11/15 15:42:26 by jnovotny         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,7 +76,7 @@ void	ft_prec_o(t_format *f)
 	char	*res;
 	size_t	len;
 
-	if (f->out_str[0] == '0' && f->precision == 0)
+	if (f->out_str[0] == '0' && f->precision == 0 && !f->flag.hash)
 		f->out_str[0] = '\0';
 	else if (f->precision > (int)ft_strlen(f->out_str))
 	{

@@ -6,7 +6,7 @@
 /*   By: jnovotny <jnovotny@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/12 12:09:48 by jnovotny          #+#    #+#             */
-/*   Updated: 2019/11/13 13:05:34 by jnovotny         ###   ########.fr       */
+/*   Updated: 2019/11/15 14:50:09 by jnovotny         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -111,8 +111,9 @@ void	ft_add_sign(t_format *f)
 {
 	char *tmp;
 	char *res;
+	char sign;
 
-	if (f->flag.plus || f->flag.sign == -1 || f->flag.space)
+	if ((f->flag.plus || f->flag.sign == -1 || f->flag.space) && !f->flag.zero)
 	{
 		tmp = ft_strnew(1);
 		tmp[0] = f->flag.plus ? '+' : ' ';
@@ -121,5 +122,12 @@ void	ft_add_sign(t_format *f)
 		free(f->out_str);
 		free(tmp);
 		f->out_str = res;
+	}
+	else if ((f->flag.plus || f->flag.sign == -1 || f->flag.space) && f->flag.zero)
+	{
+		sign = f->flag.plus ? '+' : ' ';
+		f->flag.sign == -1 ? sign = '-' : 0;
+		f->out_len += write(1, &sign, 1);
+		f->width ? f->width-- : 0;
 	}
 }

@@ -6,7 +6,7 @@
 /*   By: jnovotny <jnovotny@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/11 14:06:03 by jnovotny          #+#    #+#             */
-/*   Updated: 2019/11/11 15:38:26 by jnovotny         ###   ########.fr       */
+/*   Updated: 2019/11/15 16:27:55 by jnovotny         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 void	ft_getflag(t_format *f, const char *format)
 {
 	bzero(&(f->flag), sizeof(t_flag));
-	while (ft_strchr(FLAG_STR, format[f->i]))
+	while (ft_strchr(FLAG_STR, format[f->i]) && format[f->i] != '\0')
 	{
 		if (format[f->i] == '0')
 			f->flag.zero = 1;
@@ -27,7 +27,7 @@ void	ft_getflag(t_format *f, const char *format)
 			f->flag.minus = 1;
 		else if (format[f->i] == ' ')
 			f->flag.space = 1;
-		f->i++;
+		format[f->i] != '\0' ? f->i++ : ft_error(f);
 	}
 }
 
@@ -71,6 +71,6 @@ void	ft_getlmod(t_format *f, const char *format)
 		f->len_mod = h;
 	else if (format[f->i] == 'L')
 		f->len_mod = L;
-	if (f->len_mod != nomod)
-		f->i++;
+	if (ft_strchr(PF_LEN, format[f->i]))
+		format[f->i] != '\0' ? f->i++ : ft_error(f);
 }

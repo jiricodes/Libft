@@ -6,7 +6,7 @@
 /*   By: jnovotny <jnovotny@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/12 12:22:33 by jnovotny          #+#    #+#             */
-/*   Updated: 2019/11/13 13:03:48 by jnovotny         ###   ########.fr       */
+/*   Updated: 2019/11/15 14:07:24 by jnovotny         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,12 +31,6 @@ void	flag_hash(t_format *f, const char *format)
 		return ;
 	if (ft_strchr(F_HASH_ERR, format[f->i]))
 		f->flag.hash = 0;
-	else if (format[f->i] == 'o')
-		{}/*later*/
-	else if (format[f->i] == 'x')
-		{}
-	else if (format[f->i] == 'X')
-	{}
 }
 
 /*
@@ -52,7 +46,8 @@ void	flag_hash(t_format *f, const char *format)
 
 void	flag_zero(t_format *f, const char *format)
 {
-	(f->precision >= 0 && ft_strchr(F_ZERO_NUM, format[f->i])) ? f->flag.zero = 0 : 0;
+	(f->precision >= 0 && ft_strchr(F_ZERO_NUM, format[f->i])) ?\
+		f->flag.zero = 0 : 0;
 }
 
 /*
@@ -84,8 +79,3 @@ void	flag_minus(t_format *f)
 ** A blank should be left before a positive number (or
 ** empty string) produced by a signed conversion.
 */
-
-// void	flag_space(t_format *f, const char *format)
-// {
-	
-// }

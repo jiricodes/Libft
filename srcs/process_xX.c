@@ -6,7 +6,7 @@
 /*   By: jnovotny <jnovotny@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/13 12:36:44 by jnovotny          #+#    #+#             */
-/*   Updated: 2019/11/13 14:46:03 by jnovotny         ###   ########.fr       */
+/*   Updated: 2019/11/15 16:34:55 by jnovotny         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,16 +51,16 @@ void	ft_print_xx(t_format *f, const char *format)
 	if (f->width > (int)ft_strlen(f->out_str))
 	{
 		c = f->flag.zero ? '0' : ' '; 
-		if(f->flag.minus)
+		if (f->flag.minus)
 		{
 			f->out_len += write(1, f->out_str, ft_strlen(f->out_str));
-			while((f->width--) - ft_strlen(f->out_str) > 0)
-				 f->out_len += write(1, &c, 1);
+			while ((f->width--) - ft_strlen(f->out_str) > 0)
+				f->out_len += write(1, &c, 1);
 		}
 		else
 		{
-			while((f->width--) - ft_strlen(f->out_str) > 0)
-				 f->out_len += write(1, &c, 1);
+			while ((f->width--) - ft_strlen(f->out_str) > 0)
+				f->out_len += write(1, &c, 1);
 			f->out_len += write(1, f->out_str, ft_strlen(f->out_str));
 		}
 	}
@@ -97,7 +97,7 @@ void	ft_hash_xx(t_format *f, const char *format)
 	char	*tmp;
 	char	*res;
 
-	if (f->flag.hash && f->out_str[0] != '0' && f->out_str[0] != '\0')
+	if (f->flag.hash && f->out_str[0] != '0' && f->out_str[0] != '\0' && !f->flag.zero)
 	{
 		tmp = ft_strnew(2);
 		tmp[0] = '0';
@@ -106,5 +106,12 @@ void	ft_hash_xx(t_format *f, const char *format)
 		free(f->out_str);
 		free(tmp);
 		f->out_str = res;
+	}
+	else if (f->flag.hash && f->out_str[0] != '0' && f->out_str[0] != '\0' && f->flag.zero)
+	{
+		f->out_len += write(1, "0", 1); 
+		f->out_len += write(1, &format[f->i], 1);
+		if (f->width)
+			f->width -= 2;
 	}
 }
