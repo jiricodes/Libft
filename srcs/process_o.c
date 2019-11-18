@@ -6,7 +6,7 @@
 /*   By: jnovotny <jnovotny@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/13 14:33:56 by jnovotny          #+#    #+#             */
-/*   Updated: 2019/11/18 19:01:32 by jnovotny         ###   ########.fr       */
+/*   Updated: 2019/11/18 19:59:19 by jnovotny         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,17 +23,22 @@
 
 void	ft_process_o(t_format *f)
 {
-	long nb;
+	unsigned long nb;
 
 	nb = va_arg(f->list, long);
-	if (f->len_mod == L || f->len_mod == nomod)
+	if (f->len_mod == l || f->len_mod == ll)
+	{
+		if (nb == ULONG_MAX)
+			f->out_str = ft_strdup("1777777777777777777777");
+		else
+			f->out_str = ft_ultoa_base((unsigned long)nb, 8, 0);
+	}
+	else if (f->len_mod == L || f->len_mod == nomod)
 		f->out_str = ft_ultoa_base((unsigned int)nb, 8, 0);
-	else if (f->len_mod == hh)
-		f->out_str = ft_ultoa_base((unsigned char)nb, 8, 0);
 	else if (f->len_mod == h)
 		f->out_str = ft_ultoa_base((unsigned short)nb, 8, 0);
-	else if (f->len_mod == l || f->len_mod == ll)
-		f->out_str = ft_ultoa_base((unsigned long)nb, 8, 0);
+	else if (f->len_mod == hh)
+		f->out_str = ft_ultoa_base((unsigned char)nb, 8, 0);
 	else
 		ft_error(f);
 	ft_print_o(f);

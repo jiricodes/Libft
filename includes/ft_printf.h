@@ -6,7 +6,7 @@
 /*   By: jnovotny <jnovotny@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/09 17:29:51 by jnovotny          #+#    #+#             */
-/*   Updated: 2019/11/18 18:55:34 by jnovotny         ###   ########.fr       */
+/*   Updated: 2019/11/18 19:48:57 by jnovotny         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,12 +18,12 @@
 # include <stdarg.h>
 # include <wchar.h>
 
-# define FLAG_STR "0#+- "
+# define FLAG_STR "0#+- *"
 # define F_HASH_ERR "bdiucsCSpnm"
 # define F_ZERO_ERR "csCSpnm"
 # define F_ZERO_NUM "bdiouxX"
 # define C_STR "bcdifopsuxX"
-# define PF_STR "0123456789.#+- hlLqjzt"
+# define PF_STR "0123456789.#+- hlLqjzt*"
 # define PF_LEN "hlLjz"
 # define PF_SKIP "qt"
 

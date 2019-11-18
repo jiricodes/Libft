@@ -6,7 +6,7 @@
 /*   By: jnovotny <jnovotny@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/11 14:06:03 by jnovotny          #+#    #+#             */
-/*   Updated: 2019/11/18 09:36:30 by jnovotny         ###   ########.fr       */
+/*   Updated: 2019/11/18 19:57:22 by jnovotny         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,8 @@ void	ft_getflag(t_format *f, const char *format)
 			f->flag.minus = 1;
 		else if (format[f->i] == ' ')
 			f->flag.space = 1;
+		else if (format[f->i] == '*')
+			f->width = (int)va_arg(f->list, long);
 		format[f->i] != '\0' ? f->i++ : ft_error(f);
 	}
 }
@@ -43,9 +45,17 @@ void	ft_getprecision(t_format *f, const char *format)
 	if (format[f->i] == '.')
 	{
 		f->i++;
-		f->precision = ft_atoi(&format[f->i]);
-		while (ft_isdigit(format[f->i]))
+		if (format[f->i] == '*')
+		{
+			f->precision = (int)va_arg(f->list, long);
 			f->i++;
+		}
+		else
+		{
+			f->precision = ft_atoi(&format[f->i]);
+			while (ft_isdigit(format[f->i]))
+				f->i++;
+		}
 	}
 }
 
