@@ -6,7 +6,7 @@
 /*   By: jnovotny <jnovotny@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/13 16:28:51 by jnovotny          #+#    #+#             */
-/*   Updated: 2019/11/18 16:10:12 by jnovotny         ###   ########.fr       */
+/*   Updated: 2019/11/18 19:07:44 by jnovotny         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,8 +24,8 @@
 
 void	ft_process_f(t_format *f)
 {
-	long double nbl;
-	double nb;
+	long double	nbl;
+	double		nb;
 
 	if (f->len_mod == L)
 	{
@@ -44,22 +44,23 @@ void	ft_process_f(t_format *f)
 void	ft_print_f(t_format *f)
 {
 	char c;
+
 	ft_hash_f(f);
 	ft_sign_f(f);
 	ft_add_sign_f(f);
 	if (f->width > (int)ft_strlen(f->out_str))
 	{
-		c = f->flag.zero ? '0' : ' '; 
-		if(f->flag.minus)
+		c = f->flag.zero ? '0' : ' ';
+		if (f->flag.minus)
 		{
 			f->out_len += write(1, f->out_str, ft_strlen(f->out_str));
-			while((f->width--) - ft_strlen(f->out_str) > 0)
-				 f->out_len += write(1, &c, 1);
+			while ((f->width--) - ft_strlen(f->out_str) > 0)
+				f->out_len += write(1, &c, 1);
 		}
 		else
 		{
-			while((f->width--) - ft_strlen(f->out_str) > 0)
-				 f->out_len += write(1, &c, 1);
+			while ((f->width--) - ft_strlen(f->out_str) > 0)
+				f->out_len += write(1, &c, 1);
 			f->out_len += write(1, f->out_str, ft_strlen(f->out_str));
 		}
 	}
@@ -99,7 +100,8 @@ void	ft_add_sign_f(t_format *f)
 		free(tmp);
 		f->out_str = res;
 	}
-	else if ((f->flag.plus || f->flag.sign == -1 || f->flag.space) && f->flag.zero)
+	else if ((f->flag.plus || f->flag.sign == -1 || \
+		f->flag.space) && f->flag.zero)
 	{
 		sign = f->flag.plus ? '+' : ' ';
 		f->flag.sign == -1 ? sign = '-' : 0;

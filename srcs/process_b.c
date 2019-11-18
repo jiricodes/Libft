@@ -6,7 +6,7 @@
 /*   By: jnovotny <jnovotny@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/13 15:58:52 by jnovotny          #+#    #+#             */
-/*   Updated: 2019/11/18 09:36:47 by jnovotny         ###   ########.fr       */
+/*   Updated: 2019/11/18 19:01:56 by jnovotny         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ void	ft_print_b(t_format *f)
 	ft_prec_b(f);
 	if (f->width > (int)ft_strlen(f->out_str))
 	{
-		c = f->flag.zero ? '0' : ' '; 
+		c = f->flag.zero ? '0' : ' ';
 		if (f->flag.minus)
 		{
 			f->out_len += write(1, f->out_str, ft_strlen(f->out_str));

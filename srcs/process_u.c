@@ -6,7 +6,7 @@
 /*   By: jnovotny <jnovotny@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/13 16:10:04 by jnovotny          #+#    #+#             */
-/*   Updated: 2019/11/15 18:23:39 by jnovotny         ###   ########.fr       */
+/*   Updated: 2019/11/18 19:08:13 by jnovotny         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,8 @@ void	ft_process_u(t_format *f, const char *format)
 
 	nb = va_arg(f->list, long);
 	f->i++;
-	if (f->len_mod == l || f->len_mod == ll || f->len_mod == j || f->len_mod == z || format[f->i - 1] == 'U')
+	if (f->len_mod == l || f->len_mod == ll || f->len_mod == j || \
+		f->len_mod == z || format[f->i - 1] == 'U')
 		f->out_str = ft_ultoa(nb);
 	else if (f->len_mod == L || f->len_mod == nomod)
 		f->out_str = ft_uitoa((unsigned int)nb);
@@ -47,17 +48,17 @@ void	ft_print_u(t_format *f)
 	ft_prec_u(f);
 	if (f->width > (int)ft_strlen(f->out_str))
 	{
-		c = f->flag.zero ? '0' : ' '; 
-		if(f->flag.minus)
+		c = f->flag.zero ? '0' : ' ';
+		if (f->flag.minus)
 		{
 			f->out_len += write(1, f->out_str, ft_strlen(f->out_str));
-			while((f->width--) - ft_strlen(f->out_str) > 0)
-				 f->out_len += write(1, &c, 1);
+			while ((f->width--) - ft_strlen(f->out_str) > 0)
+				f->out_len += write(1, &c, 1);
 		}
 		else
 		{
-			while((f->width--) - ft_strlen(f->out_str) > 0)
-				 f->out_len += write(1, &c, 1);
+			while ((f->width--) - ft_strlen(f->out_str) > 0)
+				f->out_len += write(1, &c, 1);
 			f->out_len += write(1, f->out_str, ft_strlen(f->out_str));
 		}
 	}
