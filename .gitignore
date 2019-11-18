@@ -3,3 +3,4 @@
 *.json
 man_ft_printf
 pft/
+.vscode/
