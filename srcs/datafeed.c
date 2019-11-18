@@ -6,7 +6,7 @@
 /*   By: jnovotny <jnovotny@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/11 14:06:03 by jnovotny          #+#    #+#             */
-/*   Updated: 2019/11/15 18:12:08 by jnovotny         ###   ########.fr       */
+/*   Updated: 2019/11/18 09:36:30 by jnovotny         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ void	ft_getprecision(t_format *f, const char *format)
 		f->precision = ft_atoi(&format[f->i]);
 		while (ft_isdigit(format[f->i]))
 			f->i++;
-	}	
+	}
 }
 
 void	ft_getlmod(t_format *f, const char *format)

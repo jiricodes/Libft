@@ -6,7 +6,7 @@
 /*   By: jnovotny <jnovotny@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/13 16:28:51 by jnovotny          #+#    #+#             */
-/*   Updated: 2019/11/13 20:46:42 by jnovotny         ###   ########.fr       */
+/*   Updated: 2019/11/18 16:10:12 by jnovotny         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,9 @@ void	ft_process_f(t_format *f)
 void	ft_print_f(t_format *f)
 {
 	char c;
-
+	ft_hash_f(f);
+	ft_sign_f(f);
+	ft_add_sign_f(f);
 	if (f->width > (int)ft_strlen(f->out_str))
 	{
 		c = f->flag.zero ? '0' : ' '; 
@@ -63,4 +65,54 @@ void	ft_print_f(t_format *f)
 	}
 	else
 		f->out_len += write(1, f->out_str, ft_strlen(f->out_str));
+}
+
+void	ft_sign_f(t_format *f)
+{
+	char	*tmp;
+
+	if (f->out_str[0] == '-')
+	{
+		tmp = ft_strdup(f->out_str + 1);
+		free(f->out_str);
+		f->out_str = tmp;
+		f->flag.plus = 0;
+		f->flag.sign = -1;
+	}
+	else
+		f->flag.sign = 1;
+}
+
+void	ft_add_sign_f(t_format *f)
+{
+	char *tmp;
+	char *res;
+	char sign;
+
+	if ((f->flag.plus || f->flag.sign == -1 || f->flag.space) && !f->flag.zero)
+	{
+		tmp = ft_strnew(1);
+		tmp[0] = f->flag.plus ? '+' : ' ';
+		f->flag.sign == -1 ? tmp[0] = '-' : 0;
+		res = ft_strjoin(tmp, f->out_str);
+		free(f->out_str);
+		free(tmp);
+		f->out_str = res;
+	}
+	else if ((f->flag.plus || f->flag.sign == -1 || f->flag.space) && f->flag.zero)
+	{
+		sign = f->flag.plus ? '+' : ' ';
+		f->flag.sign == -1 ? sign = '-' : 0;
+		f->out_len += write(1, &sign, 1);
+		f->width ? f->width-- : 0;
+	}
+}
+
+void	ft_hash_f(t_format *f)
+{
+	size_t i;
+
+	i = ft_strlen(f->out_str) - 1;
+	if (!f->flag.hash && f->out_str[i] == '.')
+		f->out_str[i] = '\0';
 }

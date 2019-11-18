@@ -6,7 +6,7 @@
 /*   By: jnovotny <jnovotny@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/09 17:29:51 by jnovotny          #+#    #+#             */
-/*   Updated: 2019/11/15 18:17:52 by jnovotny         ###   ########.fr       */
+/*   Updated: 2019/11/18 16:03:19 by jnovotny         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -180,5 +180,13 @@ void	ft_prec_u(t_format *f);
 */
 
 void	ft_hash_p(t_format *f);
+
+/*
+** f - tools
+*/
+
+void	ft_sign_f(t_format *f);
+void	ft_add_sign_f(t_format *f);
+void	ft_hash_f(t_format *f);
 
 #endif

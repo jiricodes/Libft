@@ -6,7 +6,7 @@
 /*   By: jnovotny <jnovotny@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/11 10:44:15 by jnovotny          #+#    #+#             */
-/*   Updated: 2019/11/15 17:05:42 by jnovotny         ###   ########.fr       */
+/*   Updated: 2019/11/18 09:36:17 by jnovotny         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ void	ft_getinfo(t_format *f, const char *format)
 }
 
 void	ft_parse(t_format *f, const char *format)
-{	
+{
 	f->i++;
 	ft_reset_pf(f);
 	ft_getinfo(f, format);
