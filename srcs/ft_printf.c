@@ -6,7 +6,7 @@
 /*   By: jnovotny <jnovotny@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/09 17:33:10 by jnovotny          #+#    #+#             */
-/*   Updated: 2019/11/15 14:05:21 by jnovotny         ###   ########.fr       */
+/*   Updated: 2019/11/19 17:09:56 by jnovotny         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,8 @@ int		ft_printf(const char *format, ...)
 			f.out_len = f.out_len + write(1, "%", 1);
 			f.i = f.i + 2;
 		}
+		else if (format[f.i] == '{')
+			ft_settings(&f, format);
 		else
 		{
 			f.out_len = f.out_len + write(1, &format[f.i], 1);

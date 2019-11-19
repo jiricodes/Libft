@@ -6,7 +6,7 @@
 /*   By: jnovotny <jnovotny@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/09 17:29:51 by jnovotny          #+#    #+#             */
-/*   Updated: 2019/11/18 19:48:57 by jnovotny         ###   ########.fr       */
+/*   Updated: 2019/11/19 17:25:26 by jnovotny         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 # define FT_PRINTF_H
 
 # include "libft.h"
+# include "my_strform.h"
 # include <stdio.h>
 # include <stdarg.h>
 # include <wchar.h>
@@ -189,5 +190,15 @@ void			ft_prec_p(t_format *f);
 void			ft_sign_f(t_format *f);
 void			ft_add_sign_f(t_format *f);
 void			ft_hash_f(t_format *f);
+
+/*
+** Text Format
+*/
+
+void			ft_settings(t_format *f, const char *format);
+void			ft_setcolor(t_format *f, const char *format);
+void			ft_setcolor2(t_format *f, const char *format);
+void			ft_setfont(t_format *f, const char *format);
+void			ft_setfont2(t_format *f, const char *format);
 
 #endif
