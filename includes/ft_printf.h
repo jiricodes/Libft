@@ -6,7 +6,7 @@
 /*   By: jnovotny <jnovotny@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/09 17:29:51 by jnovotny          #+#    #+#             */
-/*   Updated: 2019/11/19 17:25:26 by jnovotny         ###   ########.fr       */
+/*   Updated: 2019/11/19 17:45:34 by jnovotny         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,7 @@
 # define PF_STR "0123456789.#+- hlLqjzt*"
 # define PF_LEN "hlLjz"
 # define PF_SKIP "qt"
+# define FIL format[f->i + len]
 
 /*
 ** Flag management struct
@@ -80,6 +81,7 @@ typedef struct	s_format
 */
 
 int				ft_printf(const char *format, ...);
+void			ft_dump(t_format *f, const char *format);
 void			ft_parse(t_format *f, const char *format);
 void			ft_getinfo(t_format *f, const char *format);
 void			ft_reset_pf(t_format *f);

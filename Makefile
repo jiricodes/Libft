@@ -6,7 +6,7 @@
 #    By: jnovotny <jnovotny@student.hive.fi>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/11/11 15:44:22 by jnovotny          #+#    #+#              #
-#    Updated: 2019/11/19 17:13:02 by jnovotny         ###   ########.fr        #
+#    Updated: 2019/11/19 18:00:45 by jnovotny         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,7 +20,7 @@ C_RES = \033[0m
 
 NAME = libftprintf.a
 
-LIB = /Users/jnovotny/Documents/Hive_Phase_1/Libft/
+LIB = libft_srcs/
 
 FTS =	datafeed.c \
 		ft_printf.c \
@@ -121,11 +121,9 @@ LIB_FTO = $(LIB_FTS:.c=.o)
 S_DIR = srcs/
 O_DIR = ./objs/
 I_DIR = -I./includes
-LIB_I_DIR = -I$(LIB)includes
-LIB_HEAD = -I$(LIB)includes
 
 SRCS = $(addprefix $(S_DIR), $(FTS))
-SRCS += $(addprefix $(LIB), $(addprefix $(S_DIR), $(LIB_FTS)))
+SRCS += $(addprefix $(LIB), $(LIB_FTS))
 OBJS = $(addprefix $(O_DIR), $(FTO))
 OBJS += $(addprefix $(O_DIR), $(LIB_FTO))
 
@@ -137,7 +135,7 @@ all: $(NAME)
 
 $(OBJS):
 	@/bin/mkdir -p $(O_DIR)
-	@gcc $(CFLAGS) $(I_DIR) $(LIB_I_DIR) -c $(SRCS)
+	@gcc $(CFLAGS) $(I_DIR) -c $(SRCS)
 	@mv $(FTO) $(O_DIR)
 	@mv $(LIB_FTO) $(O_DIR)
 
