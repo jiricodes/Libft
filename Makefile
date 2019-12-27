@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: jnovotny <jnovotny@student.hive.fi>        +#+  +:+       +#+         #
+#    By: jnovotny < jnovotny@student.hive.fi>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/11/11 15:44:22 by jnovotny          #+#    #+#              #
-#    Updated: 2019/11/19 18:00:45 by jnovotny         ###   ########.fr        #
+#    Updated: 2019/12/27 18:24:52 by jnovotny         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,7 +18,7 @@ C_L_BLUE = \033[1;34m
 C_WHITE = \033[1;37m
 C_RES = \033[0m
 
-NAME = libftprintf.a
+NAME = libft.a
 
 LIB = libft_srcs/
 
@@ -118,7 +118,7 @@ LIB_FTS = ft_atoi.c \
 
 FTO = $(FTS:.c=.o)
 LIB_FTO = $(LIB_FTS:.c=.o)
-S_DIR = srcs/
+S_DIR = pf_srcs/
 O_DIR = ./objs/
 I_DIR = -I./includes
 
