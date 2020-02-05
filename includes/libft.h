@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   libft.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jnovotny < jnovotny@student.hive.fi>       +#+  +:+       +#+        */
+/*   By: jnovotny <jnovotny@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/17 22:39:15 by jnovotny          #+#    #+#             */
-/*   Updated: 2019/12/27 18:24:28 by jnovotny         ###   ########.fr       */
+/*   Updated: 2020/01/21 13:21:52 by jnovotny         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,7 @@ typedef struct		s_list
 size_t				ft_strlen(const char *str);
 char				*ft_strdup(const char *s1);
 int					ft_atoi(const char *str);
+long long			ft_latoi(const char *str);
 int					ft_isalpha(int c);
 int					ft_isdigit(int c);
 int					ft_isalnum(int c);

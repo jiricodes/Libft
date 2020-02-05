@@ -41,6 +41,7 @@ FTS =	datafeed.c \
 		colors.c
 
 LIB_FTS = ft_atoi.c \
+		ft_latoi.c \
 		ft_base_len.c \
 		ft_bzero.c \
 		ft_isalnum.c \
