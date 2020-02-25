@@ -116,18 +116,18 @@ LIB_FTS = ft_atoi.c \
 		ft_lftoa.c \
 		get_next_line.c
 
-OTHER_SRCS =	error_srcs/ft_error_exit.c
+OTHER_FTS =	error_srcs/ft_error_exit.c
 
 FTO = $(FTS:.c=.o)
 LIB_FTO = $(LIB_FTS:.c=.o)
-OTHER_FTO = $(OTHER_FTO:.c=.o)
+OTHER_FTO = $(OTHER_FTS:.c=.o)
 S_DIR = pf_srcs/
 O_DIR = ./objs/
 I_DIR = -I./includes
 
 SRCS = $(addprefix $(S_DIR), $(FTS))
 SRCS += $(addprefix $(LIB), $(LIB_FTS))
-SRCS += $(OTHER_SRCS)
+SRCS += $(OTHER_FTS)
 OBJS = $(addprefix $(O_DIR), $(FTO))
 OBJS += $(addprefix $(O_DIR), $(LIB_FTO))
 OBJS += $(OTHER_FTO)
