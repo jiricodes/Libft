@@ -116,21 +116,22 @@ LIB_FTS = ft_atoi.c \
 		ft_lftoa.c \
 		get_next_line.c
 
-OTHER_FTS =	error_srcs/ft_error_exit.c
+ERROR_FTS =	ft_error_exit.c
 
 FTO = $(FTS:.c=.o)
 LIB_FTO = $(LIB_FTS:.c=.o)
-OTHER_FTO = $(OTHER_FTS:.c=.o)
+ERROR_FTO = $(ERROR_FTS:.c=.o)
+E_DIR = error_srcs/
 S_DIR = pf_srcs/
 O_DIR = ./objs/
 I_DIR = -I./includes
 
 SRCS = $(addprefix $(S_DIR), $(FTS))
 SRCS += $(addprefix $(LIB), $(LIB_FTS))
-SRCS += $(OTHER_FTS)
+SRCS += $(addprefix $(E_DIR), $(ERROR_FTS))
 OBJS = $(addprefix $(O_DIR), $(FTO))
 OBJS += $(addprefix $(O_DIR), $(LIB_FTO))
-OBJS += $(OTHER_FTO)
+OBJS += $(addprefix $(O_DIR), $(ERROR_FTO))
 
 CFLAGS = -Wall -Werror -Wextra
 
