@@ -144,6 +144,7 @@ $(OBJS):
 	@gcc $(CFLAGS) $(I_DIR) -c $(SRCS)
 	@mv $(FTO) $(O_DIR)
 	@mv $(LIB_FTO) $(O_DIR)
+	@mv $(ERROR_FTO) $(O_DIR)
 
 $(NAME): $(OBJS)
 	@ar rcs $@ $^
