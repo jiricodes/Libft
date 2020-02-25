@@ -14,6 +14,7 @@
 # define	FT_ERROR_H
 
 # include "libft.h"
+# include <errno.h>
 
 void	ft_error_exit(char *user_msg, void *memory, void (*del)(void *));
 
