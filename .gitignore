@@ -5,3 +5,5 @@ man_ft_printf
 pft/
 .vscode/
 .DS_Store
+*.a
+tests/libft_test
