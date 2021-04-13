@@ -6,7 +6,7 @@
 /*   By: jnovotny <jnovotny@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/13 22:09:47 by jnovotny          #+#    #+#             */
-/*   Updated: 2021/04/13 22:18:08 by jnovotny         ###   ########.fr       */
+/*   Updated: 2021/04/14 00:42:17 by jnovotny         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@
 #include <string.h>
 #include <stdio.h>
 #include <stdlib.h>
+#include <time.h>
 
 #include "libft.h"
 
@@ -46,6 +47,9 @@
 								c != 1 ? "\033[1A\r" : "", \
 								c, t, c >= t ? COLOR_GREEN : "",\
 								((float)c/(float)t) * 100)
+#define SPEED_RESULT(t) if (VERBOSE) printf("%12s[%s%.2f%%"EOC"]\n", "Speed ",\
+                                t < 100 ? COLOR_RED : COLOR_GREEN, \
+                                t);
 
 /*
 ** Function Prototypes *********************************************************

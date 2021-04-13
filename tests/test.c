@@ -6,7 +6,7 @@
 /*   By: jnovotny <jnovotny@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/13 22:09:50 by jnovotny          #+#    #+#             */
-/*   Updated: 2021/04/13 22:41:47 by jnovotny         ###   ########.fr       */
+/*   Updated: 2021/04/14 00:49:34 by jnovotny         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,13 @@
 */
 
 #include "test.h"
+
+/*
+** Globals *********************************************************************
+*/
+
+int run_speedtests = 0;
+int time_limit = 10;
 
 /*
 ** Functions *******************************************************************
@@ -34,6 +41,85 @@ static void unittest_ft_atoi_one(char *str, int *current, int total)
     expected = atoi(str);
 	assert(ret == expected);
 	STATUS(*current, total);
+}
+
+static void unittest_ft_atoi_speed()
+{
+    clock_t		end;
+    int         ret;
+    double      original = 0;
+    double      original_sec;
+    double      custom = 0;
+    double      custom_sec;
+    clock_t      start;
+
+    printf("Speed in ~%ds\r", 2*time_limit);
+    fflush(stdout);
+    start = clock();
+    end = start;
+	while ((double)(end - start) / CLOCKS_PER_SEC < time_limit)
+	{
+        ret = atoi("");
+        ret = atoi("1");
+        ret = atoi("a1");
+        ret = atoi("--1");
+        ret = atoi("++1");
+        ret = atoi("+1");
+        ret = atoi("-1");
+        ret = atoi("0");
+        ret = atoi("+42lyon");
+        ret = atoi("+101");
+        ret = atoi("2147483647");
+        ret = atoi("-2147483648");
+        ret = atoi("-+42");
+        ret = atoi("+-42");
+        ret = atoi("+\t42");
+        ret = atoi("-\t42");
+        ret = atoi("1\t42");
+        ret = atoi("-1\t42");
+        ret = atoi("\t42");
+        ret = atoi("\r42");
+        ret = atoi("\f42");
+        ret = atoi("   \t42");
+        end = clock();
+        original += 22;
+    }
+    original_sec = ((double)(end - start) / CLOCKS_PER_SEC);
+    // printf("ATOI\t\t%12.0f calls in %.2f (%f CPS)\n", original, original_sec, original / original_sec);
+
+    start = clock();
+    end = start;
+	while ((double)(end - start) / CLOCKS_PER_SEC < time_limit)
+	{
+        ret = ft_atoi("");
+        ret = ft_atoi("1");
+        ret = ft_atoi("a1");
+        ret = ft_atoi("--1");
+        ret = ft_atoi("++1");
+        ret = ft_atoi("+1");
+        ret = ft_atoi("-1");
+        ret = ft_atoi("0");
+        ret = ft_atoi("+42lyon");
+        ret = ft_atoi("+101");
+        ret = ft_atoi("2147483647");
+        ret = ft_atoi("-2147483648");
+        ret = ft_atoi("-+42");
+        ret = ft_atoi("+-42");
+        ret = ft_atoi("+\t42");
+        ret = ft_atoi("-\t42");
+        ret = ft_atoi("1\t42");
+        ret = ft_atoi("-1\t42");
+        ret = ft_atoi("\t42");
+        ret = ft_atoi("\r42");
+        ret = ft_atoi("\f42");
+        ret = ft_atoi("   \t42");
+        end = clock();
+        custom += 22;
+    }
+    custom_sec = ((double)(end - start) / CLOCKS_PER_SEC);
+    // printf("FT_ATOI\t\t%12.0f calls in %.2f (%f CPS)\n", custom, custom_sec, custom / custom_sec);
+    double percentage = ((custom / custom_sec) / (original / original_sec)) * 100;
+    SPEED_RESULT(percentage);
 }
 
 static void	unittest_ft_atoi()
@@ -64,14 +150,46 @@ static void	unittest_ft_atoi()
     unittest_ft_atoi_one("\r42", &current, total);
     unittest_ft_atoi_one("\f42", &current, total);
     unittest_ft_atoi_one("   \t42", &current, total);
+    if (run_speedtests)
+        unittest_ft_atoi_speed();
 }
 
 /*
 ** Main ************************************************************************
 */
 
+static void process_args(int cnt, char **args)
+{
+    int i = 0;
+    while (i  < cnt)
+    {
+        switch (args[i][1])
+        {
+        case 't':
+            if (i + 1 < cnt)
+            {
+                time_limit = atoi(args[i + 1]);
+                run_speedtests = 1;
+                i++;
+            }
+            break;
+        
+        case 's':
+            run_speedtests = 1;
+            break;
+
+        default:
+            printf("Unknown argument: %s\n", args[i]);
+            break;
+        }
+        i++;
+    }
+}
+
 int			main(int argc, char **argv)
 {
+    if (argc > 1)
+        process_args(argc - 1, argv + 1);
 	if (VERBOSE)
 		printf(COLOR_BLUE"UNIT TEST FOR LIBFT\n"EOC);
     unittest_ft_atoi();

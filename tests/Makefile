@@ -6,14 +6,25 @@
 #    By: jnovotny <jnovotny@student.hive.fi>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/04/13 22:21:08 by jnovotny          #+#    #+#              #
-#    Updated: 2021/04/13 22:26:47 by jnovotny         ###   ########.fr        #
+#    Updated: 2021/04/14 00:16:30 by jnovotny         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = libft_test
 CC ?= gcc
 
-ORIG_NAME ?= ../ft_ssl
+# ORIG_NAME ?= ../ft_ssl
+
+ARGS =
+
+ifdef SPEED
+ARGS += -s
+endif
+
+ifdef TL
+ARGS += -t $(TL)
+endif
+
 
 INCLUDES = -I ../includes/
 
@@ -68,7 +79,7 @@ $(NAME): $(OBJECTS)
 	$(CC) $(CFLAGS) -o $(NAME) $(OBJECTS) $(LDFLAGS)
 
 run:
-	@./$(NAME)
+	@./$(NAME) $(ARGS)
 
 clean:
 	-@rm $(OBJECTS) 2> /dev/null || true
