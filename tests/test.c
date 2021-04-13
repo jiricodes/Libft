@@ -6,7 +6,7 @@
 /*   By: jnovotny <jnovotny@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/13 22:09:50 by jnovotny          #+#    #+#             */
-/*   Updated: 2021/04/14 01:34:44 by jnovotny         ###   ########.fr       */
+/*   Updated: 2021/04/14 01:53:28 by jnovotny         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -238,7 +238,7 @@ static void	unittest_ft_isalnum()
 }
 
 /*
-** ft_isalnum ******************************************************************
+** ft_isalpha ******************************************************************
 */
 
 static void unittest_ft_isalpha_one(char *str, int *current, int total)
@@ -321,6 +321,84 @@ static void	unittest_ft_isalpha()
 }
 
 /*
+** ft_isprint ******************************************************************
+*/
+
+static void unittest_ft_isprint_one(int c, int *current, int total)
+{
+	int ret;
+    int expected;
+
+    *current += 1;
+    ret = ft_isprint(c);
+    expected = isprint(c);
+    assert((!ret) == (!expected));
+    STATUS(*current, total);
+}
+
+static void unittest_ft_isprint_speed()
+{
+    clock_t		end;
+    int         ret;
+    double      original = 0;
+    double      original_sec;
+    double      custom = 0;
+    double      custom_sec;
+    clock_t      start;
+    int         i;
+
+    printf("Speed in ~%ds\r", 2*time_limit);
+    fflush(stdout);
+    start = clock();
+    end = start;
+	while ((double)(end - start) / CLOCKS_PER_SEC < time_limit)
+	{
+        i = 0;
+        while (i < 128)
+        {
+            ret = isprint(i);
+            i++;
+        }
+        end = clock();
+        original += 128;
+    }
+    original_sec = ((double)(end - start) / CLOCKS_PER_SEC);
+    // printf("isalnum\t\t%12.0f calls in %.2f (%f CPS)\n", original, original_sec, original / original_sec);
+
+    start = clock();
+    end = start;
+	while ((double)(end - start) / CLOCKS_PER_SEC < time_limit)
+	{
+        i = 0;
+        while (i < 128)
+        {
+            ret = ft_isprint(i);
+            i++;
+        }
+        end = clock();
+        custom += 128;
+    }
+    custom_sec = ((double)(end - start) / CLOCKS_PER_SEC);
+    // printf("ft_isalnum\t\t%12.0f calls in %.2f (%f CPS)\n", custom, custom_sec, custom / custom_sec);
+    double percentage = ((custom / custom_sec) / (original / original_sec)) * 100;
+    SPEED_RESULT(percentage);
+}
+
+static void	unittest_ft_isprint()
+{
+
+    int c = -1;
+	int current = 0;
+	int total = 128;
+    
+    CATEGORY("ft_isprint");
+    while (++c < 128)
+        unittest_ft_isprint_one(c, &current, total);
+    if (run_speedtests)
+        unittest_ft_isprint_speed();
+}
+
+/*
 ** Main ************************************************************************
 */
 
@@ -361,5 +439,6 @@ int			main(int argc, char **argv)
     unittest_ft_atoi();
     unittest_ft_isalnum();
     unittest_ft_isalpha();
+    unittest_ft_isprint();
     return (0);
 }
