@@ -6,7 +6,7 @@
 /*   By: jnovotny <jnovotny@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/13 22:09:50 by jnovotny          #+#    #+#             */
-/*   Updated: 2021/04/14 00:49:34 by jnovotny         ###   ########.fr       */
+/*   Updated: 2021/04/14 01:25:06 by jnovotny         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -155,6 +155,89 @@ static void	unittest_ft_atoi()
 }
 
 /*
+** ft_atoi *********************************************************************
+*/
+
+static void unittest_ft_isalnum_one(char *str, int *current, int total)
+{
+	int ret;
+    int expected;
+
+    while (*str)
+    {
+        *current += 1;
+        ret = ft_isalnum(*str);
+        expected = isalnum(*str);
+        assert((!ret) == (!expected));
+        STATUS(*current, total);
+        str++;
+    }
+}
+
+static void unittest_ft_isalnum_speed()
+{
+    clock_t		end;
+    int         ret;
+    double      original = 0;
+    double      original_sec;
+    double      custom = 0;
+    double      custom_sec;
+    clock_t      start;
+    char    *test_string = " !\"#$%&'()*+,-./0123456789:;<=>?@ABCDEFGHIJKLMNOPQRSTUVWXYZ[|]^_`abcdefghijklmnopqrstuvwxyz{|}~";
+    char    *ptr;
+    int     step = strlen(test_string);
+
+    printf("Speed in ~%ds\r", 2*time_limit);
+    fflush(stdout);
+    start = clock();
+    end = start;
+	while ((double)(end - start) / CLOCKS_PER_SEC < time_limit)
+	{
+        ptr = test_string;
+        while (*ptr)
+        {
+            ret = isalnum(*ptr);
+            ptr++;
+        }
+        end = clock();
+        original += step;
+    }
+    original_sec = ((double)(end - start) / CLOCKS_PER_SEC);
+    // printf("isalnum\t\t%12.0f calls in %.2f (%f CPS)\n", original, original_sec, original / original_sec);
+
+    start = clock();
+    end = start;
+	while ((double)(end - start) / CLOCKS_PER_SEC < time_limit)
+	{
+        ptr = test_string;
+        while (*ptr)
+        {
+            ret = ft_isalnum(*ptr);
+            ptr++;
+        }
+        end = clock();
+        custom += step;
+    }
+    custom_sec = ((double)(end - start) / CLOCKS_PER_SEC);
+    // printf("ft_isalnum\t\t%12.0f calls in %.2f (%f CPS)\n", custom, custom_sec, custom / custom_sec);
+    double percentage = ((custom / custom_sec) / (original / original_sec)) * 100;
+    SPEED_RESULT(percentage);
+}
+
+static void	unittest_ft_isalnum()
+{
+
+    char    *test_string = " !\"#$%&'()*+,-./0123456789:;<=>?@ABCDEFGHIJKLMNOPQRSTUVWXYZ[|]^_`abcdefghijklmnopqrstuvwxyz{|}~";
+	int current = 0;
+	int total = strlen(test_string);
+    
+    CATEGORY("ft_isalnum");
+    unittest_ft_isalnum_one(test_string, &current, total);
+    if (run_speedtests)
+        unittest_ft_isalnum_speed();
+}
+
+/*
 ** Main ************************************************************************
 */
 
@@ -193,5 +276,6 @@ int			main(int argc, char **argv)
 	if (VERBOSE)
 		printf(COLOR_BLUE"UNIT TEST FOR LIBFT\n"EOC);
     unittest_ft_atoi();
+    unittest_ft_isalnum();
     return (0);
 }
