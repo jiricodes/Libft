@@ -6,7 +6,7 @@
 #    By: jnovotny <jnovotny@student.hive.fi>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/11/11 15:44:22 by jnovotny          #+#    #+#              #
-#    Updated: 2020/06/08 15:25:12 by jnovotny         ###   ########.fr        #
+#    Updated: 2021/04/13 22:31:05 by jnovotny         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -178,11 +178,16 @@ $(NAME): $(TARGET_DIRS) $(OBJS)
 	@ranlib $@
 	@echo "$(C_GREEN)\n[Library Created!]$(C_RES)"
 
+test:
+	make -C tests/ VERB=1
+
 clean: logo
+	@make clean -C tests/
 	@/bin/rm -rf $(OBJ_DIR)
 	@echo "$(C_RED)[Objects deleted!]$(C_RES)"
 
 fclean: clean
+	@make fclean -C tests/
 	@/bin/rm -f $(NAME)
 	@echo "$(C_RED)[Removed $(NAME)]$(C_RES)"
 
