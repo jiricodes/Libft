@@ -6,7 +6,7 @@
 /*   By: jnovotny <jnovotny@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/13 22:09:50 by jnovotny          #+#    #+#             */
-/*   Updated: 2021/04/13 22:20:20 by jnovotny         ###   ########.fr       */
+/*   Updated: 2021/04/13 22:41:47 by jnovotny         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,9 +40,30 @@ static void	unittest_ft_atoi()
 {
 
 	int current = 0;
-	int total = 1;
+	int total = 22;
     CATEGORY("ft_atoi");
     unittest_ft_atoi_one("", &current, total);
+    unittest_ft_atoi_one("1", &current, total);
+    unittest_ft_atoi_one("a1", &current, total);
+    unittest_ft_atoi_one("--1", &current, total);
+    unittest_ft_atoi_one("++1", &current, total);
+    unittest_ft_atoi_one("+1", &current, total);
+    unittest_ft_atoi_one("-1", &current, total);
+    unittest_ft_atoi_one("0", &current, total);
+    unittest_ft_atoi_one("+42lyon", &current, total);
+    unittest_ft_atoi_one("+101", &current, total);
+    unittest_ft_atoi_one("2147483647", &current, total);
+    unittest_ft_atoi_one("-2147483648", &current, total);
+    unittest_ft_atoi_one("-+42", &current, total);
+    unittest_ft_atoi_one("+-42", &current, total);
+    unittest_ft_atoi_one("+\t42", &current, total);
+    unittest_ft_atoi_one("-\t42", &current, total);
+    unittest_ft_atoi_one("1\t42", &current, total);
+    unittest_ft_atoi_one("-1\t42", &current, total);
+    unittest_ft_atoi_one("\t42", &current, total);
+    unittest_ft_atoi_one("\r42", &current, total);
+    unittest_ft_atoi_one("\f42", &current, total);
+    unittest_ft_atoi_one("   \t42", &current, total);
 }
 
 /*
