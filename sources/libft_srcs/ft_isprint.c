@@ -6,15 +6,20 @@
 /*   By: jnovotny <jnovotny@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/17 22:45:46 by jnovotny          #+#    #+#             */
-/*   Updated: 2019/10/17 22:45:46 by jnovotny         ###   ########.fr       */
+/*   Updated: 2021/04/14 01:44:45 by jnovotny         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int		ft_isprint(int c)
+/**
+ * @brief Checks if given character is printable
+ * 
+ * @param c Character to test
+ * @return int 1/0 ~ true/false
+ */
+
+int	ft_isprint(int c)
 {
-	if (c > 31 && c < 127)
-		return (1);
-	return (0);
+	return ((c > 31 && c < 127));
 }
