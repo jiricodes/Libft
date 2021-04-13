@@ -12,27 +12,45 @@
 
 #include "libft.h"
 
-int		ft_atoi(const char *str)
+/**
+ * @brief Transforms string numbers into int.
+ * 
+ * Discards whitespace characters from the beginning of the string
+ * 		- whitespace characeters are those for which isspace() is true
+ * Recognizes the optional "+" or "-" sign
+ * Parses the immediately following maximal string of base-10 digits
+ * and converts it into a numerical value
+ * Additional non-numerich characters are ignored
+ * Invalid number or no number results in a result of 0
+ * No overflow protection
+ * 
+ * @param str input string
+ * @return int Integer value
+ */
+
+int	ft_atoi(const char *str)
 {
 	size_t			i;
 	long long int	sign;
 	long long int	rslt;
+	uint8_t			digit;
 
 	i = 0;
 	sign = 1;
 	rslt = 0;
-	while (ft_isspace(str[i]))
+	while (str[i] == ' ' || str[i] == '\r' || str[i] == '\n' || \
+		str[i] == '\f' || str[i] == '\v' || str[i] == '\t')
 		i = i + 1;
 	if (str[i] == '-')
 		sign = -1;
 	if (str[i] == '+' || str[i] == '-')
 		i = i + 1;
-	while (ft_isdigit(str[i]))
+	digit = (uint8_t)(str[i] - 48);
+	while (digit <= 9)
 	{
-		if ((rslt >= 922337203685477580) && (str[i] - '0') > 7)
-			return ((sign == 1) ? -1 : 0);
-		rslt = rslt * 10 + (long long int)(str[i] - 48);
+		rslt = rslt * 10 + digit;
 		i = i + 1;
+		digit = (uint8_t)(str[i] - 48);
 	}
 	return (sign * rslt);
 }
