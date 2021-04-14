@@ -6,7 +6,7 @@
 /*   By: jnovotny <jnovotny@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/13 22:09:50 by jnovotny          #+#    #+#             */
-/*   Updated: 2021/04/14 01:53:28 by jnovotny         ###   ########.fr       */
+/*   Updated: 2021/04/14 02:51:27 by jnovotny         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -399,6 +399,153 @@ static void	unittest_ft_isprint()
 }
 
 /*
+** ft_itoa_base ****************************************************************
+*/
+
+static void unittest_ft_itoa_base_one(int value, int base, char *expected, int *current, int total)
+{
+	char    *ret;
+
+    *current += 1;
+    ret = ft_itoa_base(value, base, 1);
+    // printf("%s\n", ret);
+    assert((ret == NULL && expected == NULL) || !strcmp(ret, expected));
+    free(ret);
+    // STATUS(*current, total);
+}
+
+static void unittest_ft_itoa_base_speed()
+{
+    clock_t		end;
+    char        *ret;
+    double      original = 0;
+    double      original_sec;
+    double      custom = 0;
+    double      custom_sec;
+    clock_t      start;
+    int         i;
+
+    printf("Speed in ~%ds\r", 2*time_limit);
+    fflush(stdout);
+    start = clock();
+    end = start;
+	while ((double)(end - start) / CLOCKS_PER_SEC < time_limit)
+	{
+        ret = _ft_itoa_base(INT32_MAX, 10, 1);
+        free (ret);
+        ret = _ft_itoa_base(INT32_MIN, 10, 1);
+        free (ret);
+        ret = _ft_itoa_base(INT32_MAX, 2, 1);
+        free (ret);
+        ret = _ft_itoa_base(INT32_MAX, 3, 1);
+        free (ret);
+        ret = _ft_itoa_base(INT32_MAX, 4, 1);
+        free (ret);
+        ret = _ft_itoa_base(INT32_MAX, 5, 1);
+        free (ret);
+        ret = _ft_itoa_base(INT32_MAX, 6, 1);
+        free (ret);
+        ret = _ft_itoa_base(INT32_MAX, 7, 1);
+        free (ret);
+        ret = _ft_itoa_base(INT32_MAX, 8, 1);
+        free (ret);
+        ret = _ft_itoa_base(INT32_MAX, 9, 1);
+        free (ret);
+        ret = _ft_itoa_base(INT32_MAX, 11, 1);
+        free (ret);
+        ret = _ft_itoa_base(INT32_MAX, 12, 1);
+        free (ret);
+        ret = _ft_itoa_base(INT32_MAX, 13, 1);
+        free (ret);
+        ret = _ft_itoa_base(INT32_MAX, 14, 1);
+        free (ret);
+        ret = _ft_itoa_base(INT32_MAX, 15, 1);
+        free (ret);
+        ret = _ft_itoa_base(INT32_MAX, 16, 1);
+        free (ret);
+        end = clock();
+        original += 16;
+    }
+    original_sec = ((double)(end - start) / CLOCKS_PER_SEC);
+    // printf("_ft_itoa_base\t\t%12.0f calls in %.2f (%f CPS)\n", original, original_sec, original / original_sec);
+
+    start = clock();
+    end = start;
+	while ((double)(end - start) / CLOCKS_PER_SEC < time_limit)
+	{
+        ret = ft_itoa_base(INT32_MAX, 10, 1);
+        free (ret);
+        ret = ft_itoa_base(INT32_MIN, 10, 1);
+        free (ret);
+        ret = ft_itoa_base(INT32_MAX, 2, 1);
+        free (ret);
+        ret = ft_itoa_base(INT32_MAX, 3, 1);
+        free (ret);
+        ret = ft_itoa_base(INT32_MAX, 4, 1);
+        free (ret);
+        ret = ft_itoa_base(INT32_MAX, 5, 1);
+        free (ret);
+        ret = ft_itoa_base(INT32_MAX, 6, 1);
+        free (ret);
+        ret = ft_itoa_base(INT32_MAX, 7, 1);
+        free (ret);
+        ret = ft_itoa_base(INT32_MAX, 8, 1);
+        free (ret);
+        ret = ft_itoa_base(INT32_MAX, 9, 1);
+        free (ret);
+        ret = ft_itoa_base(INT32_MAX, 11, 1);
+        free (ret);
+        ret = ft_itoa_base(INT32_MAX, 12, 1);
+        free (ret);
+        ret = ft_itoa_base(INT32_MAX, 13, 1);
+        free (ret);
+        ret = ft_itoa_base(INT32_MAX, 14, 1);
+        free (ret);
+        ret = ft_itoa_base(INT32_MAX, 15, 1);
+        free (ret);
+        ret = ft_itoa_base(INT32_MAX, 16, 1);
+        free (ret);
+        end = clock();
+        custom += 16;
+    }
+    custom_sec = ((double)(end - start) / CLOCKS_PER_SEC);
+    // printf("ft_itoa_base\t\t%12.0f calls in %.2f (%f CPS)\n", custom, custom_sec, custom / custom_sec);
+    double percentage = ((custom / custom_sec) / (original / original_sec)) * 100;
+    SPEED_RESULT(percentage);
+}
+
+static void	unittest_ft_itoa_base()
+{
+
+	int current = 0;
+	int total = 17;
+    char *expect_null;
+    
+    CATEGORY("ft_itoa_base");
+    expect_null = NULL;
+    unittest_ft_itoa_base_one(INT32_MAX, 10, "2147483647", &current, total);
+    unittest_ft_itoa_base_one(INT32_MIN, 10, "-2147483648", &current, total);
+    unittest_ft_itoa_base_one(INT32_MAX, 2, "1111111111111111111111111111111", &current, total);
+    unittest_ft_itoa_base_one(INT32_MAX, 3, "12112122212110202101", &current, total);
+    unittest_ft_itoa_base_one(INT32_MAX, 4, "1333333333333333", &current, total);
+    unittest_ft_itoa_base_one(INT32_MAX, 5, "13344223434042", &current, total);
+    unittest_ft_itoa_base_one(INT32_MAX, 6, "553032005531", &current, total);
+    unittest_ft_itoa_base_one(INT32_MAX, 7, "104134211161", &current, total);
+    unittest_ft_itoa_base_one(INT32_MAX, 8, "17777777777", &current, total);
+    unittest_ft_itoa_base_one(INT32_MAX, 9, "5478773671", &current, total);
+    unittest_ft_itoa_base_one(INT32_MAX, 11, "A02220281", &current, total);
+    unittest_ft_itoa_base_one(INT32_MAX, 12, "4BB2308A7", &current, total);
+    unittest_ft_itoa_base_one(INT32_MAX, 13, "282BA4AAA", &current, total);
+    unittest_ft_itoa_base_one(INT32_MAX, 14, "1652CA931", &current, total);
+    unittest_ft_itoa_base_one(INT32_MAX, 15, "C87E66B7", &current, total);
+    unittest_ft_itoa_base_one(INT32_MAX, 16, "7FFFFFFF", &current, total);
+    unittest_ft_itoa_base_one(INT32_MAX, 17, expect_null, &current, total);
+    unittest_ft_itoa_base_one(0, 13, "0", &current, total);
+    if (run_speedtests)
+        unittest_ft_itoa_base_speed();
+}
+
+/*
 ** Main ************************************************************************
 */
 
@@ -436,9 +583,10 @@ int			main(int argc, char **argv)
         process_args(argc - 1, argv + 1);
 	if (VERBOSE)
 		printf(COLOR_BLUE"UNIT TEST FOR LIBFT\n"EOC);
-    unittest_ft_atoi();
-    unittest_ft_isalnum();
-    unittest_ft_isalpha();
-    unittest_ft_isprint();
+    // unittest_ft_atoi();
+    // unittest_ft_isalnum();
+    // unittest_ft_isalpha();
+    // unittest_ft_isprint();
+    unittest_ft_itoa_base();
     return (0);
 }

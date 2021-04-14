@@ -6,7 +6,7 @@
 /*   By: jnovotny <jnovotny@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/17 22:39:15 by jnovotny          #+#    #+#             */
-/*   Updated: 2020/06/04 12:24:43 by jnovotny         ###   ########.fr       */
+/*   Updated: 2021/04/14 02:28:27 by jnovotny         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,6 +64,7 @@ char				**ft_strsplit(char const *s, char c);
 char				*ft_itoa(int n);
 char				*ft_uitoa(unsigned int n);
 char				*ft_itoa_base(int value, int base, int upcase);
+char				*_ft_itoa_base(int value, int base, int upcase);
 char				*ft_uitoa_base(unsigned int value, int base, int upcase);
 char				*ft_ltoa(long n);
 char				*ft_ultoa(unsigned long n);
