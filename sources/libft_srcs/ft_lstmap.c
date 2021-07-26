@@ -6,7 +6,7 @@
 /*   By: jnovotny <jnovotny@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/21 11:15:01 by jnovotny          #+#    #+#             */
-/*   Updated: 2019/10/21 11:37:51 by jnovotny         ###   ########.fr       */
+/*   Updated: 2021/07/26 12:41:24 by jnovotny         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,25 +20,29 @@
 
 t_list	*ft_lstmap(t_list *lst, t_list *(*f)(t_list *elem))
 {
-	t_list *fresh;
-	t_list *node;
-	t_list *head;
+	t_list	*ret;
+	t_list	*new_lst;
+	t_list	*node;
 
-	if (!f || !lst)
-		return (NULL);
-	if (!(node = f(lst)))
-		return (NULL);
-	if (!(fresh = ft_lstnew(node->content, node->content_size)))
-		return (NULL);
-	head = fresh;
-	while (lst->next)
+	new_lst = NULL;
+	node = NULL;
+	ret = new_lst;
+	while (lst && f)
 	{
+		node = f(lst);
+		if (!node)
+			return (NULL);
+		if (new_lst)
+		{
+			new_lst->next = node;
+		}
+		else
+		{
+			new_lst = node;
+			continue ;
+		}
 		lst = lst->next;
-		if (!(node = f(lst)))
-			return (NULL);
-		if (!(fresh->next = ft_lstnew(node->content, node->content_size)))
-			return (NULL);
-		fresh = fresh->next;
+		new_lst = new_lst->next;
 	}
-	return (head);
+	return (ret);
 }

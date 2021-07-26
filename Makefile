@@ -6,7 +6,7 @@
 #    By: jnovotny <jnovotny@student.hive.fi>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/11/11 15:44:22 by jnovotny          #+#    #+#              #
-#    Updated: 2020/06/08 15:25:12 by jnovotny         ###   ########.fr        #
+#    Updated: 2021/07/26 13:18:46 by jnovotny         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -147,7 +147,7 @@ C_RES = \033[0m
 LOGO = yes
 COMP = yes
 
-.PHONY: all clean fclean re
+.PHONY: all clean fclean re test
 
 all: $(NAME)
 
@@ -187,3 +187,7 @@ fclean: clean
 	@echo "$(C_RED)[Removed $(NAME)]$(C_RES)"
 
 re: fclean all
+
+
+test:
+	make -C tests VERB=1 SPEED=1 --no-print-directory

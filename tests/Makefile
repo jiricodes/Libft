@@ -1,13 +1,43 @@
 # **************************************************************************** #
 #                                                                              #
 #                                                         :::      ::::::::    #
-#    find_co.sh                                         :+:      :+:    :+:    #
+#    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
 #    By: jnovotny <jnovotny@student.hive.fi>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2019/10/14 13:27:30 by jnovotny          #+#    #+#              #
-#    Updated: 2019/11/13 12:24:03 by jnovotny         ###   ########.fr        #
+#    Created: 2021/07/26 13:07:24 by jnovotny          #+#    #+#              #
+#    Updated: 2021/07/26 13:16:32 by jnovotny         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-find . -type f -name "*.c" -exec basename {} \; | awk '{print "\t\t"$0" \\"}' > list_c
+TARGET=libft_unittest
+LIB=../libft.a
+
+CFLAGS= -I../includes/
+
+ifdef SPEED
+CFLAGS+= -DSPEEDTEST=1
+endif
+
+ifdef VERB
+CFLAGS += -DVERBOSE=1
+endif
+
+CC?=clang-7
+
+.PHONY: all clean fclean re build
+
+all: build run
+
+build:
+	$(CC) $(CFLAGS) -c libft_test_main.c -o libft_test_main.o
+	$(CC) $(CFLAGS) -o $(TARGET) libft_test_main.o $(LIB)
+
+run:
+	./$(TARGET)
+
+clean:
+	rm -f *.o
+
+fclean: clean
+	rm -f $(TARGET)

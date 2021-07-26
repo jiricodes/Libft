@@ -6,7 +6,7 @@
 /*   By: jnovotny <jnovotny@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/19 11:26:24 by jnovotny          #+#    #+#             */
-/*   Updated: 2019/10/21 14:43:04 by jnovotny         ###   ########.fr       */
+/*   Updated: 2021/07/26 12:44:08 by jnovotny         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,9 +21,16 @@
 
 static short	ft_intlen(int n)
 {
-	short cnt;
+	short	cnt;
 
-	cnt = (n <= 0 ? 1 : 0);
+	if (n <= 0)
+	{
+		cnt = 1;
+	}
+	else
+	{
+		cnt = 0;
+	}
 	while (n != 0)
 	{
 		n = n / 10;
@@ -32,7 +39,7 @@ static short	ft_intlen(int n)
 	return (cnt);
 }
 
-char			*ft_itoa(int n)
+char	*ft_itoa(int n)
 {
 	char	*res;
 	short	len;
@@ -40,7 +47,8 @@ char			*ft_itoa(int n)
 	short	sign;
 
 	len = ft_intlen(n);
-	if (!(res = ft_strnew(len)))
+	res = ft_strnew(len);
+	if (!res)
 		return (NULL);
 	i = 0;
 	sign = 1;
