@@ -6,7 +6,7 @@
 #    By: jnovotny <jnovotny@student.hive.fi>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/11/11 15:44:22 by jnovotny          #+#    #+#              #
-#    Updated: 2021/07/26 13:18:46 by jnovotny         ###   ########.fr        #
+#    Updated: 2021/07/27 20:57:12 by jnovotny         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -181,10 +181,12 @@ $(NAME): $(TARGET_DIRS) $(OBJS)
 clean: logo
 	@/bin/rm -rf $(OBJ_DIR)
 	@echo "$(C_RED)[Objects deleted!]$(C_RES)"
+	@make -C tests clean --no-print-directory
 
 fclean: clean
 	@/bin/rm -f $(NAME)
 	@echo "$(C_RED)[Removed $(NAME)]$(C_RES)"
+	@make -C tests fclean --no-print-directory
 
 re: fclean all
 

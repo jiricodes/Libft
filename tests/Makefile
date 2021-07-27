@@ -6,7 +6,7 @@
 #    By: jnovotny <jnovotny@student.hive.fi>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/07/26 13:07:24 by jnovotny          #+#    #+#              #
-#    Updated: 2021/07/26 13:16:32 by jnovotny         ###   ########.fr        #
+#    Updated: 2021/07/27 20:57:54 by jnovotny         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -37,7 +37,7 @@ run:
 	./$(TARGET)
 
 clean:
-	rm -f *.o
+	@rm -f *.o
 
 fclean: clean
-	rm -f $(TARGET)
+	@rm -f $(TARGET)
