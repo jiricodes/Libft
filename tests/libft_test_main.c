@@ -6,7 +6,7 @@
 /*   By: jnovotny <jnovotny@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/26 12:58:07 by jnovotny          #+#    #+#             */
-/*   Updated: 2021/07/27 20:15:50 by jnovotny         ###   ########.fr       */
+/*   Updated: 2021/07/27 21:29:15 by jnovotny         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -5200,12 +5200,61 @@ static void test_ft_ultoa() {
 }
 
 /*
+** get_next_line ***************************************************************
+*/
+
+static void test_get_next_line(char *filename) {
+	char *line = NULL;
+	char *prev = NULL;
+	int ret = 0;
+
+	CATEGORY("get_next_line");
+	char	testfile[] = "files/tmp_gnltest";
+	int fd_write = open(testfile, O_WRONLY | O_APPEND | O_CREAT, 0644);
+	if (fd_write < 3) {
+		perror("Opening  temporary writing file failed");
+	}
+
+	int fd = open(filename, O_RDONLY);
+	if (fd < 3) {
+		perror("Opening file failed");
+	}
+
+	while (0 < (ret = get_next_line(fd, &line))) {
+		if (prev == NULL)
+		{
+			prev = line;
+			continue ;
+		}
+		ft_putendl_fd(prev, fd_write);
+		free(prev);
+		prev = line;
+	}
+	ft_putstr_fd(prev, fd_write);
+	free(prev);
+
+	close(fd_write);
+	close(fd);
+
+	char	cmd_buf[1024];
+	memset(cmd_buf, 0, 1024);
+	sprintf(cmd_buf, "diff %s %s", filename, testfile);
+	assert(system(cmd_buf) == 0);
+	STATUS(1, 1);
+}
+
+/*
 ** main ************************************************************************
 */
 
-int main() {
+int main(int argc, char **argv) {
+	if (argc != 2) {
+		printf("Wrong number of arguments - usage: ./%s <file_to_test_gnl>\n", argv[0]);
+		exit(1);
+	}
 	if (VERBOSE)
 		printf(COLOR_BLUE"UNIT TEST FOR FT_SSL\n"EOC);
 	test_ft_itoa();
 	test_ft_ultoa();
+	test_get_next_line(argv[1]);
 }

@@ -6,7 +6,7 @@
 #    By: jnovotny <jnovotny@student.hive.fi>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/07/26 13:07:24 by jnovotny          #+#    #+#              #
-#    Updated: 2021/07/27 20:57:54 by jnovotny         ###   ########.fr        #
+#    Updated: 2021/07/27 21:30:53 by jnovotny         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -34,7 +34,8 @@ build:
 	$(CC) $(CFLAGS) -o $(TARGET) libft_test_main.o $(LIB)
 
 run:
-	./$(TARGET)
+	./$(TARGET) files/loremipsum
+	@rm -f files/tmp_gnltest
 
 clean:
 	@rm -f *.o
