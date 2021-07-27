@@ -6,7 +6,7 @@
 /*   By: jnovotny <jnovotny@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/26 12:59:50 by jnovotny          #+#    #+#             */
-/*   Updated: 2021/07/26 13:34:36 by jnovotny         ###   ########.fr       */
+/*   Updated: 2021/07/27 20:06:16 by jnovotny         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,7 @@
 #include <unistd.h>
 #include <inttypes.h>
 #include <time.h>
+#include <limits.h>
 
 #include "libft.h"
 
@@ -49,6 +50,8 @@
 								c != 1 ? "\033[1A\r" : "", \
 								c, t, c >= t ? COLOR_GREEN : "",\
 								((float)c/(float)t) * 100)
-
+#define SPEEDRES(f)		if (VERBOSE) printf("%.2f executions per second\n", f)
+#define SPEEDRES_NAME(f, n)		if (VERBOSE) printf("%s: %.2f executions per second\n", n, f)
+#define SPEEDCMP(f, o)		if (VERBOSE) printf("%.2f%% speed of %s\n", f, o)
 
 # endif // LIBFT_TEST_H

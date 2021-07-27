@@ -6,7 +6,7 @@
 /*   By: jnovotny <jnovotny@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/19 12:52:09 by jnovotny          #+#    #+#             */
-/*   Updated: 2019/10/21 14:31:08 by jnovotny         ###   ########.fr       */
+/*   Updated: 2021/07/27 20:28:16 by jnovotny         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@
 ** the function returns 1, or 0 otherwise.
 */
 
-int		ft_strnequ(char const *s1, char const *s2, size_t n)
+int	ft_strnequ(char const *s1, char const *s2, size_t n)
 {
 	if (s1 && s2)
 		if (ft_strncmp(s1, s2, n) == 0)

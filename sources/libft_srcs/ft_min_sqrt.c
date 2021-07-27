@@ -6,7 +6,7 @@
 /*   By: jnovotny <jnovotny@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/31 12:12:18 by jnovotny          #+#    #+#             */
-/*   Updated: 2019/11/03 13:16:58 by jnovotny         ###   ########.fr       */
+/*   Updated: 2021/07/27 20:23:46 by jnovotny         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@
 
 int	ft_min_sqrt(int nb)
 {
-	int i;
+	int	i;
 
 	if (nb == 0 || nb == 1)
 		return (nb);

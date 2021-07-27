@@ -6,7 +6,7 @@
 /*   By: jnovotny <jnovotny@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/17 22:49:06 by jnovotny          #+#    #+#             */
-/*   Updated: 2019/10/19 12:06:39 by jnovotny         ###   ########.fr       */
+/*   Updated: 2021/07/27 20:25:13 by jnovotny         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,13 +24,13 @@
 
 char	*ft_strrchr(const char *s, int c)
 {
-	size_t len;
+	size_t	len;
 
 	len = ft_strlen(s) + 1;
 	while (len > 0)
 	{
 		if (s[len - 1] == c)
-			return ((char*)&s[len - 1]);
+			return ((char *)&s[len - 1]);
 		len = len - 1;
 	}
 	return (NULL);

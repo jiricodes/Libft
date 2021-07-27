@@ -6,7 +6,7 @@
 /*   By: jnovotny <jnovotny@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/17 22:39:15 by jnovotny          #+#    #+#             */
-/*   Updated: 2020/06/04 12:24:43 by jnovotny         ###   ########.fr       */
+/*   Updated: 2021/07/27 13:11:28 by jnovotny         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@
 # include <string.h>
 # include <unistd.h>
 # include <limits.h>
+# include <inttypes.h>
 # include "ft_printf.h"
 # include "get_next_line.h"
 
@@ -61,11 +62,13 @@ char				*ft_strjoin(char const *s1, char const *s2);
 char				*ft_strtrim(char const *s);
 char				**ft_strsplit(char const *s, char c);
 char				*ft_itoa(int n);
+void				ft_itoa_into_buf(int n, char *buf, size_t *buf_len);
 char				*ft_uitoa(unsigned int n);
 char				*ft_itoa_base(int value, int base, int upcase);
 char				*ft_uitoa_base(unsigned int value, int base, int upcase);
 char				*ft_ltoa(long n);
 char				*ft_ultoa(unsigned long n);
+void				ft_ultoa_into_buf(unsigned long n, char *buf, size_t *buf_len);
 char				*ft_ltoa_base(long value, int base, int upcase);
 char				*ft_ultoa_base(unsigned long value, int base, int upcase);
 char				*ft_lftoa(long double n, unsigned int precision);

@@ -6,7 +6,7 @@
 /*   By: jnovotny <jnovotny@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/23 10:49:12 by jnovotny          #+#    #+#             */
-/*   Updated: 2019/10/23 12:49:42 by jnovotny         ###   ########.fr       */
+/*   Updated: 2021/07/27 20:27:50 by jnovotny         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,12 +31,14 @@ void	*ft_realloc(void *ptr, size_t original, size_t size)
 
 	if (!size && ptr)
 	{
-		if (!(new = ft_memalloc(1)))
+		new = ft_memalloc(1);
+		if (!new)
 			return (NULL);
 		ft_memdel(&ptr);
 		return (new);
 	}
-	if (!(new = ft_memalloc(size)))
+	new = ft_memalloc(size);
+	if (!new)
 		return (NULL);
 	if (ptr)
 	{
