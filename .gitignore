@@ -6,3 +6,4 @@ pft/
 .vscode/
 .DS_Store
 tests/tmp
+libft.a
