@@ -6,13 +6,17 @@
 /*   By: jnovotny <jnovotny@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/17 22:44:01 by jnovotny          #+#    #+#             */
-/*   Updated: 2020/01/21 13:20:03 by jnovotny         ###   ########.fr       */
+/*   Updated: 2021/07/28 19:59:46 by jnovotny         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-long long		ft_latoi(const char *str)
+/*
+** NOTE: if number > long long max, then undefined behaviour
+*/
+
+long long	ft_latoi(const char *str)
 {
 	size_t			i;
 	long long int	sign;
@@ -29,8 +33,6 @@ long long		ft_latoi(const char *str)
 		i = i + 1;
 	while (ft_isdigit(str[i]))
 	{
-		if ((rslt >= 922337203685477580) && (str[i] - '0') > 7)
-			return ((sign == 1) ? -1 : 0);
 		rslt = rslt * 10 + (long long int)(str[i] - 48);
 		i = i + 1;
 	}

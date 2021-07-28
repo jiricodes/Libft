@@ -6,7 +6,7 @@
 /*   By: jnovotny <jnovotny@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/26 12:58:07 by jnovotny          #+#    #+#             */
-/*   Updated: 2021/07/28 17:53:43 by jnovotny         ###   ########.fr       */
+/*   Updated: 2021/07/28 19:48:09 by jnovotny         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -5306,100 +5306,29 @@ static void test_ft_strsplit_one(const char *input, char c, char **expected, int
 	STATUS(*current, total);
 }
 
-static void test_ft_strsplit_specific() {
-	
-	char *expected[] = {"", "M", "hWjB9 9432tJ6VL", "6cO", NULL};
-	char *input = "ZMZhWjB9 9432tJ6VLZ6cO";
-	char c = 'Z';
-
-	char **result = ft_strsplit(input, c);
-	
-	if (result == NULL) {
-		assert(result == expected);
-		return ;
-	}
-
-	int i = 0;
-	while (expected[i] && result[i]) {
-		printf("orig: \"%s\" | mine \"%s\"\n", expected[i], result[i]);
-		assert(!strcmp(result[i], expected[i]));
-		i++;
-	}
-	assert(expected[i] == NULL && result[i] == NULL);
-
-	i = 0;
-	while (result[i]) {
-		free(result[i]);
-		i++;
-	}
-	free(result);
-}
-
-static void test_ft_strsplit_specific2() {
-	
-	char *input = "";
-	char c = 'Z';
-
-	char **result = ft_strsplit(input, c);
-	
-	if (result == NULL) {
-		printf("null\n");
-		return ;
-	}
-
-	int i = 0;
-	while (result[i]) {
-		printf("mine \"%s\"\n", result[i]);
-		i++;
-	}
-	printf("mine NULL\n");
-	i = 0;
-	while (result[i]) {
-		free(result[i]);
-		i++;
-	}
-	free(result);
-}
-
-// static void test_ft_ultoa_one_buf(unsigned long input, char *expected, int *current, int total) {
-	
-// 	*current += 1;
-// 	char	buf[64];
-// 	size_t	l = 64;
-
-// 	ft_ultoa_into_buf(input, buf, &l);
-// 	assert(!strcmp(buf, expected));
-// 	assert(l == strlen(expected));
-// 	STATUS(*current, total);
-// }
 
 #ifdef SPEEDTEST
 static void test_ft_strsplit_speed()
 {
-	CATEGORY("ft_itoa performance");
+	CATEGORY("ft_strsplit performance");
 
-	int input = 2147483648;
+	char	*input = "6NtpcJnnyV2Z73PAbfh eSOBjzmw6a6WwSyN5AMfWSZ8sfg1XyDOvhA1FiYkMIV34Z2NHcYENAKSi3gvUdQzhBB47LCbcI v8UNLf0zLDe4VwsoinoQjmx2C8yDEWvx8ql5wUk9jRf6pWPuKtut5RERczn8KjgAH4ffXgapXE39KGnn4knzUIilgaGvp16gj75VM9dUrQhUeY3OD1QyPmbXjDo9Ox9G7mSN T6UNL4JmZhSDHrtWBJ9I qJQB4";
+	char	input_c = 'w';
 
 	clock_t start = clock();
 	for (int i = 0; i < SPEED_ITERATIONS; i++)
 	{
-		char *result = ft_ultoa(input);
+		char **result = ft_strsplit(input, input_c);
+		int k = 0;
+		while (result[k]) {
+			free(result[k]);
+			k++;
+		}
 		free(result);
 	}
 	clock_t end  = clock();
 	double ft_time = (double)(end - start) / CLOCKS_PER_SEC;
-	SPEEDRES_NAME(SPEED_ITERATIONS / ft_time, "ft_ultoa (malloc)");
-	start = clock();
-	for (int i = 0; i < SPEED_ITERATIONS; i++)
-	{
-		char result[64];
-		size_t l = 64;
-		ft_ultoa_into_buf(input, result, &l);
-	}
-	end  = clock();
-	double orig_time = (double)(end - start) / CLOCKS_PER_SEC;
-	SPEEDRES_NAME(SPEED_ITERATIONS / orig_time, "ft_ultoa_into_buf (no malloc)");
-	SPEEDCMP((orig_time / ft_time) * 100, "ft_ultoa");
+	SPEEDRES_NAME(SPEED_ITERATIONS / ft_time, "ft_strsplit (and freeing result)");
 }
 #endif // SPEEDTEST
 
@@ -5416,7 +5345,7 @@ static void test_ft_strsplit() {
 	test_ft_strsplit_one("*hello*fellow***students*", '*', expected_hello, &current, total);
 	char *expected_manual[] = {"hello\ts", "fel", "low", "stud", "ents", "!", NULL};
 	test_ft_strsplit_one("hello\ts fel low stud     ents   !", ' ', expected_manual, &current, total);
-		char *expected0[] = {"ZZePbtaWQXNvrBbIs ", "dJrDMoFkIHhhTFeWH3xdB", "zC81qAMFo9iu9omxEKonXidySHONzQvDPTPVtxGXoCATMVpqYGkMwun 47ssCnBfGQZrpubTRghIeMq1opUCdGuZs", "Z", "u2auz54 pb9iZ7tmY kVzxv8rxnNT9iehOf 5TY6MApR3VnUqyK", NULL}; 
+	char *expected0[] = {"ZZePbtaWQXNvrBbIs ", "dJrDMoFkIHhhTFeWH3xdB", "zC81qAMFo9iu9omxEKonXidySHONzQvDPTPVtxGXoCATMVpqYGkMwun 47ssCnBfGQZrpubTRghIeMq1opUCdGuZs", "Z", "u2auz54 pb9iZ7tmY kVzxv8rxnNT9iehOf 5TY6MApR3VnUqyK", NULL}; 
 	test_ft_strsplit_one("ZZePbtaWQXNvrBbIs 0dJrDMoFkIHhhTFeWH3xdB0zC81qAMFo9iu9omxEKonXidySHONzQvDPTPVtxGXoCATMVpqYGkMwun 47ssCnBfGQZrpubTRghIeMq1opUCdGuZs0Z0u2auz54 pb9iZ7tmY kVzxv8rxnNT9iehOf 5TY6MApR3VnUqyK", '0', expected0, &current, total);
 	char *expected1[] = {"uby1Yyx8oGv5Y7fb53q4hkLgmeWArA KELnzoJOp1wKV", "qNnrDmqzkc35sqwpD1yLY0cWiVwXfxo9CtlKIV2J0PqLCbayPYs3ObnLGTzxIUvZ8vEq7aDq", "Z18wuPiuZu4Pn6XhkQd4SQtaqOWki708zHxbH7PM7Q3 GDwc3JQT54nQlPxrd iUrsloQs53v", NULL}; 
 	test_ft_strsplit_one("uby1Yyx8oGv5Y7fb53q4hkLgmeWArA KELnzoJOp1wKVBqNnrDmqzkc35sqwpD1yLY0cWiVwXfxo9CtlKIV2J0PqLCbayPYs3ObnLGTzxIUvZ8vEq7aDqBZ18wuPiuZu4Pn6XhkQd4SQtaqOWki708zHxbH7PM7Q3 GDwc3JQT54nQlPxrd iUrsloQs53v", 'B', expected1, &current, total);
@@ -7417,9 +7346,9 @@ static void test_ft_strsplit() {
 	char *expected999[] = {"bVN1Qo4RCFCEll3ElEGfM", "pli", "K0HlIr8AThQ66Dp05hk5O9bprftatMwkUfnR9Zl", "SMJFWl3rwnfyEvGvN5ZbOIgwSBwEuVZ6SHSVMaBpV1NldAiFQxRgN2OCKU5BJgfRYDPHt5Uov2oE8WmLUSxJ0 yEUmF0sHvkOxyq5wBkME6HoGaS2", NULL}; 
 	test_ft_strsplit_one("bVN1Qo4RCFCEll3ElEGfMeplieK0HlIr8AThQ66Dp05hk5O9bprftatMwkUfnR9ZleSMJFWl3rwnfyEvGvN5ZbOIgwSBwEuVZ6SHSVMaBpV1NldAiFQxRgN2OCKU5BJgfRYDPHt5Uov2oE8WmLUSxJ0 yEUmF0sHvkOxyq5wBkME6HoGaS2e", 'e', expected999, &current, total);
 
-// #ifdef SPEEDTEST
-// 	test_ft_strsplit();
-// #endif // SPEEDTEST
+#ifdef SPEEDTEST
+	test_ft_strsplit_speed();
+#endif // SPEEDTEST
 }
 
 
@@ -7434,9 +7363,9 @@ int main(int argc, char **argv) {
 	}
 	if (VERBOSE)
 		printf(COLOR_BLUE"UNIT TEST FOR FT_SSL\n"EOC);
-	// test_ft_itoa();
-	// test_ft_ultoa();
-	// test_get_next_line(argv[1]);
+	test_ft_itoa();
+	test_ft_ultoa();
+	test_get_next_line(argv[1]);
 	test_ft_strsplit();
 	fflush(NULL);
 }

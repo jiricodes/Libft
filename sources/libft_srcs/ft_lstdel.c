@@ -6,7 +6,7 @@
 /*   By: jnovotny <jnovotny@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/21 10:57:19 by jnovotny          #+#    #+#             */
-/*   Updated: 2019/10/21 14:42:51 by jnovotny         ###   ########.fr       */
+/*   Updated: 2021/07/28 20:04:22 by jnovotny         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@
 
 void	ft_lstdel(t_list **alst, void (*del)(void *, size_t))
 {
-	t_list *temp;
+	t_list	*temp;
 
 	if (!del)
 		return ;

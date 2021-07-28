@@ -6,13 +6,13 @@
 /*   By: jnovotny <jnovotny@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/09 15:50:37 by jnovotny          #+#    #+#             */
-/*   Updated: 2019/11/13 11:54:44 by jnovotny         ###   ########.fr       */
+/*   Updated: 2021/07/28 20:02:19 by jnovotny         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-long			ft_power_l(long nb, long power)
+long	ft_power_l(long nb, long power)
 {
 	if (power == 0)
 		return (1);

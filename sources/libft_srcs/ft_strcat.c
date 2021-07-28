@@ -6,7 +6,7 @@
 /*   By: jnovotny <jnovotny@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/17 22:47:45 by jnovotny          #+#    #+#             */
-/*   Updated: 2019/10/17 22:47:45 by jnovotny         ###   ########.fr       */
+/*   Updated: 2021/07/28 19:50:41 by jnovotny         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 char	*ft_strcat(char *s1, const char *s2)
 {
-	size_t origin;
+	size_t	origin;
 
 	origin = ft_strlen(s1);
 	ft_memcpy(s1 + origin, s2, ft_strlen(s2) + 1);

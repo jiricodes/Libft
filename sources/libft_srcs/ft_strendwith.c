@@ -6,7 +6,7 @@
 /*   By: jnovotny <jnovotny@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/04 12:16:33 by jnovotny          #+#    #+#             */
-/*   Updated: 2020/06/04 12:23:17 by jnovotny         ###   ########.fr       */
+/*   Updated: 2021/07/28 20:05:35 by jnovotny         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,10 +16,10 @@
 ** Check whether given string src ends with the suffix
 */
 
-int		ft_strendwith(const char *src, const char *suffix)
+int	ft_strendwith(const char *src, const char *suffix)
 {
-	size_t src_l;
-	size_t suf_l;
+	size_t	src_l;
+	size_t	suf_l;
 
 	src_l = ft_strlen(src);
 	suf_l = ft_strlen(suffix);

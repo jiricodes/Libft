@@ -6,7 +6,7 @@
 /*   By: jnovotny <jnovotny@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/17 22:45:57 by jnovotny          #+#    #+#             */
-/*   Updated: 2019/10/17 22:45:57 by jnovotny         ###   ########.fr       */
+/*   Updated: 2021/07/28 20:02:52 by jnovotny         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,9 @@
 
 void	*ft_memalloc(size_t size)
 {
-	void *mem;
+	void	*mem;
 
-	mem = (void*)malloc(size);
+	mem = (void *)malloc(size);
 	if (mem == NULL)
 		return (NULL);
 	ft_memset(mem, 0, size);

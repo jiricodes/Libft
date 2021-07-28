@@ -2,7 +2,6 @@
 
 import random
 import string
-from warnings import WarningMessage
 
 def main():
 	for i in range(1000):

@@ -6,7 +6,7 @@
 /*   By: jnovotny <jnovotny@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/17 23:49:40 by jnovotny          #+#    #+#             */
-/*   Updated: 2019/10/21 13:11:52 by jnovotny         ###   ########.fr       */
+/*   Updated: 2021/07/28 19:52:18 by jnovotny         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,8 @@ char	*ft_strmap(char const *s, char (*f)(char))
 	i = 0;
 	if (s == NULL || f == NULL)
 		return (NULL);
-	if (!(res = ft_strnew(ft_strlen(s))))
+	res = ft_strnew(ft_strlen(s));
+	if (!res)
 		return (NULL);
 	while (s[i] != '\0')
 	{

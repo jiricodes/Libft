@@ -6,7 +6,7 @@
 /*   By: jnovotny <jnovotny@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/13 11:51:22 by jnovotny          #+#    #+#             */
-/*   Updated: 2019/11/15 17:54:52 by jnovotny         ###   ########.fr       */
+/*   Updated: 2021/07/28 20:07:05 by jnovotny         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ char	*ft_ultoa_base(unsigned long value, int base, int upcase)
 		return (NULL);
 	if (base == 10)
 		return (ft_ltoa(value));
-	if (((long)value >= LONG_MAX / base || value >= ULONG_MAX / base)\
+	if (((long)value >= LONG_MAX / base || value >= ULONG_MAX / base) \
 		&& base == 16)
 		len = 16;
 	else

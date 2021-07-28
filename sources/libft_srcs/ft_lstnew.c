@@ -6,7 +6,7 @@
 /*   By: jnovotny <jnovotny@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/21 10:22:51 by jnovotny          #+#    #+#             */
-/*   Updated: 2019/10/21 10:30:19 by jnovotny         ###   ########.fr       */
+/*   Updated: 2021/07/28 20:04:11 by jnovotny         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,11 +22,11 @@
 ** If the allocation fails, the function returns NULL.
 */
 
-t_list			*ft_lstnew(void const *content, size_t content_size)
+t_list	*ft_lstnew(void const *content, size_t content_size)
 {
-	t_list *head;
+	t_list	*head;
 
-	head = (t_list*)malloc(sizeof(t_list));
+	head = (t_list *)malloc(sizeof(t_list));
 	if (head == NULL)
 		return (NULL);
 	if (content == NULL)

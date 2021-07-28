@@ -6,7 +6,7 @@
 /*   By: jnovotny <jnovotny@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/17 22:47:14 by jnovotny          #+#    #+#             */
-/*   Updated: 2019/10/17 22:47:14 by jnovotny         ###   ########.fr       */
+/*   Updated: 2021/07/28 20:00:14 by jnovotny         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ static void	ft_putnbr_recursive(int nb, int fd)
 	}
 }
 
-void		ft_putnbr_fd(int n, int fd)
+void	ft_putnbr_fd(int n, int fd)
 {
 	if (n == +0 || n == -0)
 	{

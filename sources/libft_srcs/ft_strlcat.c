@@ -6,7 +6,7 @@
 /*   By: jnovotny <jnovotny@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/17 22:48:23 by jnovotny          #+#    #+#             */
-/*   Updated: 2019/10/19 19:00:01 by jnovotny         ###   ########.fr       */
+/*   Updated: 2021/07/28 19:51:05 by jnovotny         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,8 +22,8 @@
 
 size_t	ft_strlcat(char *dst, const char *src, size_t dstsize)
 {
-	size_t src_l;
-	size_t dst_l;
+	size_t	src_l;
+	size_t	dst_l;
 
 	src_l = ft_strlen(src);
 	dst_l = ft_strlen(dst);

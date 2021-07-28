@@ -6,7 +6,7 @@
 /*   By: jnovotny <jnovotny@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/18 08:21:44 by jnovotny          #+#    #+#             */
-/*   Updated: 2019/10/21 14:31:57 by jnovotny         ###   ########.fr       */
+/*   Updated: 2021/07/28 19:51:51 by jnovotny         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 char	*ft_strsub(char const *s, unsigned int start, size_t len)
 {
-	char *sub;
+	char	*sub;
 
 	if (!s)
 		return (NULL);

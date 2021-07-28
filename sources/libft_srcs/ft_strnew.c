@@ -6,7 +6,7 @@
 /*   By: jnovotny <jnovotny@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/17 22:40:04 by jnovotny          #+#    #+#             */
-/*   Updated: 2019/10/21 13:00:06 by jnovotny         ###   ########.fr       */
+/*   Updated: 2021/07/28 20:01:44 by jnovotny         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,9 +20,9 @@
 
 char	*ft_strnew(size_t size)
 {
-	char *str;
+	char	*str;
 
-	str = (char*)malloc(size + 1);
+	str = (char *)malloc(size + 1);
 	if (str == NULL)
 		return (NULL);
 	ft_memset(str, 0, size + 1);

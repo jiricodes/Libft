@@ -6,7 +6,7 @@
 /*   By: jnovotny <jnovotny@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/19 13:05:49 by jnovotny          #+#    #+#             */
-/*   Updated: 2019/10/19 13:18:49 by jnovotny         ###   ########.fr       */
+/*   Updated: 2021/07/28 20:07:28 by jnovotny         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ void	*ft_memmove(void *dst, const void *src, size_t len)
 		while (len > 0)
 		{
 			len = len - 1;
-			((unsigned char*)dst)[len] = ((unsigned char*)src)[len];
+			((unsigned char *)dst)[len] = ((unsigned char *)src)[len];
 		}
 	}
 	else

@@ -6,13 +6,13 @@
 /*   By: jnovotny <jnovotny@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/17 22:45:25 by jnovotny          #+#    #+#             */
-/*   Updated: 2019/10/17 22:45:25 by jnovotny         ###   ########.fr       */
+/*   Updated: 2021/07/28 20:00:23 by jnovotny         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int		ft_isascii(int c)
+int	ft_isascii(int c)
 {
 	if (c >= 0 && c <= 127)
 		return (1);
