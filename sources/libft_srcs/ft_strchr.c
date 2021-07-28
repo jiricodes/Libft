@@ -6,7 +6,7 @@
 /*   By: jnovotny <jnovotny@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/17 22:47:52 by jnovotny          #+#    #+#             */
-/*   Updated: 2019/10/19 16:27:35 by jnovotny         ###   ########.fr       */
+/*   Updated: 2021/07/28 02:18:33 by jnovotny         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,5 +24,5 @@
 
 char	*ft_strchr(const char *s, int c)
 {
-	return ((char*)ft_memchr(s, c, ft_strlen(s) + 1));
+	return ((char *)ft_memchr(s, c, ft_strlen(s) + 1));
 }

@@ -6,7 +6,7 @@
 /*   By: jnovotny <jnovotny@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/23 09:47:46 by jnovotny          #+#    #+#             */
-/*   Updated: 2021/07/27 20:46:48 by jnovotny         ###   ########.fr       */
+/*   Updated: 2021/07/28 03:02:50 by jnovotny         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,6 +58,13 @@ static char	*strjoin_clean(char *stack, char const *buf)
 	return (res);
 }
 
+static inline int	gnl_finish(char *stack)
+{
+	if (stack != NULL)
+		free(stack);
+	return (0);
+}
+
 int	get_next_line(const int fd, char **line)
 {
 	static char	*stack[GNL_MAX_FD];
@@ -80,7 +87,7 @@ int	get_next_line(const int fd, char **line)
 	if (ret == -1)
 		return (ret);
 	if (ret == 0 && (stack[fd] == NULL || stack[fd][0] == '\0'))
-		return (ret);
+		return (gnl_finish(stack[fd]));
 	*line = assign_str(stack, fd);
 	return (*line != NULL);
 }

@@ -6,7 +6,7 @@
 /*   By: jnovotny <jnovotny@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/26 12:59:50 by jnovotny          #+#    #+#             */
-/*   Updated: 2021/07/27 21:23:23 by jnovotny         ###   ########.fr       */
+/*   Updated: 2021/07/27 21:37:15 by jnovotny         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,8 @@
 #include <inttypes.h>
 #include <time.h>
 #include <limits.h>
-#include <sys/syscall.h> 
+#include <sys/syscall.h>
+#include <sys/stat.h>
 
 #include "libft.h"
 

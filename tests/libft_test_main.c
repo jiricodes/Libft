@@ -6,7 +6,7 @@
 /*   By: jnovotny <jnovotny@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/26 12:58:07 by jnovotny          #+#    #+#             */
-/*   Updated: 2021/07/27 21:29:15 by jnovotny         ###   ########.fr       */
+/*   Updated: 2021/07/28 03:48:31 by jnovotny         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -5203,6 +5203,35 @@ static void test_ft_ultoa() {
 ** get_next_line ***************************************************************
 */
 
+#ifdef SPEEDTEST
+static void gnl_speed(char *filename) {
+	CATEGORY("GNL speed test");
+	int fd = open(filename, O_RDONLY);
+	if (fd < 3) {
+		perror("Opening file failed");
+	}
+
+	struct stat st;
+	stat(filename, &st);
+	if (VERBOSE)
+		printf("Test with %d buffer size and %zu bytes file\n", GNL_BUFF_SIZE, st.st_size);
+
+	char *line;
+	int ret;
+	
+	clock_t start = clock();
+	while (0 < (ret = get_next_line(fd, &line))) {
+		free(line);
+	}
+	clock_t end  = clock();
+	double act_time = (double)(end - start) / CLOCKS_PER_SEC;
+
+	if (VERBOSE)
+		printf("get_next_line: %.2f bytes read and freed per second\n", (double)st.st_size / act_time);
+	close(fd);
+}
+#endif
+
 static void test_get_next_line(char *filename) {
 	char *line = NULL;
 	char *prev = NULL;
@@ -5241,7 +5270,11 @@ static void test_get_next_line(char *filename) {
 	sprintf(cmd_buf, "diff %s %s", filename, testfile);
 	assert(system(cmd_buf) == 0);
 	STATUS(1, 1);
+#ifdef SPEEDTEST
+	gnl_speed(filename);
+#endif
 }
+
 
 /*
 ** main ************************************************************************

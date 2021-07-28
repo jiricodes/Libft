@@ -7,3 +7,4 @@ pft/
 .DS_Store
 tests/tmp
 libft.a
+tests/libft_unittest

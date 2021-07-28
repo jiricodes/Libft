@@ -6,7 +6,7 @@
 /*   By: jnovotny <jnovotny@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/17 22:48:51 by jnovotny          #+#    #+#             */
-/*   Updated: 2019/10/19 17:28:14 by jnovotny         ###   ########.fr       */
+/*   Updated: 2021/07/28 02:18:16 by jnovotny         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 char	*ft_strncpy(char *dst, const char *src, size_t len)
 {
-	size_t l;
+	size_t	l;
 
 	l = ft_strlen(src);
 	if (l >= len)
