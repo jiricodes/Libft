@@ -6,7 +6,7 @@
 /*   By: jnovotny <jnovotny@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/13 11:39:50 by jnovotny          #+#    #+#             */
-/*   Updated: 2019/11/13 11:42:02 by jnovotny         ###   ########.fr       */
+/*   Updated: 2021/07/30 23:22:48 by jnovotny         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,12 @@
 
 static short	ft_uintlen(unsigned int n)
 {
-	short cnt;
+	short	cnt;
 
-	cnt = (n <= 0 ? 1 : 0);
+	if (n <= 0)
+		cnt = 1;
+	else
+		cnt = 0;
 	while (n != 0)
 	{
 		n = n / 10;
@@ -25,14 +28,15 @@ static short	ft_uintlen(unsigned int n)
 	return (cnt);
 }
 
-char			*ft_uitoa(unsigned int n)
+char	*ft_uitoa(unsigned int n)
 {
 	char	*res;
 	short	len;
 	short	i;
 
 	len = ft_uintlen(n);
-	if (!(res = ft_strnew(len)))
+	res = ft_strnew(len);
+	if (!res)
 		return (NULL);
 	i = 0;
 	if (n == 0)

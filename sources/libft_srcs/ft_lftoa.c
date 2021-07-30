@@ -6,7 +6,7 @@
 /*   By: jnovotny <jnovotny@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/13 17:22:55 by jnovotny          #+#    #+#             */
-/*   Updated: 2019/11/18 15:48:46 by jnovotny         ###   ########.fr       */
+/*   Updated: 2021/07/30 22:01:17 by jnovotny         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,14 +18,22 @@
 
 long	ft_front_adj(long double n, unsigned int precision, char *back)
 {
-	long nb;
+	long	nb;
 
 	if (n >= 0)
-		nb = (precision == 0 || precision < ft_strlen(back)) ? \
-			(long)(n + 0.5) : (long)n;
+	{
+		if (precision == 0 || precision < ft_strlen(back))
+			nb = (long)(n + 0.5);
+		else
+			nb = (long)n;
+	}
 	else
-		nb = (precision == 0 || precision < ft_strlen(back)) ? \
-			(long)(n - 0.5) : (long)n;
+	{
+		if (precision == 0 || precision < ft_strlen(back))
+			nb = (long)(n - 0.5);
+		else
+			nb = (long)n;
+	}
 	return (nb);
 }
 
@@ -39,7 +47,7 @@ char	*ft_double_backcheck(char *back, unsigned int precision)
 	if (precision > s_len)
 	{
 		tmp = ft_strnew(precision - s_len);
-		ft_memset((void*)tmp, 48, precision - s_len);
+		ft_memset((void *)tmp, 48, precision - s_len);
 		res = ft_strjoin(tmp, back);
 		free(tmp);
 		free(back);
@@ -57,8 +65,8 @@ char	*ft_double_backcheck(char *back, unsigned int precision)
 
 char	*ft_glue_double(char *front, char *back, unsigned int precision)
 {
-	char *tmp;
-	char *res;
+	char	*tmp;
+	char	*res;
 
 	back = ft_double_backcheck(back, precision);
 	if (precision != 0)
@@ -99,9 +107,15 @@ char	*ft_lftoa(long double n, unsigned int precision)
 	dec = n - nb;
 	while (prec-- > 0)
 		dec = dec * 10;
-	dec += dec > 0 ? 0.5 : -0.5;
+	if (dec > 0)
+		dec += 0.5;
+	else
+		dec -= 0.5;
 	nb = (long)dec;
-	back = ft_ultoa(nb < 0 ? -1 * nb : nb);
+	if (nb < 0)
+		back = ft_ultoa(-1 * nb);
+	else
+		back = ft_ultoa(nb);
 	nb = ft_front_adj(n, precision, back);
 	front = ft_front_double(n, nb);
 	return (ft_glue_double(front, back, precision));

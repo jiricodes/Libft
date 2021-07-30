@@ -6,7 +6,7 @@
 /*   By: jnovotny <jnovotny@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/26 12:58:07 by jnovotny          #+#    #+#             */
-/*   Updated: 2021/07/29 21:41:20 by jnovotny         ###   ########.fr       */
+/*   Updated: 2021/07/30 21:55:54 by jnovotny         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -9402,6 +9402,75 @@ static void test_ft_atoi() {
 }
 
 /*
+** ft_ultoa && into buf *********************************************************
+*/
+
+static void test_ft_lftoa_one(long double input, unsigned int precision, char *expected, int *current, int total) {
+	
+	*current += 1;
+	char *result = ft_lftoa(input, precision);
+	assert(!strcmp(result, expected));
+	free(result);
+	STATUS(*current, total);
+}
+
+static void test_ft_lftoa_one_buf(unsigned long input, char *expected, int *current, int total) {
+	
+	*current += 1;
+	char	buf[64];
+	size_t	l = 64;
+
+	ft_ultoa_into_buf(input, buf, &l);
+	assert(!strcmp(buf, expected));
+	assert(l == strlen(expected));
+	STATUS(*current, total);
+}
+
+#ifdef SPEEDTEST
+static void test_ft_lftoa_speed()
+{
+	CATEGORY("ft_lftoa performance");
+
+	long double input = 2147483648.123456456;
+	unsigned int precision = 9;
+
+	clock_t start = clock();
+	for (int i = 0; i < SPEED_ITERATIONS; i++)
+	{
+		char *result = ft_lftoa(input, precision);
+		free(result);
+	}
+	clock_t end  = clock();
+	double ft_time = (double)(end - start) / CLOCKS_PER_SEC;
+	SPEEDRES_NAME(SPEED_ITERATIONS / ft_time, "ft_lftoa (malloc)");
+	// start = clock();
+	// for (int i = 0; i < SPEED_ITERATIONS; i++)
+	// {
+	// 	char result[64];
+	// 	size_t l = 64;
+	// 	ft_ultoa_into_buf(input, result, &l);
+	// }
+	// end  = clock();
+	// double orig_time = (double)(end - start) / CLOCKS_PER_SEC;
+	// SPEEDRES_NAME(SPEED_ITERATIONS / orig_time, "ft_ultoa_into_buf (no malloc)");
+	// SPEEDCMP((orig_time / ft_time) * 100, "ft_ultoa");
+}
+#endif // SPEEDTEST
+
+static void test_ft_lftoa() {
+	int current = 0;
+	int total = 2013;
+
+	CATEGORY("ft_ultoa");
+	test_ft_lftoa_one(123.123, 3, "123.123", &current, total);
+
+#ifdef SPEEDTEST
+	test_ft_lftoa_speed();
+#endif // SPEEDTEST
+}
+
+
+/*
 ** main ************************************************************************
 */
 
@@ -9412,10 +9481,11 @@ int main(int argc, char **argv) {
 	}
 	if (VERBOSE)
 		printf(COLOR_BLUE"UNIT TEST FOR FT_SSL\n"EOC);
-	test_ft_itoa();
-	test_ft_ultoa();
-	test_get_next_line(argv[1]);
-	test_ft_strsplit();
-	test_ft_atoi();
+	// test_ft_itoa();
+	// test_ft_ultoa();
+	// test_get_next_line(argv[1]);
+	// test_ft_strsplit();
+	// test_ft_atoi();
+	test_ft_lftoa();
 	fflush(NULL);
 }

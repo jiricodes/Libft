@@ -6,7 +6,7 @@
 /*   By: jnovotny <jnovotny@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/13 11:16:02 by jnovotny          #+#    #+#             */
-/*   Updated: 2019/11/13 11:42:05 by jnovotny         ###   ########.fr       */
+/*   Updated: 2021/07/30 23:21:35 by jnovotny         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,9 +21,12 @@
 
 static short	ft_longlen(long n)
 {
-	size_t cnt;
+	size_t	cnt;
 
-	cnt = (n <= 0 ? 1 : 0);
+	if (n <= 0)
+		cnt = 1;
+	else
+		cnt = 0;
 	while (n != 0)
 	{
 		n = n / 10;
@@ -32,7 +35,7 @@ static short	ft_longlen(long n)
 	return (cnt);
 }
 
-char			*ft_ltoa(long n)
+char	*ft_ltoa(long n)
 {
 	char	*res;
 	size_t	len;
@@ -40,7 +43,8 @@ char			*ft_ltoa(long n)
 	short	sign;
 
 	len = ft_longlen(n);
-	if (!(res = ft_strnew(len)))
+	res = ft_strnew(len);
+	if (!res)
 		return (NULL);
 	i = 0;
 	sign = 1;
