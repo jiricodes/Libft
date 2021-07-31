@@ -19,3 +19,6 @@ Library creation
 
 >`git clone https://github.com/forfungg/Libft.git; cd Libft; make`
 
+## Notes
+pf refactoring:
+31.7.2021 - 2.25% of original speed
