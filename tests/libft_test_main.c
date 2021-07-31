@@ -6,7 +6,7 @@
 /*   By: jnovotny <jnovotny@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/26 12:58:07 by jnovotny          #+#    #+#             */
-/*   Updated: 2021/07/30 21:55:54 by jnovotny         ###   ########.fr       */
+/*   Updated: 2021/07/31 03:49:24 by jnovotny         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -9459,7 +9459,7 @@ static void test_ft_lftoa_speed()
 
 static void test_ft_lftoa() {
 	int current = 0;
-	int total = 2013;
+	int total = 1;
 
 	CATEGORY("ft_ultoa");
 	test_ft_lftoa_one(123.123, 3, "123.123", &current, total);
@@ -9469,6 +9469,50 @@ static void test_ft_lftoa() {
 #endif // SPEEDTEST
 }
 
+/*
+** ft_printf *******************************************************************
+*/
+#ifdef SPEEDTEST
+static void test_ft_printf_speed()
+{
+	CATEGORY("ft_printf performance");
+
+	long double input = 2147483648.123456456;
+	unsigned int precision = 9;
+
+	clock_t start = clock();
+	for (int i = 0; i < SPEED_ITERATIONS; i++)
+	{
+		char *result = ft_lftoa(input, precision);
+		free(result);
+	}
+	clock_t end  = clock();
+	double ft_time = (double)(end - start) / CLOCKS_PER_SEC;
+	SPEEDRES_NAME(SPEED_ITERATIONS / ft_time, "ft_lftoa (malloc)");
+	// start = clock();
+	// for (int i = 0; i < SPEED_ITERATIONS; i++)
+	// {
+	// 	char result[64];
+	// 	size_t l = 64;
+	// 	ft_ultoa_into_buf(input, result, &l);
+	// }
+	// end  = clock();
+	// double orig_time = (double)(end - start) / CLOCKS_PER_SEC;
+	// SPEEDRES_NAME(SPEED_ITERATIONS / orig_time, "ft_ultoa_into_buf (no malloc)");
+	// SPEEDCMP((orig_time / ft_time) * 100, "ft_ultoa");
+}
+#endif // SPEEDTEST
+
+static void test_ft_printf() {
+	int current = 0;
+	int total = 0;
+
+	CATEGORY("ft_printf");
+
+#ifdef SPEEDTEST
+	test_ft_printf_speed();
+#endif // SPEEDTEST
+}
 
 /*
 ** main ************************************************************************
@@ -9481,11 +9525,11 @@ int main(int argc, char **argv) {
 	}
 	if (VERBOSE)
 		printf(COLOR_BLUE"UNIT TEST FOR FT_SSL\n"EOC);
-	// test_ft_itoa();
-	// test_ft_ultoa();
-	// test_get_next_line(argv[1]);
-	// test_ft_strsplit();
-	// test_ft_atoi();
+	test_ft_itoa();
+	test_ft_ultoa();
+	test_get_next_line(argv[1]);
+	test_ft_strsplit();
+	test_ft_atoi();
 	test_ft_lftoa();
 	fflush(NULL);
 }
