@@ -8,3 +8,6 @@ pft/
 tests/tmp
 libft.a
 tests/libft_unittest
+tests/ftprintf
+tests/ogprintf
+tests/files/*_log
