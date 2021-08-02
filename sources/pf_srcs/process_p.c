@@ -6,7 +6,7 @@
 /*   By: jnovotny <jnovotny@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/15 12:14:13 by jnovotny          #+#    #+#             */
-/*   Updated: 2019/11/18 19:03:45 by jnovotny         ###   ########.fr       */
+/*   Updated: 2021/08/02 18:12:00 by jnovotny         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,9 +19,9 @@
 
 void	ft_process_p(t_format *f)
 {
-	long unsigned int nb;
+	long unsigned int	nb;
 
-	nb = (long unsigned int)va_arg(f->list, void*);
+	nb = (long unsigned int)va_arg(f->list, void *);
 	f->out_str = ft_ultoa_base(nb, 16, 0);
 	f->i++;
 	ft_print_p(f);
@@ -29,7 +29,7 @@ void	ft_process_p(t_format *f)
 
 void	ft_print_p(t_format *f)
 {
-	char c;
+	char	c;
 
 	ft_prec_p(f);
 	ft_hash_p(f);
@@ -65,7 +65,7 @@ void	ft_prec_p(t_format *f)
 	{
 		len = f->precision - ft_strlen(f->out_str);
 		tmp = ft_strnew(len);
-		ft_memset((void*)tmp, 48, len);
+		ft_memset((void *)tmp, 48, len);
 		res = ft_strjoin(tmp, f->out_str);
 		free(f->out_str);
 		free(tmp);

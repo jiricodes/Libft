@@ -6,7 +6,7 @@
 /*   By: jnovotny <jnovotny@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/09 17:33:10 by jnovotny          #+#    #+#             */
-/*   Updated: 2019/11/19 17:46:43 by jnovotny         ###   ########.fr       */
+/*   Updated: 2021/08/02 18:12:20 by jnovotny         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ void	ft_dump(t_format *f, const char *format)
 	f->i += len;
 }
 
-int		ft_printf(const char *format, ...)
+int	ft_printf(const char *format, ...)
 {
 	t_format	f;
 

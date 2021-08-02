@@ -6,7 +6,7 @@
 /*   By: jnovotny <jnovotny@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/14 12:06:44 by jnovotny          #+#    #+#             */
-/*   Updated: 2019/11/18 19:00:11 by jnovotny         ###   ########.fr       */
+/*   Updated: 2021/08/02 18:11:03 by jnovotny         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ void	ft_process_c(t_format *f)
 
 void	ft_print_c(t_format *f)
 {
-	char c;
+	char	c;
 
 	if (f->width > 1)
 	{

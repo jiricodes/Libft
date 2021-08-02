@@ -6,7 +6,7 @@
 /*   By: jnovotny <jnovotny@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/13 15:58:52 by jnovotny          #+#    #+#             */
-/*   Updated: 2019/11/18 19:01:56 by jnovotny         ###   ########.fr       */
+/*   Updated: 2021/08/02 18:16:31 by jnovotny         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@
 
 void	ft_process_b(t_format *f)
 {
-	long nb;
+	long	nb;
 
 	nb = va_arg(f->list, long);
 	if (f->len_mod == L || f->len_mod == nomod)
@@ -42,7 +42,7 @@ void	ft_process_b(t_format *f)
 
 void	ft_print_b(t_format *f)
 {
-	char c;
+	char	c;
 
 	ft_prec_b(f);
 	if (f->width > (int)ft_strlen(f->out_str))
@@ -81,7 +81,7 @@ void	ft_prec_b(t_format *f)
 	{
 		len = f->precision - ft_strlen(f->out_str);
 		tmp = ft_strnew(len);
-		ft_memset((void*)tmp, 48, len);
+		ft_memset((void *)tmp, 48, len);
 		res = ft_strjoin(tmp, f->out_str);
 		free(f->out_str);
 		free(tmp);

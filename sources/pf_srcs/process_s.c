@@ -6,7 +6,7 @@
 /*   By: jnovotny <jnovotny@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/14 15:48:55 by jnovotny          #+#    #+#             */
-/*   Updated: 2019/11/18 19:02:27 by jnovotny         ###   ########.fr       */
+/*   Updated: 2021/08/02 18:15:22 by jnovotny         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,9 +27,9 @@
 
 void	ft_process_s(t_format *f)
 {
-	char *str;
+	char	*str;
 
-	str = va_arg(f->list, char*);
+	str = va_arg(f->list, char *);
 	f->i++;
 	if (!str)
 		str = "(null)";
@@ -42,7 +42,7 @@ void	ft_process_s(t_format *f)
 
 void	ft_print_s(t_format *f)
 {
-	char c;
+	char	c;
 
 	if (f->width > (int)ft_strlen(f->out_str))
 	{

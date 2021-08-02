@@ -6,7 +6,7 @@
 /*   By: jnovotny <jnovotny@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/13 16:28:51 by jnovotny          #+#    #+#             */
-/*   Updated: 2019/11/18 19:07:44 by jnovotny         ###   ########.fr       */
+/*   Updated: 2021/08/02 18:14:48 by jnovotny         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ void	ft_process_f(t_format *f)
 
 void	ft_print_f(t_format *f)
 {
-	char c;
+	char	c;
 
 	ft_hash_f(f);
 	ft_sign_f(f);
@@ -86,9 +86,9 @@ void	ft_sign_f(t_format *f)
 
 void	ft_add_sign_f(t_format *f)
 {
-	char *tmp;
-	char *res;
-	char sign;
+	char	*tmp;
+	char	*res;
+	char	sign;
 
 	if ((f->flag.plus || f->flag.sign == -1 || f->flag.space) && !f->flag.zero)
 	{
@@ -112,7 +112,7 @@ void	ft_add_sign_f(t_format *f)
 
 void	ft_hash_f(t_format *f)
 {
-	size_t i;
+	size_t	i;
 
 	i = ft_strlen(f->out_str) - 1;
 	if (!f->flag.hash && f->out_str[i] == '.')

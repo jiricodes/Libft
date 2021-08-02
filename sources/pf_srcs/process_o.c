@@ -6,7 +6,7 @@
 /*   By: jnovotny <jnovotny@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/13 14:33:56 by jnovotny          #+#    #+#             */
-/*   Updated: 2019/11/18 19:59:19 by jnovotny         ###   ########.fr       */
+/*   Updated: 2021/08/02 18:16:00 by jnovotny         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@
 
 void	ft_process_o(t_format *f)
 {
-	unsigned long nb;
+	unsigned long	nb;
 
 	nb = va_arg(f->list, long);
 	if (f->len_mod == l || f->len_mod == ll)
@@ -47,7 +47,7 @@ void	ft_process_o(t_format *f)
 
 void	ft_print_o(t_format *f)
 {
-	char c;
+	char	c;
 
 	ft_prec_o(f);
 	ft_hash_o(f);
@@ -87,7 +87,7 @@ void	ft_prec_o(t_format *f)
 	{
 		len = f->precision - ft_strlen(f->out_str);
 		tmp = ft_strnew(len);
-		ft_memset((void*)tmp, 48, len);
+		ft_memset((void *)tmp, 48, len);
 		res = ft_strjoin(tmp, f->out_str);
 		free(f->out_str);
 		free(tmp);

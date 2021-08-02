@@ -6,7 +6,7 @@
 /*   By: jnovotny <jnovotny@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/12 12:09:48 by jnovotny          #+#    #+#             */
-/*   Updated: 2019/11/18 19:04:46 by jnovotny         ###   ########.fr       */
+/*   Updated: 2021/08/02 18:14:12 by jnovotny         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@
 
 void	ft_process_di(t_format *f)
 {
-	long nb;
+	long	nb;
 
 	nb = va_arg(f->list, long);
 	f->i++;
@@ -45,7 +45,7 @@ void	ft_process_di(t_format *f)
 
 void	ft_print_di(t_format *f)
 {
-	char c;
+	char	c;
 
 	ft_prec_di(f);
 	ft_add_sign(f);
@@ -86,7 +86,7 @@ void	ft_prec_di(t_format *f)
 	{
 		len = f->precision - ft_strlen(f->out_str);
 		tmp = ft_strnew(len);
-		ft_memset((void*)tmp, 48, len);
+		ft_memset((void *)tmp, 48, len);
 		res = ft_strjoin(tmp, f->out_str);
 		free(f->out_str);
 		free(tmp);
@@ -112,9 +112,9 @@ void	ft_sign(t_format *f)
 
 void	ft_add_sign(t_format *f)
 {
-	char *tmp;
-	char *res;
-	char sign;
+	char	*tmp;
+	char	*res;
+	char	sign;
 
 	if ((f->flag.plus || f->flag.sign == -1 || f->flag.space) && !f->flag.zero)
 	{

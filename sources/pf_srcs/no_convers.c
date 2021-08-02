@@ -6,7 +6,7 @@
 /*   By: jnovotny <jnovotny@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/14 15:56:17 by jnovotny          #+#    #+#             */
-/*   Updated: 2019/11/15 14:09:26 by jnovotny         ###   ########.fr       */
+/*   Updated: 2021/08/02 18:15:40 by jnovotny         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ void	ft_process_no_convers(t_format *f, const char *format)
 
 void	ft_print_no_convers(t_format *f)
 {
-	char c;
+	char	c;
 
 	if (f->width > (int)ft_strlen(f->out_str))
 	{

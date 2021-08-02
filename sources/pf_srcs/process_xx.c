@@ -6,7 +6,7 @@
 /*   By: jnovotny <jnovotny@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/13 12:36:44 by jnovotny          #+#    #+#             */
-/*   Updated: 2019/11/18 19:06:22 by jnovotny         ###   ########.fr       */
+/*   Updated: 2021/08/02 18:13:33 by jnovotny         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@
 
 void	ft_process_xx(t_format *f, const char *format)
 {
-	long nb;
+	long	nb;
 
 	f->caps = format[f->i] == 'X' ? 1 : 0;
 	nb = va_arg(f->list, long);
@@ -45,7 +45,7 @@ void	ft_process_xx(t_format *f, const char *format)
 
 void	ft_print_xx(t_format *f, const char *format)
 {
-	char c;
+	char	c;
 
 	ft_prec_xx(f);
 	ft_hash_xx(f, format);
@@ -85,7 +85,7 @@ void	ft_prec_xx(t_format *f)
 	{
 		len = f->precision - ft_strlen(f->out_str);
 		tmp = ft_strnew(len);
-		ft_memset((void*)tmp, 48, len);
+		ft_memset((void *)tmp, 48, len);
 		res = ft_strjoin(tmp, f->out_str);
 		free(f->out_str);
 		free(tmp);
@@ -119,9 +119,9 @@ void	ft_hash_xx(t_format *f, const char *format)
 	}
 }
 
-int		ft_isstrzero(t_format *f)
+int	ft_isstrzero(t_format *f)
 {
-	size_t i;
+	size_t	i;
 
 	i = 0;
 	while (f->out_str[i] != '\0')
