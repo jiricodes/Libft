@@ -6,7 +6,7 @@
 /*   By: jnovotny <jnovotny@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/26 12:58:07 by jnovotny          #+#    #+#             */
-/*   Updated: 2021/07/31 03:49:24 by jnovotny         ###   ########.fr       */
+/*   Updated: 2021/08/04 11:29:55 by jnovotny         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -9507,11 +9507,58 @@ static void test_ft_printf() {
 	int current = 0;
 	int total = 0;
 
+	int			i = 2147483647;
+	long		l = 2147483647;
+	long long	ll = 9223372036854775807;
+	char		c = 0;
+	intmax_t	im = 9223372036854775807;
+	
 	CATEGORY("ft_printf");
+	fflush(NULL);
 
-#ifdef SPEEDTEST
-	test_ft_printf_speed();
-#endif // SPEEDTEST
+	ft_printf("ft:\t\n");
+	printf("org:\t\n");
+	ft_printf("ft:\t%%\n");
+	printf("org:\t%%\n");
+	ft_printf("ft:\t%d\n", 42);
+	printf("org:\t%d\n", 42);
+	ft_printf("ft:\t%10.5d\n", -42);
+	printf("org:\t%10.5d\n", -42);
+	ft_printf("ft:\t%+10.5d\n", -42);
+	printf("org:\t%+10.5d\n", -42);
+	ft_printf("ft:\t%-10.5d\n", -42);
+	printf("org:\t%-10.5d\n", -42);
+	ft_printf("ft:\t%+10.5d\n", 42);
+	printf("org:\t%+10.5d\n", 42);
+	ft_printf("ft:\t%010.5d\n", -42);
+	printf("org:\t%010.5d\n", -42);
+	ft_printf("ft:\t%d%d\n", 42, 41);
+	printf("org:\t%d%d\n", 42, 41);
+	ft_printf("ft:\t%d %d %d\n", 42, 43, 44);
+	printf("org:\t%d %d %d\n", 42, 43, 44);
+	ft_printf("ft:\t%ld\n", l);
+	printf("org:\t%ld\n", l);
+	ft_printf("ft:\t%lld\n", ll);
+	printf("org:\t%lld\n", ll);
+	ft_printf("ft:\t%x %X %p %20.15d\n", 505, 505, &ll, 54321);
+	printf("org:\t%x %X %p %20.15d\n", 505, 505, &ll, 54321);
+	printf("%lu\n", LONG_MAX);
+	// ft_printf("ft:\t%-10d % d %+d %010d %hhd\n", 3, 3, 3, 1, c);
+	// printf("org:\t%-10d % d %+d %010d %hhd\n", 3, 3, 3, 1, c);
+	// ft_printf("ft:\t%jd %zd %u %o %#08x\n", im, (size_t)i, i, 40, 42);
+	// printf("org:\t%jd %zd %u %o %#08x\n", im, (size_t)i, i, 40, 42);
+	// ft_printf("ft:\t%-16.12f\n", 123456789.123456789);
+	// printf("org:\t%-16.12f\n", 123456789.123456789);
+	// ft_printf("ft:\t%s%s%s\n", "test", "test", "test");
+	// printf("org:\t%s%s%s\n", "test", "test", "test");
+	// ft_printf("ft:\t%C\n", 15000);
+	// printf("org:\t%C\n", 15000);
+	// ft_printf("ft:\t%.20d\n", -123);
+	// printf("org:\t%.20d\n", -123);
+
+// #ifdef SPEEDTEST
+// 	test_ft_printf_speed();
+// #endif // SPEEDTEST
 }
 
 /*
@@ -9524,12 +9571,13 @@ int main(int argc, char **argv) {
 		exit(1);
 	}
 	if (VERBOSE)
-		printf(COLOR_BLUE"UNIT TEST FOR FT_SSL\n"EOC);
-	test_ft_itoa();
-	test_ft_ultoa();
-	test_get_next_line(argv[1]);
-	test_ft_strsplit();
-	test_ft_atoi();
-	test_ft_lftoa();
+		printf(COLOR_BLUE"UNIT TEST FOR LIBFT\n"EOC);
+	// test_ft_itoa();
+	// test_ft_ultoa();
+	// test_get_next_line(argv[1]);
+	// test_ft_strsplit();
+	// test_ft_atoi();
+	// test_ft_lftoa();
+	test_ft_printf();
 	fflush(NULL);
 }

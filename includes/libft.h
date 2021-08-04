@@ -6,7 +6,7 @@
 /*   By: jnovotny <jnovotny@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/17 22:39:15 by jnovotny          #+#    #+#             */
-/*   Updated: 2021/07/27 13:11:28 by jnovotny         ###   ########.fr       */
+/*   Updated: 2021/08/02 18:43:40 by jnovotny         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@
 # include "ft_printf.h"
 # include "get_next_line.h"
 
-typedef struct		s_list
+typedef struct s_list
 {
 	void			*content;
 	size_t			content_size;
@@ -68,13 +68,16 @@ char				*ft_itoa_base(int value, int base, int upcase);
 char				*ft_uitoa_base(unsigned int value, int base, int upcase);
 char				*ft_ltoa(long n);
 char				*ft_ultoa(unsigned long n);
-void				ft_ultoa_into_buf(unsigned long n, char *buf, size_t *buf_len);
+void				ft_ultoa_into_buf(unsigned long n, \
+									  char *buf, \
+									  size_t *buf_len);
 char				*ft_ltoa_base(long value, int base, int upcase);
 char				*ft_ultoa_base(unsigned long value, int base, int upcase);
 char				*ft_lftoa(long double n, unsigned int precision);
 char				*ft_strstr(const char *haystack, const char *needle);
 char				*ft_strnstr(const char *haystack, \
-						const char *needle, size_t len);
+								const char *needle, \
+								size_t len);
 int					ft_strcmp(const char *s1, const char *s2);
 int					ft_strncmp(const char *s1, const char *s2, size_t n);
 int					ft_strequ(char const *s1, char const *s2);

@@ -6,7 +6,7 @@
 /*   By: jnovotny <jnovotny@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/12 12:09:48 by jnovotny          #+#    #+#             */
-/*   Updated: 2021/08/02 18:14:12 by jnovotny         ###   ########.fr       */
+/*   Updated: 2021/08/04 11:42:21 by jnovotny         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,7 @@
 void	ft_process_di(t_format *f)
 {
 	long	nb;
+	int		sign;
 
 	nb = va_arg(f->list, long);
 	f->i++;
@@ -40,33 +41,43 @@ void	ft_process_di(t_format *f)
 		f->out_str = ft_ltoa((char)nb);
 	else
 		ft_error(f);
+	f->current_length = ft_strlen(f->out_str);
 	ft_print_di(f);
 }
 
 void	ft_print_di(t_format *f)
 {
 	char	c;
+	size_t	l;
 
 	ft_prec_di(f);
 	ft_add_sign(f);
-	if (f->width > (int)ft_strlen(f->out_str))
+	l = ft_strlen(f->out_str);
+	if (f->width > (int)f->current_length)
 	{
 		c = f->flag.zero ? '0' : ' ';
 		if (f->flag.minus)
 		{
-			f->out_len += write(1, f->out_str, ft_strlen(f->out_str));
-			while ((f->width--) - ft_strlen(f->out_str) > 0)
-				f->out_len += write(1, &c, 1);
+			add_string_to_buffer(f, f->out_str, l);
+			add_n_chars_to_buffer(f, c, (size_t)(f->width - f->current_length));
+			// f->out_len += write(1, f->out_str, ft_strlen(f->out_str));
+			// while ((f->width--) - ft_strlen(f->out_str) > 0)
+			// 	f->out_len += write(1, &c, 1);
 		}
 		else
 		{
-			while ((f->width--) - ft_strlen(f->out_str) > 0)
-				f->out_len += write(1, &c, 1);
-			f->out_len += write(1, f->out_str, ft_strlen(f->out_str));
+			add_n_chars_to_buffer(f, c, (size_t)(f->width - f->current_length));
+			add_string_to_buffer(f, f->out_str, l);
+			
+			// while ((f->width--) - ft_strlen(f->out_str) > 0)
+			// 	f->out_len += write(1, &c, 1);
+			// f->out_len += write(1, f->out_str, ft_strlen(f->out_str));
 		}
+		f->current_length = f->width;
 	}
 	else
-		f->out_len += write(1, f->out_str, ft_strlen(f->out_str));
+		add_string_to_buffer(f, f->out_str, l);
+		// f->out_len += write(1, f->out_str, ft_strlen(f->out_str));
 }
 
 /*
@@ -75,22 +86,24 @@ void	ft_print_di(t_format *f)
 
 void	ft_prec_di(t_format *f)
 {
-	char	*tmp;
-	char	*res;
+	// char	*tmp;
+	// char	*res;
 	size_t	len;
 
 	ft_sign(f);
 	if (f->out_str[0] == '0' && f->precision == 0)
 		f->out_str[0] = '\0';
-	else if (f->precision > (int)ft_strlen(f->out_str))
+	else if (f->precision > (int)f->current_length)
 	{
-		len = f->precision - ft_strlen(f->out_str);
-		tmp = ft_strnew(len);
-		ft_memset((void *)tmp, 48, len);
-		res = ft_strjoin(tmp, f->out_str);
-		free(f->out_str);
-		free(tmp);
-		f->out_str = res;
+		len = f->precision - (int)f->current_length;
+		add_n_chars_to_buffer(f, '0', len);
+		f->current_length += len;
+		// tmp = ft_strnew(len);
+		// ft_memset((void *)tmp, 48, len);
+		// res = ft_strjoin(tmp, f->out_str);
+		// free(f->out_str);
+		// free(tmp);
+		// f->out_str = res;
 	}
 }
 

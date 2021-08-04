@@ -6,7 +6,7 @@
 /*   By: jnovotny <jnovotny@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/09 17:29:51 by jnovotny          #+#    #+#             */
-/*   Updated: 2019/11/19 17:45:34 by jnovotny         ###   ########.fr       */
+/*   Updated: 2021/08/04 11:39:35 by jnovotny         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,13 +27,13 @@
 # define PF_STR "0123456789.#+- hlLqjzt*"
 # define PF_LEN "hlLjz"
 # define PF_SKIP "qt"
-# define FIL format[f->i + len]
+# define PF_BUF_SIZE 512
 
 /*
 ** Flag management struct
 */
 
-typedef struct	s_flag
+typedef struct s_flag
 {
 	char	zero;
 	char	hash;
@@ -47,7 +47,7 @@ typedef struct	s_flag
 ** Lenght modifier struct
 */
 
-typedef enum	e_lmod
+typedef enum e_lmod
 {
 	nomod = 0,
 	hh,
@@ -63,9 +63,9 @@ typedef enum	e_lmod
 ** Core format struct
 */
 
-typedef struct	s_format
+typedef struct s_format
 {
-	va_list list;
+	va_list	list;
 	char	*out_str;
 	size_t	out_len;
 	size_t	i;
@@ -74,6 +74,10 @@ typedef struct	s_format
 	int		precision;
 	t_lmod	len_mod;
 	int		caps;
+	int		fd;
+	char	buffer[PF_BUF_SIZE];
+	size_t	buf_position;
+	size_t	current_length;
 }				t_format;
 
 /*
@@ -86,6 +90,23 @@ void			ft_parse(t_format *f, const char *format);
 void			ft_getinfo(t_format *f, const char *format);
 void			ft_reset_pf(t_format *f);
 void			ft_error(t_format *f);
+
+/*
+** Buffer Functions ************************************************************
+*/
+
+void			flush_buffer_to_fd(t_format *format);
+void			add_string_to_buffer(t_format *format, \
+									 const char *str, \
+									 size_t len);
+void			add_n_chars_to_buffer(t_format *format, char c, size_t n);
+
+/* 
+** Utilities ******************************************************************* 
+*/
+
+unsigned int	int_length(long nb);
+
 
 /*
 **	Information fetching

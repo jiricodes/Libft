@@ -6,7 +6,7 @@
 #    By: jnovotny <jnovotny@student.hive.fi>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/07/26 13:07:24 by jnovotny          #+#    #+#              #
-#    Updated: 2021/08/02 18:07:37 by jnovotny         ###   ########.fr        #
+#    Updated: 2021/08/04 10:01:20 by jnovotny         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -42,9 +42,10 @@ build:
 run:
 	./$(TARGET) files/loremipsum
 	@rm -f files/tmp_gnltest
-	make printf_test
+	# @make printf_test
 
 printf_test:
+	@echo "ft_printf speed test"
 	@$(CC) $(CFLAGS) -c test_ft_printf_main.c -o test_ft_printf_main.o
 	@$(CC) $(CFLAGS) -o $(FTPF) test_ft_printf_main.o $(LIB)
 	@$(CC) $(CFLAGS) -c test_orig_printf.c -o test_orig_printf.o
