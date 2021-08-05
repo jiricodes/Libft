@@ -6,7 +6,7 @@
 /*   By: jnovotny <jnovotny@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/11 10:44:15 by jnovotny          #+#    #+#             */
-/*   Updated: 2021/08/04 10:25:54 by jnovotny         ###   ########.fr       */
+/*   Updated: 2021/08/04 19:55:08 by jnovotny         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,12 +14,10 @@
 
 void	ft_reset_pf(t_format *f)
 {
-	bzero(&(f->flag), sizeof(t_flag));
+	f->flags = 0;
 	f->precision = -1;
-	f->out_str = NULL;
 	f->width = 0;
 	f->len_mod = nomod;
-	f->caps = 0;
 	f->current_length = 0;
 }
 

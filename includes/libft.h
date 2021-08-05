@@ -6,7 +6,7 @@
 /*   By: jnovotny <jnovotny@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/17 22:39:15 by jnovotny          #+#    #+#             */
-/*   Updated: 2021/08/02 18:43:40 by jnovotny         ###   ########.fr       */
+/*   Updated: 2021/08/04 20:06:43 by jnovotny         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,7 @@ typedef struct s_list
 size_t				ft_strlen(const char *str);
 char				*ft_strdup(const char *s1);
 int					ft_atoi(const char *str);
+int					ft_atoi_and_index(const char *str, size_t *index);
 long long			ft_latoi(const char *str);
 int					ft_isalpha(int c);
 int					ft_isdigit(int c);

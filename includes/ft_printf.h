@@ -6,7 +6,7 @@
 /*   By: jnovotny <jnovotny@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/09 17:29:51 by jnovotny          #+#    #+#             */
-/*   Updated: 2021/08/04 11:39:35 by jnovotny         ###   ########.fr       */
+/*   Updated: 2021/08/04 20:35:18 by jnovotny         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,27 +24,26 @@
 # define F_ZERO_ERR "csCSpnm"
 # define F_ZERO_NUM "bdiouxX"
 # define C_STR "bcdifopsuxX"
-# define PF_STR "0123456789.#+- hlLqjzt*"
-# define PF_LEN "hlLjz"
-# define PF_SKIP "qt"
+# define PF_STR "0123456789.#+- hlLjzqZt*"
+# define PF_LEN "hlLjzqZt"
 # define PF_BUF_SIZE 512
 
 /*
-** Flag management struct
+** FLAGS
 */
 
-typedef struct s_flag
-{
-	char	zero;
-	char	hash;
-	char	plus;
-	char	minus;
-	char	space;
-	char	sign;
-}				t_flag;
+# define PF_FZERO 0b00000001
+# define PF_FHASH 0b00000010
+# define PF_FPLUS 0b00000100
+# define PF_FMINUS 0b00001000
+# define PF_FSPACE 0b00010000
+# define PF_FISNEG 0b00100000
+# define PF_FISCAP 0b01000000
+
+typedef void	(*t_conversion)(t_format *f);
 
 /*
-** Lenght modifier struct
+** Lenght modifier enum
 */
 
 typedef enum e_lmod
@@ -55,8 +54,10 @@ typedef enum e_lmod
 	L,
 	l,
 	ll,
+	L,
+	j,
 	z,
-	j
+	t
 }				t_lmod;
 
 /*
@@ -65,19 +66,18 @@ typedef enum e_lmod
 
 typedef struct s_format
 {
-	va_list	list;
-	char	*out_str;
-	size_t	out_len;
-	size_t	i;
-	t_flag	flag;
-	int		width;
-	int		precision;
-	t_lmod	len_mod;
-	int		caps;
-	int		fd;
-	char	buffer[PF_BUF_SIZE];
-	size_t	buf_position;
-	size_t	current_length;
+	va_list			list;
+	size_t			out_len;
+	size_t			i;
+	uint8_t			flags;
+	int				width;
+	int				precision;
+	t_lmod			len_mod;
+	int				fd;
+	char			buffer[PF_BUF_SIZE];
+	size_t			buf_position;
+	size_t			transform_length;
+	size_t			current_length;
 }				t_format;
 
 /*
@@ -85,7 +85,6 @@ typedef struct s_format
 */
 
 int				ft_printf(const char *format, ...);
-void			ft_dump(t_format *f, const char *format);
 void			ft_parse(t_format *f, const char *format);
 void			ft_getinfo(t_format *f, const char *format);
 void			ft_reset_pf(t_format *f);
@@ -106,7 +105,6 @@ void			add_n_chars_to_buffer(t_format *format, char c, size_t n);
 */
 
 unsigned int	int_length(long nb);
-
 
 /*
 **	Information fetching

@@ -6,7 +6,7 @@
 /*   By: jnovotny <jnovotny@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/12 12:09:48 by jnovotny          #+#    #+#             */
-/*   Updated: 2021/08/04 11:42:21 by jnovotny         ###   ########.fr       */
+/*   Updated: 2021/08/04 12:36:08 by jnovotny         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,27 +21,33 @@
 ** When 0 is printed with an explicit precision 0, the output is empty.
 */
 
+static void adjust_flags(t_format *f)
+{
+
+}
+
 void	ft_process_di(t_format *f)
 {
 	long	nb;
-	int		sign;
 
 	nb = va_arg(f->list, long);
 	f->i++;
-	if (f->len_mod == j)
-		f->out_str = nb == LONG_MIN ? ft_strdup("-9223372036854775808") \
-			: ft_ultoa(nb);
-	else if (f->len_mod == l || f->len_mod == ll || f->len_mod == z)
-		f->out_str = ft_ltoa(nb);
+	if (f->len_mod == j || f->len_mod == l || f->len_mod == ll || f->len_mod == z)
+		nb = nb;
 	else if (f->len_mod == L || f->len_mod == nomod)
-		f->out_str = ft_ltoa((int)nb);
+		nb =(int)nb;
 	else if (f->len_mod == h)
-		f->out_str = ft_ltoa((short)nb);
+		nb = (short)nb;
 	else if (f->len_mod == hh)
-		f->out_str = ft_ltoa((char)nb);
+		nb = (char)nb;
 	else
 		ft_error(f);
-	f->current_length = ft_strlen(f->out_str);
+	f->transform_length = int_length(nb);
+	if (nb < 0)
+	{
+		f->flag.sign = -1;
+	}
+	f->current_length = f->transform_length;
 	ft_print_di(f);
 }
 
@@ -60,24 +66,16 @@ void	ft_print_di(t_format *f)
 		{
 			add_string_to_buffer(f, f->out_str, l);
 			add_n_chars_to_buffer(f, c, (size_t)(f->width - f->current_length));
-			// f->out_len += write(1, f->out_str, ft_strlen(f->out_str));
-			// while ((f->width--) - ft_strlen(f->out_str) > 0)
-			// 	f->out_len += write(1, &c, 1);
 		}
 		else
 		{
 			add_n_chars_to_buffer(f, c, (size_t)(f->width - f->current_length));
 			add_string_to_buffer(f, f->out_str, l);
-			
-			// while ((f->width--) - ft_strlen(f->out_str) > 0)
-			// 	f->out_len += write(1, &c, 1);
-			// f->out_len += write(1, f->out_str, ft_strlen(f->out_str));
 		}
 		f->current_length = f->width;
 	}
 	else
 		add_string_to_buffer(f, f->out_str, l);
-		// f->out_len += write(1, f->out_str, ft_strlen(f->out_str));
 }
 
 /*

@@ -11,3 +11,5 @@ tests/libft_unittest
 tests/ftprintf
 tests/ogprintf
 tests/files/*_log
+test.c
+a.out

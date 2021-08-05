@@ -1,18 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_isdigit.c                                       :+:      :+:    :+:   */
+/*   transform.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jnovotny <jnovotny@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/10/17 22:45:37 by jnovotny          #+#    #+#             */
-/*   Updated: 2021/08/04 20:08:44 by jnovotny         ###   ########.fr       */
+/*   Created: 2021/08/04 11:57:05 by jnovotny          #+#    #+#             */
+/*   Updated: 2021/08/04 12:20:32 by jnovotny         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "ft_printf.h"
 
-inline int	ft_isdigit(int c)
+void	transform_int_with_precision(t_format *f, unsigned long number)
 {
-	return (c > 47 && c < 58);
+		
 }

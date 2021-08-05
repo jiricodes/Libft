@@ -6,7 +6,7 @@
 /*   By: jnovotny <jnovotny@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/12 12:22:33 by jnovotny          #+#    #+#             */
-/*   Updated: 2019/11/15 14:07:24 by jnovotny         ###   ########.fr       */
+/*   Updated: 2021/08/04 20:47:09 by jnovotny         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,14 +24,6 @@
 ** as they would otherwise be.
 ** For other conversions, the result is undefined.
 */
-
-void	flag_hash(t_format *f, const char *format)
-{
-	if (!f->flag.hash)
-		return ;
-	if (ft_strchr(F_HASH_ERR, format[f->i]))
-		f->flag.hash = 0;
-}
 
 /*
 ** 0 Zero

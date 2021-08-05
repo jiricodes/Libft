@@ -6,7 +6,7 @@
 /*   By: jnovotny <jnovotny@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/26 12:58:07 by jnovotny          #+#    #+#             */
-/*   Updated: 2021/08/04 11:29:55 by jnovotny         ###   ########.fr       */
+/*   Updated: 2021/08/04 11:52:27 by jnovotny         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -9522,6 +9522,8 @@ static void test_ft_printf() {
 	printf("org:\t%%\n");
 	ft_printf("ft:\t%d\n", 42);
 	printf("org:\t%d\n", 42);
+	ft_printf("ft:\t%.0d\n", 0);
+	printf("org:\t%.0d\n", 0);
 	ft_printf("ft:\t%10.5d\n", -42);
 	printf("org:\t%10.5d\n", -42);
 	ft_printf("ft:\t%+10.5d\n", -42);
@@ -9542,7 +9544,6 @@ static void test_ft_printf() {
 	printf("org:\t%lld\n", ll);
 	ft_printf("ft:\t%x %X %p %20.15d\n", 505, 505, &ll, 54321);
 	printf("org:\t%x %X %p %20.15d\n", 505, 505, &ll, 54321);
-	printf("%lu\n", LONG_MAX);
 	// ft_printf("ft:\t%-10d % d %+d %010d %hhd\n", 3, 3, 3, 1, c);
 	// printf("org:\t%-10d % d %+d %010d %hhd\n", 3, 3, 3, 1, c);
 	// ft_printf("ft:\t%jd %zd %u %o %#08x\n", im, (size_t)i, i, 40, 42);

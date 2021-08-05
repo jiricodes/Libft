@@ -6,13 +6,13 @@
 /*   By: jnovotny <jnovotny@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/09 17:33:10 by jnovotny          #+#    #+#             */
-/*   Updated: 2021/08/04 10:32:52 by jnovotny         ###   ########.fr       */
+/*   Updated: 2021/08/04 13:26:17 by jnovotny         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-void	ft_dump(t_format *f, const char *format)
+static void	ft_dump(t_format *f, const char *format)
 {
 	int			len;
 
@@ -31,7 +31,6 @@ int	ft_printf(const char *format, ...)
 	t_format	f;
 
 	ft_bzero(&f, sizeof(t_format));
-	ft_bzero(f.buffer, PF_BUF_SIZE);
 	va_start(f.list, format);
 	f.fd = 1;
 	while (format[f.i] != '\0')
