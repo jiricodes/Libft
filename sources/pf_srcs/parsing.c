@@ -6,7 +6,7 @@
 /*   By: jnovotny <jnovotny@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/11 10:44:15 by jnovotny          #+#    #+#             */
-/*   Updated: 2021/08/04 19:55:08 by jnovotny         ###   ########.fr       */
+/*   Updated: 2021/08/05 09:30:34 by jnovotny         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,6 @@ void	ft_reset_pf(t_format *f)
 
 void	ft_runflags(t_format *f, const char *format)
 {
-	flag_hash(f, format);
 	flag_plus(f);
 	flag_minus(f);
 	flag_zero(f, format);
@@ -38,8 +37,6 @@ void	ft_getinfo(t_format *f, const char *format)
 		ft_getprecision(f, format);
 		ft_getlmod(f, format);
 		ft_runflags(f, format);
-		if (ft_strchr(PF_SKIP, format[f->i]) && format[f->i] != '\0')
-			f->i++;
 	}
 }
 
