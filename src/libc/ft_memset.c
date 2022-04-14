@@ -6,7 +6,7 @@
 /*   By: jnovotny <jnovotny@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/17 22:46:31 by jnovotny          #+#    #+#             */
-/*   Updated: 2022/04/14 23:02:26 by jnovotny         ###   ########.fr       */
+/*   Updated: 2022/04/14 23:53:07 by jnovotny         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,23 +14,30 @@
 #include <limits.h>
 #include <sys/types.h>
 
-void	*ft_memset_old(void *b, int c, size_t len)
+static inline void	ft_memset_fill(void *b, int c, size_t len)
 {
-	size_t			i;
-	unsigned char	ch;
-	char			*rslt;
+	register unsigned char	*dst;
 
-	ch = c;
-	i = 0;
-	rslt = b;
-	while (i < len)
+	dst = b;
+	while (len != 0)
 	{
-		rslt[i] = ch;
-		i = i + 1;
+		*dst++ = (unsigned char)c;
+		len--;
 	}
 	return (b);
 }
 
+/**
+ * @brief memset
+ * 
+ * 	Inspired by:
+ * 	https://github.com/freebsd/freebsd-src/blob/main/lib/libc/string/memset.c
+ * 
+ * @param b 
+ * @param c 
+ * @param len 
+ * @return void* 
+ */
 void	*ft_memset(void *b, int c, size_t len)
 {
 	register unsigned char	*dst;
@@ -40,46 +47,24 @@ void	*ft_memset(void *b, int c, size_t len)
 	dst = b;
 	c_local = (unsigned char)c;
 	if (len < 3 * 8)
-	{
-		while (len != 0)
-		{
-			*dst++ = (unsigned char)c;
-			len--;
-		}
-		return (dst);
-	}
-	if (c_local != 0)
-	{
-		c_local = (c_local << 8) | c_local;
-		c_local = (c_local << 16) | c_local;
-		c_local = (c_local << 32) | c_local;
-	}
+		return (ft_memset_fill(b, c, len), b);
+	c_local = (c_local << 32) | (c_local << 16) | (c_local << 8) | c_local;
 	t = (int)dst & 7;
 	if (t != 0)
 	{
 		t = 8 - t;
 		len -= t;
-		while (t != 0)
-		{
-			*dst++ = (unsigned char)c;
-			t--;
-		}
+		ft_memset_fill(dst, c, t);
+		dst += t;
 	}
 	t = len / 8;
-	while (t != 0)
+	while (t-- != 0)
 	{
 		*(u_int64_t *)dst = c_local;
 		dst += 8;
-		t--;
 	}
 	t = len & 7;
 	if (t != 0)
-	{
-		while (t != 0)
-		{
-			*dst++ = (unsigned char)c;
-			t--;
-		}
-	}
-	return (dst);
+		ft_memset_fill(dst, c, t);
+	return (b);
 }
