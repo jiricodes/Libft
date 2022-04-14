@@ -6,7 +6,7 @@
 #    By: jiricodes <jiricodes@student.42.fr>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/11/11 15:44:22 by jnovotny          #+#    #+#              #
-#    Updated: 2022/04/14 17:05:15 by jiricodes        ###   ########.fr        #
+#    Updated: 2022/04/14 17:35:20 by jiricodes        ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -115,7 +115,7 @@ ERROR_FTS =	ft_error_exit.c
 
 # Folders
 SRC_DIR = src/
-LIB_DIR = libft_srcs/
+LIB_DIR = libc/
 ERROR_DIR = error_srcs/
 PRINTF_DIR = pf_srcs/
 OBJ_DIR = ./object_files/
