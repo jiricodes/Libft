@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: jnovotny <jnovotny@student.hive.fi>        +#+  +:+       +#+         #
+#    By: jiricodes <jiricodes@student.42.fr>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/11/11 15:44:22 by jnovotny          #+#    #+#              #
-#    Updated: 2021/08/04 11:39:54 by jnovotny         ###   ########.fr        #
+#    Updated: 2022/04/14 17:05:15 by jiricodes        ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -114,7 +114,7 @@ LIB_FTS = ft_atoi.c \
 ERROR_FTS =	ft_error_exit.c
 
 # Folders
-SRC_DIR = sources/
+SRC_DIR = src/
 LIB_DIR = libft_srcs/
 ERROR_DIR = error_srcs/
 PRINTF_DIR = pf_srcs/
