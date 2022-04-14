@@ -6,7 +6,7 @@
 /*   By: jnovotny <jnovotny@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/17 22:39:15 by jnovotny          #+#    #+#             */
-/*   Updated: 2021/08/04 20:06:43 by jnovotny         ###   ########.fr       */
+/*   Updated: 2022/04/14 21:56:22 by jnovotny         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@
 # include <unistd.h>
 # include <limits.h>
 # include <inttypes.h>
-# include "ft_printf.h"
+// # include "ft_printf.h"
 # include "get_next_line.h"
 
 typedef struct s_list
