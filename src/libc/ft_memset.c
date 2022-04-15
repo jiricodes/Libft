@@ -6,7 +6,7 @@
 /*   By: jnovotny <jnovotny@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/17 22:46:31 by jnovotny          #+#    #+#             */
-/*   Updated: 2022/04/14 23:53:07 by jnovotny         ###   ########.fr       */
+/*   Updated: 2022/04/15 15:24:08 by jnovotny         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,14 @@
 #include <limits.h>
 #include <sys/types.h>
 
+/**
+ * @brief Helper ft_memset function that fills misaligned bytes
+ * 			with the constant byte `c`
+ * 
+ * @param b memory area to be filled
+ * @param c constant byte
+ * @param len length of memory area to be filled
+ */
 static inline void	ft_memset_fill(void *b, int c, size_t len)
 {
 	register unsigned char	*dst;
@@ -28,15 +36,16 @@ static inline void	ft_memset_fill(void *b, int c, size_t len)
 }
 
 /**
- * @brief memset
+ * @brief The ft_memset() function fills the first `len` bytes of the memory area
+ *			pointed to by `b` with the constant byte `c`.
  * 
  * 	Inspired by:
  * 	https://github.com/freebsd/freebsd-src/blob/main/lib/libc/string/memset.c
  * 
- * @param b 
- * @param c 
- * @param len 
- * @return void* 
+ * @param b memory area to be filled
+ * @param c constant byte
+ * @param len length of memory area to be filled
+ * @return void* a pointer to the memory area `b`
  */
 void	*ft_memset(void *b, int c, size_t len)
 {
