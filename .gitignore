@@ -11,6 +11,7 @@ tests/ogprintf
 tests/files/*_log
 test.c
 a.out
+tmp
 
 # Prerequisites
 *.d

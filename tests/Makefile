@@ -6,7 +6,7 @@
 #    By: jnovotny <jnovotny@student.hive.fi>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/07/26 13:07:24 by jnovotny          #+#    #+#              #
-#    Updated: 2021/08/04 10:01:20 by jnovotny         ###   ########.fr        #
+#    Updated: 2022/04/19 12:57:28 by jnovotny         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -37,12 +37,12 @@ all: build run
 
 build:
 	$(CC) $(CFLAGS) -c libft_test_main.c -o libft_test_main.o
+	$(CC) $(CFLAGS) -c v1_0_functions.c -o v1_0_functions.o
 	$(CC) $(CFLAGS) -o $(TARGET) libft_test_main.o $(LIB)
 
 run:
 	./$(TARGET) files/loremipsum
-	@rm -f files/tmp_gnltest
-	# @make printf_test
+	-@rm -f files/tmp_gnltest
 
 printf_test:
 	@echo "ft_printf speed test"
