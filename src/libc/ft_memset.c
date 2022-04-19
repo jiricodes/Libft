@@ -6,7 +6,7 @@
 /*   By: jnovotny <jnovotny@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/17 22:46:31 by jnovotny          #+#    #+#             */
-/*   Updated: 2022/04/15 15:24:08 by jnovotny         ###   ########.fr       */
+/*   Updated: 2022/04/19 12:36:23 by jnovotny         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,8 +72,6 @@ void	*ft_memset(void *b, int c, size_t len)
 		*(u_int64_t *)dst = c_local;
 		dst += 8;
 	}
-	t = len & 7;
-	if (t != 0)
-		ft_memset_fill(dst, c, t);
+	ft_memset_fill(dst, c, len & 7);
 	return (b);
 }
