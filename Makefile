@@ -6,7 +6,7 @@
 #    By: jnovotny <jnovotny@student.hive.fi>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/11/11 15:44:22 by jnovotny          #+#    #+#              #
-#    Updated: 2022/04/19 13:09:29 by jnovotny         ###   ########.fr        #
+#    Updated: 2022/04/19 13:11:16 by jnovotny         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -25,8 +25,8 @@ OBJ_DIR = tmp
 
 
 # Pathing
-SRCS = $(addprefix $(SRC_DIR), $(CFILES))
-OBJS = $(addprefix $(OBJ_DIR), $(OFILES))
+SRCS = $(addprefix $(SRC_DIR)/, $(CFILES))
+OBJS = $(addprefix $(OBJ_DIR)/, $(OFILES))
 
 # Flags
 INCLUDES = -I includes/

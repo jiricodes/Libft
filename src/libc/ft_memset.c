@@ -6,7 +6,7 @@
 /*   By: jnovotny <jnovotny@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/17 22:46:31 by jnovotny          #+#    #+#             */
-/*   Updated: 2022/04/19 12:36:23 by jnovotny         ###   ########.fr       */
+/*   Updated: 2022/04/19 13:17:54 by jnovotny         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,6 @@ static inline void	ft_memset_fill(void *b, int c, size_t len)
 		*dst++ = (unsigned char)c;
 		len--;
 	}
-	return (b);
 }
 
 /**
@@ -58,7 +57,7 @@ void	*ft_memset(void *b, int c, size_t len)
 	if (len < 3 * 8)
 		return (ft_memset_fill(b, c, len), b);
 	c_local = (c_local << 32) | (c_local << 16) | (c_local << 8) | c_local;
-	t = (int)dst & 7;
+	t = (u_int64_t)dst & 7;
 	if (t != 0)
 	{
 		t = 8 - t;

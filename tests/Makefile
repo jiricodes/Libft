@@ -6,7 +6,7 @@
 #    By: jnovotny <jnovotny@student.hive.fi>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/07/26 13:07:24 by jnovotny          #+#    #+#              #
-#    Updated: 2022/04/19 12:57:28 by jnovotny         ###   ########.fr        #
+#    Updated: 2022/04/19 13:18:47 by jnovotny         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -38,7 +38,7 @@ all: build run
 build:
 	$(CC) $(CFLAGS) -c libft_test_main.c -o libft_test_main.o
 	$(CC) $(CFLAGS) -c v1_0_functions.c -o v1_0_functions.o
-	$(CC) $(CFLAGS) -o $(TARGET) libft_test_main.o $(LIB)
+	$(CC) $(CFLAGS) -o $(TARGET) libft_test_main.o v1_0_functions.o $(LIB)
 
 run:
 	./$(TARGET) files/loremipsum
