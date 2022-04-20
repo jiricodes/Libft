@@ -6,7 +6,7 @@
 /*   By: jnovotny <jnovotny@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/17 22:46:31 by jnovotny          #+#    #+#             */
-/*   Updated: 2022/04/19 13:17:54 by jnovotny         ###   ########.fr       */
+/*   Updated: 2022/04/20 12:06:43 by jnovotny         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,23 @@ static inline void	ft_memset_fill(void *b, int c, size_t len)
 }
 
 /**
+ * @brief Create a 8-byte word for faster memory filling
+ * 
+ * @param c A byte to fill the word with
+ * @return u_int64_t 8-byte word
+ */
+static inline u_int64_t	create_word(int c)
+{
+	register u_int64_t	c_local;
+
+	c_local = (unsigned char)c;
+	c_local = (c_local << 8) | c_local;
+	c_local = (c_local << 16) | c_local;
+	c_local = (c_local << 32) | c_local;
+	return (c_local);
+}
+
+/**
  * @brief The ft_memset() function fills the first `len` bytes of the memory area
  *			pointed to by `b` with the constant byte `c`.
  * 
@@ -53,10 +70,9 @@ void	*ft_memset(void *b, int c, size_t len)
 	register size_t			t;
 
 	dst = b;
-	c_local = (unsigned char)c;
+	c_local = create_word(c);
 	if (len < 3 * 8)
 		return (ft_memset_fill(b, c, len), b);
-	c_local = (c_local << 32) | (c_local << 16) | (c_local << 8) | c_local;
 	t = (u_int64_t)dst & 7;
 	if (t != 0)
 	{

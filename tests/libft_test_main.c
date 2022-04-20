@@ -6,7 +6,7 @@
 /*   By: jnovotny <jnovotny@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/26 12:58:07 by jnovotny          #+#    #+#             */
-/*   Updated: 2022/04/19 12:54:37 by jnovotny         ###   ########.fr       */
+/*   Updated: 2022/04/20 12:11:02 by jnovotny         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,10 @@ static void test_ft_memset_one(size_t len, int c, int *current, int total) {
 	mem = (char *)malloc(len);
 	ft_memset(mem, c, len);
 	for (size_t i = 0; i<len; i++) {
+		if (mem[i] != (unsigned char)c) {
+			printf("FT_MEMSET failed at [%d][%zu]: %u != %u\n", *current, i, mem[i], (unsigned char)c);
+			fflush(stdout);
+		}
 		assert(mem[i] == (unsigned char)c);
 	}
 	free(mem);
@@ -56,8 +60,8 @@ static void test_ft_memset_speed()
 
 	clock_t start = 0;
 	mem = (char *)malloc(sizeof(char) * len);
-	for (int i = 0; i < iter + 10; i++) {
-		if (i == 9)
+	for (int i = 0; i < iter + 25; i++) {
+		if (i == 24)
 			start = clock();
 		v1_0_ft_memset(mem, 0, len);
 	}
@@ -80,9 +84,57 @@ static void test_ft_memset_speed()
 
 static void test_ft_memset() {
 	int current = 0;
-	int total = 1000;
+	int total = 1048;
 
 	CATEGORY("ft_memset");
+	test_ft_memset_one(10, 97, &current, total);
+	test_ft_memset_one(16, 97, &current, total);
+	test_ft_memset_one(24, 97, &current, total);
+	test_ft_memset_one(32, 97, &current, total);
+	test_ft_memset_one(64, 97, &current, total);
+	test_ft_memset_one(128, 97, &current, total);
+	test_ft_memset_one(8 + 1, 97, &current, total);
+	test_ft_memset_one(8 + 2, 97, &current, total);
+	test_ft_memset_one(8 + 3, 97, &current, total);
+	test_ft_memset_one(8 + 4, 97, &current, total);
+	test_ft_memset_one(8 + 5, 97, &current, total);
+	test_ft_memset_one(8 + 6, 97, &current, total);
+	test_ft_memset_one(8 + 7, 97, &current, total);
+	test_ft_memset_one(16 + 1, 97, &current, total);
+	test_ft_memset_one(16 + 2, 97, &current, total);
+	test_ft_memset_one(16 + 3, 97, &current, total);
+	test_ft_memset_one(16 + 4, 97, &current, total);
+	test_ft_memset_one(16 + 5, 97, &current, total);
+	test_ft_memset_one(16 + 6, 97, &current, total);
+	test_ft_memset_one(16 + 7, 97, &current, total);
+	test_ft_memset_one(24 + 1, 97, &current, total);
+	test_ft_memset_one(24 + 2, 97, &current, total);
+	test_ft_memset_one(24 + 3, 97, &current, total);
+	test_ft_memset_one(24 + 4, 97, &current, total);
+	test_ft_memset_one(24 + 5, 97, &current, total);
+	test_ft_memset_one(24 + 6, 97, &current, total);
+	test_ft_memset_one(24 + 7, 97, &current, total);
+	test_ft_memset_one(32 + 1, 97, &current, total);
+	test_ft_memset_one(32 + 2, 97, &current, total);
+	test_ft_memset_one(32 + 3, 97, &current, total);
+	test_ft_memset_one(32 + 4, 97, &current, total);
+	test_ft_memset_one(32 + 5, 97, &current, total);
+	test_ft_memset_one(32 + 6, 97, &current, total);
+	test_ft_memset_one(32 + 7, 97, &current, total);
+	test_ft_memset_one(64 + 1, 97, &current, total);
+	test_ft_memset_one(64 + 2, 97, &current, total);
+	test_ft_memset_one(64 + 3, 97, &current, total);
+	test_ft_memset_one(64 + 4, 97, &current, total);
+	test_ft_memset_one(64 + 5, 97, &current, total);
+	test_ft_memset_one(64 + 6, 97, &current, total);
+	test_ft_memset_one(64 + 7, 97, &current, total);
+	test_ft_memset_one(128 + 1, 97, &current, total);
+	test_ft_memset_one(128 + 2, 97, &current, total);
+	test_ft_memset_one(128 + 3, 97, &current, total);
+	test_ft_memset_one(128 + 4, 97, &current, total);
+	test_ft_memset_one(128 + 5, 97, &current, total);
+	test_ft_memset_one(128 + 6, 97, &current, total);
+	test_ft_memset_one(128 + 7, 97, &current, total);
 	test_ft_memset_one(8768, 230, &current, total);
 	test_ft_memset_one(4526, 167, &current, total);
 	test_ft_memset_one(487, 37, &current, total);
