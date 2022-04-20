@@ -12,6 +12,7 @@ tests/files/*_log
 test.c
 a.out
 tmp
+tests/files/rand_gen
 
 # Prerequisites
 *.d
