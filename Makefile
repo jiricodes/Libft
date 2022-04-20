@@ -6,7 +6,7 @@
 #    By: jnovotny <jnovotny@student.hive.fi>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/11/11 15:44:22 by jnovotny          #+#    #+#              #
-#    Updated: 2022/04/19 13:11:16 by jnovotny         ###   ########.fr        #
+#    Updated: 2022/04/20 12:25:26 by jnovotny         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,7 +14,8 @@
 NAME = libft.a
 
 # Source Files
-CFILES = libc/ft_memset.c
+CFILES = libc/ft_memset.c \
+		 libc/ft_bzero.c
 
 # Object Files
 OFILES = $(CFILES:.c=.o)

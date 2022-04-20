@@ -1,22 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   v1_0_functions.h                                   :+:      :+:    :+:   */
+/*   ft_libc.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jnovotny <jnovotny@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/04/14 22:52:04 by jnovotny          #+#    #+#             */
-/*   Updated: 2022/04/20 12:14:50 by jnovotny         ###   ########.fr       */
+/*   Created: 2022/04/20 12:22:22 by jnovotny          #+#    #+#             */
+/*   Updated: 2022/04/20 12:24:09 by jnovotny         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef V1_0_FUNCTIONS
-# define V1_0_FUNCTIONS
+#ifndef FT_LIBC
+# define FT_LIBC
 
-# include <string.h>
+# include <limits.h>
+# include <sys/types.h>
 
+void				*ft_memset(void *b, int c, size_t len);
+void				ft_bzero(void *b, size_t len);
 
-void	*v1_0_ft_memset(void *b, int c, size_t len);
-void	v1_0_ft_bzero(void *s, size_t n);
-
-#endif // V1_0_FUNCTIONS
+#endif // FT_LIBC
