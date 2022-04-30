@@ -6,31 +6,46 @@
 /*   By: jnovotny <jnovotny@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/17 22:46:05 by jnovotny          #+#    #+#             */
-/*   Updated: 2021/07/28 20:00:48 by jnovotny         ###   ########.fr       */
+/*   Updated: 2022/04/30 12:46:54 by jnovotny         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "ft_libc.h"
 
-/*
-** The memccpy() function copies bytes from string src to string dst.
-** If the character c (as converted to an unsigned char) occurs
-** in the string src, the copy stops and a pointer to the byte after
-** the copy of c in the string dst is returned. Otherwise, n bytes are copied,
-** and a NULL pointer is returned.
-*/
-
+/**
+ * @brief The  memccpy()  function  copies no more than n bytes
+ * 			from memory area src to memory area dest, stopping
+ * 			when the character c is found.
+ * 			If the memory areas overlap, the results are undefined.
+ * 			The memccpy() function returns a pointer to the next character
+ * 			in dest after c, or NULL if c was not found in the first
+ * 			n characters of src.
+ * 
+ * @param dst pointer to destination memory area
+ * @param src pointer to source memory area
+ * @param c character to stop at
+ * @param n lenght of the area to be copied
+ * @return void* pointer to dst after c or NULL
+ */
 void	*ft_memccpy(void *dst, const void *src, int c, size_t n)
 {
-	size_t	i;
+	register unsigned char			*dst_ptr;
+	register const unsigned char	*src_ptr;
+	register size_t					l;
+	register unsigned char			ch;
 
-	i = 0;
-	while (i < n)
+	dst_ptr = dst;
+	src_ptr = src;
+	l = 0;
+	ch = c;
+	while (n - l)
 	{
-		((unsigned char *)dst)[i] = ((unsigned char *)src)[i];
-		if (((unsigned char *)src)[i] == (unsigned char)c)
-			return ((unsigned char *)dst + i + 1);
-		i = i + 1;
+		*dst_ptr = *src_ptr;
+		l++;
+		if (*dst_ptr == ch)
+			return ((void *)(dst + l));
+		dst_ptr++;
+		src_ptr++;
 	}
 	return (NULL);
 }

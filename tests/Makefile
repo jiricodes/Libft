@@ -6,14 +6,14 @@
 #    By: jnovotny <jnovotny@student.hive.fi>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/07/26 13:07:24 by jnovotny          #+#    #+#              #
-#    Updated: 2022/04/19 13:18:47 by jnovotny         ###   ########.fr        #
+#    Updated: 2022/04/29 19:12:56 by jnovotny         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 TARGET=libft_unittest
 LIB=../libft.a
 
-CFLAGS= -I../includes/
+CFLAGS= -I../includes/ -O3
 
 ifdef SPEED
 CFLAGS+= -DSPEEDTEST=1
@@ -23,7 +23,7 @@ ifdef VERB
 CFLAGS += -DVERBOSE=1
 endif
 
-CC?=clang-7
+CC?=gcc
 
 OGPF = ogprintf
 FTPF = ftprintf

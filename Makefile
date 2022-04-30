@@ -6,7 +6,7 @@
 #    By: jnovotny <jnovotny@student.hive.fi>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/11/11 15:44:22 by jnovotny          #+#    #+#              #
-#    Updated: 2022/04/20 21:56:24 by jnovotny         ###   ########.fr        #
+#    Updated: 2022/04/30 12:36:56 by jnovotny         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,7 +16,8 @@ NAME = libft.a
 # Source Files
 CFILES = libc/ft_memset.c \
 		 libc/ft_bzero.c \
-		 libc/ft_memcpy.c
+		 libc/ft_memcpy.c \
+		 libc/ft_memccpy.c
 
 # Object Files
 OFILES = $(CFILES:.c=.o)
@@ -32,7 +33,7 @@ OBJS = $(addprefix $(OBJ_DIR)/, $(OFILES))
 
 # Flags
 INCLUDES = -I includes/
-CFLAGS = -Wall -Werror -Wextra $(INCLUDES)
+CFLAGS = -Wall -Werror -Wextra $(INCLUDES) -O3
 
 # Colors
 C_RED = \033[1;31m
