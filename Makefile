@@ -6,7 +6,7 @@
 #    By: jnovotny <jnovotny@student.hive.fi>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/11/11 15:44:22 by jnovotny          #+#    #+#              #
-#    Updated: 2022/04/30 12:36:56 by jnovotny         ###   ########.fr        #
+#    Updated: 2022/05/02 10:48:53 by jnovotny         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,7 +17,8 @@ NAME = libft.a
 CFILES = libc/ft_memset.c \
 		 libc/ft_bzero.c \
 		 libc/ft_memcpy.c \
-		 libc/ft_memccpy.c
+		 libc/ft_memccpy.c \
+		 libc/ft_memmove.c
 
 # Object Files
 OFILES = $(CFILES:.c=.o)

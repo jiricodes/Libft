@@ -6,7 +6,7 @@
 /*   By: jnovotny <jnovotny@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/26 12:59:50 by jnovotny          #+#    #+#             */
-/*   Updated: 2022/04/20 11:50:20 by jnovotny         ###   ########.fr       */
+/*   Updated: 2022/05/02 11:58:59 by jnovotny         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@
 #include <sys/stat.h>
 
 #include "libft.h"
-#include "v1_0_functions.h"
+
 
 /*
 ** DEFINES **********************************************************************
@@ -44,6 +44,8 @@
 #define COLOR_GREEN "\033[32m"
 #define EOC "\033[0m"
 
+#define SPEED_ITERATIONS 1000000
+
 /*
 ** Macros **********************************************************************
 */
@@ -56,5 +58,14 @@
 #define SPEEDRES(f)		if (VERBOSE) printf("%.2f executions per second\n", f)
 #define SPEEDRES_NAME(f, n)		if (VERBOSE) printf("%s: %.2f executions per second\n", n, f)
 #define SPEEDCMP(f, o)		if (VERBOSE) printf("%.2f%% speed of %s\n", f, o)
+
+/*
+** UNITTESTS *******************************************************************
+*/
+
+void test_ft_memset();
+void test_ft_bzero();
+void test_ft_memcpy();
+void test_ft_memccpy();
 
 # endif // LIBFT_TEST_H

@@ -6,14 +6,14 @@
 #    By: jnovotny <jnovotny@student.hive.fi>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/07/26 13:07:24 by jnovotny          #+#    #+#              #
-#    Updated: 2022/04/29 19:12:56 by jnovotny         ###   ########.fr        #
+#    Updated: 2022/05/02 12:05:04 by jnovotny         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 TARGET=libft_unittest
 LIB=../libft.a
 
-CFLAGS= -I../includes/ -O3
+CFLAGS= -I../includes/ -I. -O3
 
 ifdef SPEED
 CFLAGS+= -DSPEEDTEST=1
@@ -31,14 +31,23 @@ OGPF_LOG=files/OGPF_log
 FTPF_LOG=files/FTPF_log
 PF_TL ?= 2
 
+UNITSRC=unittest_srcs/unit_ft_bzero.c \
+		unittest_srcs/unit_ft_memccpy.c \
+		unittest_srcs/unit_ft_memcpy.c \
+		unittest_srcs/unit_ft_memset.c
+
+UNITOBJ = $(UNITSRC:.c=.o)
+
 .PHONY: all clean fclean re build
 
 all: build run
 
-build:
+unittest_srcs/%.o: unittest_srcs/%.c
+	@gcc $(CFLAGS) -o $@ -c $<
+
+build: $(UNITOBJ)
 	$(CC) $(CFLAGS) -c libft_test_main.c -o libft_test_main.o
-	$(CC) $(CFLAGS) -c v1_0_functions.c -o v1_0_functions.o
-	$(CC) $(CFLAGS) -o $(TARGET) libft_test_main.o v1_0_functions.o $(LIB)
+	$(CC) $(CFLAGS) -o $(TARGET) libft_test_main.o $(UNITOBJ) $(LIB)
 
 run:
 	./$(TARGET) files/loremipsum
@@ -57,7 +66,7 @@ printf_test:
 	@./scripts/pf_test.sh $(OGPF_LOG) $(FTPF_LOG)
 
 clean:
-	@rm -f *.o $(OGPF_LOG) $(FTPF_LOG)
+	@rm -f *.o $(OGPF_LOG) $(FTPF_LOG) $(UNITOBJ)
 
 
 fclean: clean
