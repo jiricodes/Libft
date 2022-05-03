@@ -5,7 +5,7 @@ static void test_ft_memcpy_one(void *src0, size_t len, int *current, int total) 
 	*current += 1;
 	unsigned char *dst;
 	unsigned char *src = src0;
-	dst = (char *)malloc(len);
+	dst = (unsigned char *)malloc(len);
 	ft_memcpy(dst, src, len);
 	for (size_t i = 0; i<len; i++) {
 		if (src[i] != dst[i]) {

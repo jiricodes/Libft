@@ -6,7 +6,7 @@
 /*   By: jnovotny <jnovotny@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/19 13:05:49 by jnovotny          #+#    #+#             */
-/*   Updated: 2022/05/02 10:17:08 by jnovotny         ###   ########.fr       */
+/*   Updated: 2022/05/03 16:59:14 by jnovotny         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,15 +20,15 @@
  * @param n number of bytes to copy
  * @return void* pointer to `dst`
  */
-static void *ft_memcpy_rev(void *dst, const void *src, size_t n)
+static void	*ft_memcpy_rev(void *dst, const void *src, size_t n)
 {
 	register unsigned char			*dst_ptr;
 	register const unsigned char	*src_ptr;
 
 	dst_ptr = dst;
 	src_ptr = src;
-	dst_ptr += n;
-	src_ptr += n;
+	dst_ptr += (n - 1);
+	src_ptr += (n - 1);
 	while (n--)
 	{
 		*dst_ptr-- = *src_ptr--;
@@ -53,12 +53,12 @@ void	*ft_memmove(void *dst, const void *src, size_t n)
 {
 	if (dst == src || !n)
 		return (dst);
-	if (src < dst && src + n > dst)
+	if (dst < src)
 	{
-		return (ft_memcpy_rev(dst, src, n));
+		return (ft_memcpy(dst, src, n));
 	}
 	else
 	{
-		return (ft_memcpy(dst, src, n));
+		return (ft_memcpy_rev(dst, src, n));
 	}
 }

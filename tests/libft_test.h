@@ -6,7 +6,7 @@
 /*   By: jnovotny <jnovotny@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/26 12:59:50 by jnovotny          #+#    #+#             */
-/*   Updated: 2022/05/02 11:58:59 by jnovotny         ###   ########.fr       */
+/*   Updated: 2022/05/03 15:44:19 by jnovotny         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,5 +67,6 @@ void test_ft_memset();
 void test_ft_bzero();
 void test_ft_memcpy();
 void test_ft_memccpy();
+void test_ft_memmove();
 
 # endif // LIBFT_TEST_H

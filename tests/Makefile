@@ -6,7 +6,7 @@
 #    By: jnovotny <jnovotny@student.hive.fi>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/07/26 13:07:24 by jnovotny          #+#    #+#              #
-#    Updated: 2022/05/02 12:05:04 by jnovotny         ###   ########.fr        #
+#    Updated: 2022/05/03 12:35:24 by jnovotny         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -34,7 +34,8 @@ PF_TL ?= 2
 UNITSRC=unittest_srcs/unit_ft_bzero.c \
 		unittest_srcs/unit_ft_memccpy.c \
 		unittest_srcs/unit_ft_memcpy.c \
-		unittest_srcs/unit_ft_memset.c
+		unittest_srcs/unit_ft_memset.c \
+		unittest_srcs/unit_ft_memmove.c
 
 UNITOBJ = $(UNITSRC:.c=.o)
 

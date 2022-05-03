@@ -6,7 +6,7 @@
 /*   By: jnovotny <jnovotny@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/26 12:58:07 by jnovotny          #+#    #+#             */
-/*   Updated: 2022/05/02 11:57:59 by jnovotny         ###   ########.fr       */
+/*   Updated: 2022/05/03 15:44:23 by jnovotny         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,9 +28,10 @@ int main(int argc, char **argv) {
 	if (VERBOSE)
 		printf(COLOR_BLUE"UNIT TEST FOR LIBFT\n"EOC);
 
-	test_ft_memset();
-	test_ft_bzero();
-	test_ft_memcpy();
-	test_ft_memccpy();
+	// test_ft_memset();
+	// test_ft_bzero();
+	// test_ft_memcpy();
+	// test_ft_memccpy();
+	test_ft_memmove();
 	fflush(NULL);
 }

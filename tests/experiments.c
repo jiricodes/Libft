@@ -1,46 +1,67 @@
 # include <sys/types.h>
 # include <stdint.h>
 # include <stdio.h>
-# include "v1_0_functions.h"
-# include "libft_test.h"
+#include <string.h>
+#include <stdlib.h>
+void	*ft_memcpy(void *dst, const void *src, size_t n)
+{
+	register unsigned char			*dst_ptr;
+	register const unsigned char	*src_ptr;
 
-// gcc; mem size = 10485760; 1000 loops; 25 warmup
-// name				optimization		ops/sec
-// v1_0_ft_memset		n/a				3.88
-// v1_0_ft_memset		O1				28.96
-// v1_0_ft_memset		O2				236.43
-// v1_0_ft_memset		O3				236.69
-// ft_memset			n/a				113.47
-// ft_memset			O1				118.22
-// ft_memset			O2				109.21
-// ft_memset			O3				109.35
-// memset				n/a				233.41
-// memset				O1				236.26
-// memset				O2				237.01
-// memset				O3				237.61
+	if (dst == src || !n)
+		return (dst);
+	dst_ptr = dst;
+	src_ptr = src;
+	while (n--)
+	{
+		*dst_ptr++ = *src_ptr++;
+	}
+	return (dst);
+}
+
+static void *ft_memcpy_rev(void *dst, const void *src, size_t n)
+{
+	register unsigned char			*dst_ptr;
+	register const unsigned char	*src_ptr;
+
+	printf("memmove backward\n");
+	dst_ptr = dst;
+	src_ptr = src;
+	dst_ptr += (n - 1);
+	src_ptr += (n - 1);
+	while (n--)
+	{
+		*dst_ptr-- = *src_ptr--;
+	}
+	return (dst);
+}
+
+void	*ft_memmove(void *dst, const void *src, size_t n)
+{
+	if (dst == src || !n)
+		return (dst);
+	if (src < dst && src + n > dst)
+	{
+		return (ft_memcpy_rev(dst, src, n));
+	}
+	else
+	{
+		return (ft_memcpy(dst, src, n));
+	}
+}
 
 int main(int argc, char **argv) {
 	char *chars = argv[1];
-	size_t len_chars = strlen(chars);
+	size_t len = strlen(chars);
+	char *dst = (char *)malloc(len + 3);
+	memset(dst, 'x', len + 3);
+	dst[len + 2] = '\0';
+	size_t dlen = strlen(chars);
 
-	char	*mem;
+	printf("%zu: %s\n", len, chars);
+	printf("%zu: %s\n", dlen, dst);
 
-	CATEGORY("v1_0_ft_memset performance");
+	ft_memcpy_rev(dst, chars, 5);
+	printf("%zu: %s\n", dlen, dst);
 
-	size_t len = 104857600;
-	size_t iter = 1000;
-
-	clock_t start = 0;
-
-	mem = (char *)malloc(sizeof(char) * len);
-
-	for (int i = 0; i < iter + 25; i++) {
-		if (i == 24)
-			start = clock();
-		v1_0_ft_memset(mem, chars[i % len_chars], len);
-	}
-	clock_t end = clock();
-	double ft_time = (double)(end - start) / CLOCKS_PER_SEC;
-	SPEEDRES_NAME(iter / ft_time, "v1_0_ft_memset");
-	free(mem);
 }
