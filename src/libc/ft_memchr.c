@@ -6,27 +6,35 @@
 /*   By: jnovotny <jnovotny@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/19 14:01:26 by jnovotny          #+#    #+#             */
-/*   Updated: 2021/07/28 20:04:38 by jnovotny         ###   ########.fr       */
+/*   Updated: 2022/05/03 18:03:58 by jnovotny         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-/*
-** The memchr() function locates the first occurrence of c
-** (converted to an unsigned char) in string s.
-*/
-
+/**
+ * @brief The memchr() function scans the initial n bytes of the memory area
+ * 		  pointed to by s for the first instance of c. Both c and the bytes
+ * 		  of the memory area pointed to by s are interpreted as unsigned char.
+ * 
+ * @param s memory area to check
+ * @param c instance to search for
+ * @param n number of bytes t search
+ * @return void* pointer to the matching byte or NULL if the character
+ * 			does not occur in the given memory area.
+ */
 void	*ft_memchr(const void *s, int c, size_t n)
 {
-	size_t	i;
+	register unsigned char	*ptr;
+	register unsigned char	ch;
 
-	i = 0;
-	while (i < n)
+	ptr = (unsigned char *)s;
+	ch = (unsigned char)c;
+	while (n--)
 	{
-		if (((unsigned const char *)s)[i] == (unsigned char)c)
-			return ((void *)(s + i));
-		i = i + 1;
+		if (*ptr == ch)
+			return ((void *)ptr);
+		ptr++;
 	}
 	return (NULL);
 }

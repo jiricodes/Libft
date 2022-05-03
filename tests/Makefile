@@ -6,7 +6,7 @@
 #    By: jnovotny <jnovotny@student.hive.fi>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/07/26 13:07:24 by jnovotny          #+#    #+#              #
-#    Updated: 2022/05/03 12:35:24 by jnovotny         ###   ########.fr        #
+#    Updated: 2022/05/03 17:49:53 by jnovotny         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -35,7 +35,8 @@ UNITSRC=unittest_srcs/unit_ft_bzero.c \
 		unittest_srcs/unit_ft_memccpy.c \
 		unittest_srcs/unit_ft_memcpy.c \
 		unittest_srcs/unit_ft_memset.c \
-		unittest_srcs/unit_ft_memmove.c
+		unittest_srcs/unit_ft_memmove.c \
+		unittest_srcs/unit_ft_memchr.c
 
 UNITOBJ = $(UNITSRC:.c=.o)
 
