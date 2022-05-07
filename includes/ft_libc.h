@@ -6,7 +6,7 @@
 /*   By: jnovotny <jnovotny@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/20 12:22:22 by jnovotny          #+#    #+#             */
-/*   Updated: 2022/05/02 10:49:33 by jnovotny         ###   ########.fr       */
+/*   Updated: 2022/05/07 12:15:13 by jnovotny         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,10 +15,24 @@
 
 # include <string.h>
 
+/*
+** Memory
+*/
+
 void	*ft_memset(void *b, int c, size_t len);
 void	ft_bzero(void *b, size_t len);
 void	*ft_memcpy(void *dst, const void *src, size_t n);
 void	*ft_memccpy(void *dst, const void *src, int c, size_t n);
 void	*ft_memmove(void *dst, const void *src, size_t n);
+void	*ft_memchr(const void *s, int c, size_t n);
+int		ft_memcmp(const void *s1, const void *s2, size_t n);
+
+/*
+** String
+*/
+
+
+size_t	ft_strlen(const char *s);
+char	*ft_strdup(const char *s);
 
 #endif // FT_LIBC

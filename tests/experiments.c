@@ -1,67 +1,30 @@
-# include <sys/types.h>
-# include <stdint.h>
+
 # include <stdio.h>
-#include <string.h>
-#include <stdlib.h>
-void	*ft_memcpy(void *dst, const void *src, size_t n)
-{
-	register unsigned char			*dst_ptr;
-	register const unsigned char	*src_ptr;
+typedef struct s_vec2 {
+	int x, y;
+}				t_vec2;
 
-	if (dst == src || !n)
-		return (dst);
-	dst_ptr = dst;
-	src_ptr = src;
-	while (n--)
-	{
-		*dst_ptr++ = *src_ptr++;
-	}
-	return (dst);
+t_vec2 new(int x, int y) {
+	t_vec2 new = {x, y};
+	return (new);
 }
 
-static void *ft_memcpy_rev(void *dst, const void *src, size_t n)
-{
-	register unsigned char			*dst_ptr;
-	register const unsigned char	*src_ptr;
-
-	printf("memmove backward\n");
-	dst_ptr = dst;
-	src_ptr = src;
-	dst_ptr += (n - 1);
-	src_ptr += (n - 1);
-	while (n--)
-	{
-		*dst_ptr-- = *src_ptr--;
-	}
-	return (dst);
+t_vec2 sum(t_vec2 a, t_vec2 b) {
+	t_vec2 sum = {a.x + b.x, a.y + b.y};
+	return (sum);
 }
 
-void	*ft_memmove(void *dst, const void *src, size_t n)
-{
-	if (dst == src || !n)
-		return (dst);
-	if (src < dst && src + n > dst)
-	{
-		return (ft_memcpy_rev(dst, src, n));
-	}
-	else
-	{
-		return (ft_memcpy(dst, src, n));
-	}
+void test(t_vec2 *a) {
+	a->x += 1;
 }
 
 int main(int argc, char **argv) {
-	char *chars = argv[1];
-	size_t len = strlen(chars);
-	char *dst = (char *)malloc(len + 3);
-	memset(dst, 'x', len + 3);
-	dst[len + 2] = '\0';
-	size_t dlen = strlen(chars);
 
-	printf("%zu: %s\n", len, chars);
-	printf("%zu: %s\n", dlen, dst);
-
-	ft_memcpy_rev(dst, chars, 5);
-	printf("%zu: %s\n", dlen, dst);
-
+	t_vec2 a = new(1, 2);
+	t_vec2 b = new(1, 2);
+	t_vec2 c = sum(a, b);
+	test(&a);
+	printf("a: %d %d\n", a.x, a.y);
+	printf("b: %d %d\n", b.x, b.y);
+	printf("c: %d %d\n", c.x, c.y);
 }

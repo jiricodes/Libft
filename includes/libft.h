@@ -6,7 +6,7 @@
 /*   By: jnovotny <jnovotny@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/17 22:39:15 by jnovotny          #+#    #+#             */
-/*   Updated: 2022/05/02 10:49:50 by jnovotny         ###   ########.fr       */
+/*   Updated: 2022/05/07 12:15:19 by jnovotny         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,8 +34,6 @@ typedef struct s_list
 ** String manipulation
 */
 
-size_t				ft_strlen(const char *str);
-char				*ft_strdup(const char *s1);
 int					ft_atoi(const char *str);
 int					ft_atoi_and_index(const char *str, size_t *index);
 long long			ft_latoi(const char *str);
@@ -120,8 +118,6 @@ size_t				ft_base_ulen(unsigned long nb, long base);
 void				*ft_memalloc(size_t size);
 void				ft_memdel(void **ap);
 void				*ft_realloc(void *ptr, size_t original, size_t size);
-void				*ft_memchr(const void *s, int c, size_t n);
-int					ft_memcmp(const void *s1, const void *s2, size_t n);
 
 /*
 ** LISTS MANIPULATION
