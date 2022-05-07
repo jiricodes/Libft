@@ -6,7 +6,7 @@
 /*   By: jnovotny <jnovotny@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/26 12:58:07 by jnovotny          #+#    #+#             */
-/*   Updated: 2022/05/07 12:23:59 by jnovotny         ###   ########.fr       */
+/*   Updated: 2022/05/07 12:56:18 by jnovotny         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,8 @@ int main(int argc, char **argv) {
 	// test_ft_memchr();
 	// test_ft_memcmp();
 	// test_ft_strlen();
-	test_ft_strdup();
+	// test_ft_strdup();
+	// test_ft_strcpy();
+	test_ft_strncpy();
 	fflush(NULL);
 }

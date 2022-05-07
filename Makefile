@@ -6,7 +6,7 @@
 #    By: jnovotny <jnovotny@student.hive.fi>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/11/11 15:44:22 by jnovotny          #+#    #+#              #
-#    Updated: 2022/05/07 12:23:24 by jnovotny         ###   ########.fr        #
+#    Updated: 2022/05/07 12:49:10 by jnovotny         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -22,7 +22,9 @@ CFILES = libc/ft_memset.c \
 		 libc/ft_memchr.c \
 		 libc/ft_memcmp.c \
 		 libc/ft_strlen.c \
-		 libc/ft_strdup.c
+		 libc/ft_strdup.c \
+		 libc/ft_strcpy.c \
+		 libc/ft_strncpy.c
 
 # Object Files
 OFILES = $(CFILES:.c=.o)
