@@ -6,7 +6,7 @@
 #    By: jnovotny <jnovotny@student.hive.fi>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/07/26 13:07:24 by jnovotny          #+#    #+#              #
-#    Updated: 2022/05/07 12:56:30 by jnovotny         ###   ########.fr        #
+#    Updated: 2022/05/07 13:58:42 by jnovotny         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -41,7 +41,9 @@ UNITSRC=unittest_srcs/unit_ft_bzero.c \
 		unittest_srcs/unit_ft_strlen.c \
 		unittest_srcs/unit_ft_strdup.c \
 		unittest_srcs/unit_ft_strcpy.c \
-		unittest_srcs/unit_ft_strncpy.c
+		unittest_srcs/unit_ft_strncpy.c \
+		unittest_srcs/unit_ft_strcat.c \
+		unittest_srcs/unit_ft_strncat.c
 
 UNITOBJ = $(UNITSRC:.c=.o)
 
