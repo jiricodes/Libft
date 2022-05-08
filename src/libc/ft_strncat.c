@@ -6,7 +6,7 @@
 /*   By: jnovotny <jnovotny@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/17 22:48:42 by jnovotny          #+#    #+#             */
-/*   Updated: 2022/05/07 13:52:56 by jnovotny         ###   ########.fr       */
+/*   Updated: 2022/05/08 20:05:07 by jnovotny         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@
  * 		  (n from src plus the terminating null byte).  Therefore, the size
  * 		  of dst must be at least strlen(dst)+n+1.
  * 
- * @param dst destionation buffer pointer
+ * @param dst destination buffer pointer
  * @param src source string pointer
  * @param n maximum number of src bytes to copy
  * @return char* pointer to dst
